@@ -13,7 +13,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Email is required.' }, { status: 400 })
     }
 
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: 'Biolune <noreply@biolune.eu>',
       to: 'korosh@rasaian.com',
       subject: `New newsletter subscriber — ${email}`,
@@ -27,6 +27,12 @@ export async function POST(req: Request) {
       `,
     })
 
+    if (error) {
+      console.error('Resend error:', JSON.stringify(error))
+      return NextResponse.json({ error: error.message || 'Failed to subscribe.' }, { status: 500 })
+    }
+
+    console.log('Email sent:', JSON.stringify(data))
     return NextResponse.json({ success: true })
   } catch (error) {
     console.error('Newsletter error:', error)

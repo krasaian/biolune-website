@@ -13,7 +13,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Name and email are required.' }, { status: 400 })
     }
 
-    await resend.emails.send({
+    const { data, error } = await resend.emails.send({
       from: 'Biolune <noreply@biolune.eu>',
       to: 'korosh@rasaian.com',
       reply_to: email,
@@ -53,6 +53,12 @@ export async function POST(req: Request) {
       `,
     })
 
+    if (error) {
+      console.error('Resend error:', JSON.stringify(error))
+      return NextResponse.json({ error: error.message || 'Failed to send.' }, { status: 500 })
+    }
+
+    console.log('Email sent:', JSON.stringify(data))
     return NextResponse.json({ success: true })
   } catch (error) {
     console.error('Apply form error:', error)
