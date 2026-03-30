@@ -81,7 +81,19 @@ export default function Home() {
           line-height: 1.65;
           margin-bottom: 36px;
         }
-        .hero-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+        .hero-ctas { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; }
+        .hero-text-link {
+          font-family: 'Jost', sans-serif;
+          font-size: 12px;
+          font-weight: 400;
+          letter-spacing: 2.5px;
+          text-transform: uppercase;
+          color: var(--text);
+          text-decoration: underline;
+          text-underline-offset: 4px;
+          transition: color 0.2s;
+        }
+        .hero-text-link:hover { color: var(--gold); }
         .hero-stats {
           display: flex;
           gap: 40px;
@@ -97,7 +109,7 @@ export default function Home() {
           line-height: 1;
         }
         .stat-label {
-          font-family: 'Inter', sans-serif;
+          font-family: 'Jost', sans-serif;
           font-size: 13px;
           color: var(--text-muted);
           margin-top: 4px;
@@ -259,8 +271,8 @@ export default function Home() {
             <h1 className="serif">The AI longevity protocol built for high-performers.</h1>
             <p>Generic health plans weren't designed for your life. Biolune builds a precision protocol from your HRV, hormones, and biomarkers — adapted weekly as your biology changes.</p>
             <div className="hero-ctas">
-              <Link href="/apply" className="btn btn-dark">See if you qualify</Link>
-              <Link href="/about" className="btn btn-outline">See how it works</Link>
+              <Link href="/apply" className="btn btn-gold">See if you qualify →</Link>
+              <Link href="/about" className="hero-text-link">See how it works</Link>
             </div>
             <div className="hero-stats">
               <div className="stat-item">
@@ -380,7 +392,7 @@ export default function Home() {
                 <li>Wearable device integration support</li>
               </ul>
               <div className="price-cta">
-                <Link href="/apply" className="btn" style={{ width: '100%' }}>Apply Now</Link>
+                <Link href="/apply" className="btn btn-gold" style={{ width: '100%' }}>Apply Now</Link>
               </div>
             </div>
             {/* Elite */}

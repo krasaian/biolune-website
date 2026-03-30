@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import NewsletterSignup from '@/components/NewsletterSignup'
 
 export const metadata: Metadata = {
   title: 'News — Biolune',
@@ -135,10 +136,7 @@ export default function News() {
           <p className="label" style={{ marginBottom: 16 }}>Get it weekly</p>
           <h2 className="serif" style={{ fontSize: 'clamp(24px, 3.5vw, 40px)', marginBottom: 8 }}>The protocol. In your inbox.</h2>
           <p style={{ color: 'var(--text-muted)', marginBottom: 24 }}>Join 1,200+ high-performers. No noise — only signal.</p>
-          <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap' }}>
-            <input type="email" placeholder="Your email address" style={{ padding: '13px 20px', borderRadius: '100px', border: '1px solid var(--border)', background: 'var(--bg-alt)', fontSize: '14px', fontFamily: 'Inter, sans-serif', color: 'var(--text)', width: '260px', outline: 'none' }} />
-            <button className="btn btn-dark">Subscribe</button>
-          </div>
+          <NewsletterSignup />
         </div>
       </section>
     </>

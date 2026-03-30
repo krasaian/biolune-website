@@ -1,3 +1,5 @@
+'use client'
+import { useState } from 'react'
 import Link from 'next/link'
 
 const BioluneLogo = () => (
@@ -12,6 +14,61 @@ const BioluneLogo = () => (
   </Link>
 )
 
+function NewsletterForm() {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!email) return
+    setStatus('loading')
+    try {
+      const res = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+      setStatus(res.ok ? 'success' : 'error')
+    } catch {
+      setStatus('error')
+    }
+  }
+
+  if (status === 'success') {
+    return (
+      <p style={{ color: 'var(--gold)', fontSize: 14, letterSpacing: 1, marginTop: 28 }}>
+        You're subscribed. First issue arrives this week.
+      </p>
+    )
+  }
+
+  return (
+    <form className="newsletter-form" style={{ marginTop: 28 }} onSubmit={handleSubmit}>
+      <input
+        type="email"
+        className="newsletter-input"
+        placeholder="Your email address"
+        value={email}
+        onChange={e => setEmail(e.target.value)}
+        required
+      />
+      <button
+        type="submit"
+        className="btn btn-gold"
+        disabled={status === 'loading'}
+        style={{ opacity: status === 'loading' ? 0.7 : 1 }}
+      >
+        {status === 'loading' ? 'Subscribing…' : 'Subscribe'}
+      </button>
+      {status === 'error' && (
+        <p style={{ width: '100%', color: '#c0392b', fontSize: 12, marginTop: 8 }}>
+          Something went wrong. Please try again.
+        </p>
+      )}
+    </form>
+  )
+}
+
 export default function Footer() {
   return (
     <>
@@ -24,7 +81,7 @@ export default function Footer() {
           border: 1px solid var(--border);
           background: var(--bg);
           font-size: 14px;
-          font-family: 'Inter', sans-serif;
+          font-family: 'Jost', sans-serif;
           color: var(--text);
           width: 260px;
           outline: none;
@@ -41,10 +98,7 @@ export default function Footer() {
             <h3 className="serif">The protocol. In your inbox. Weekly.</h3>
             <p style={{ marginTop: 8 }}>Join 1,200+ high-performers getting weekly insights on HRV, longevity, and precision recovery. No noise — only signal.</p>
           </div>
-          <form className="newsletter-form" style={{ marginTop: 28 }} action="#">
-            <input type="email" className="newsletter-input" placeholder="Your email address" />
-            <button type="submit" className="btn btn-dark">Subscribe</button>
-          </form>
+          <NewsletterForm />
         </div>
       </div>
 

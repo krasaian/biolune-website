@@ -79,7 +79,7 @@ export default function Navbar() {
           list-style: none;
         }
         .nav-links a {
-          font-family: 'Inter', sans-serif;
+          font-family: 'Jost', sans-serif;
           font-size: 13px;
           font-weight: 400;
           color: var(--text-muted);
@@ -94,7 +94,7 @@ export default function Navbar() {
           gap: 12px;
         }
         .nav-login {
-          font-family: 'Inter', sans-serif;
+          font-family: 'Jost', sans-serif;
           font-size: 13px;
           color: var(--gold);
           font-weight: 400;
@@ -138,7 +138,7 @@ export default function Navbar() {
         .mobile-overlay a {
           display: block;
           font-size: 18px;
-          font-family: 'Inter', sans-serif;
+          font-family: 'Jost', sans-serif;
           color: var(--text);
           padding: 16px 0;
           border-bottom: 1px solid var(--border);
@@ -150,10 +150,10 @@ export default function Navbar() {
           display: block;
           margin-top: 24px;
           text-align: center;
-          background: var(--text);
+          background: var(--gold);
           color: var(--bg) !important;
           padding: 14px 24px;
-          border-radius: 100px;
+          border-radius: 4px;
           font-size: 13px;
           letter-spacing: 2px;
           text-transform: uppercase;
@@ -181,7 +181,7 @@ export default function Navbar() {
           </ul>
           <div className="nav-actions">
             <a href="https://biolune-app.vercel.app" className="nav-login" target="_blank" rel="noopener noreferrer">Login</a>
-            <Link href="/apply" className="btn btn-dark" style={{ fontSize: '11px', letterSpacing: '2px', padding: '11px 24px' }}>Apply for access</Link>
+            <Link href="/apply" className="btn btn-gold" style={{ fontSize: '11px', letterSpacing: '2px', padding: '11px 24px' }}>Apply for access</Link>
             <button className={`hamburger${open ? ' open' : ''}`} onClick={toggleMenu} aria-label="Toggle menu">
               <span /><span /><span />
             </button>

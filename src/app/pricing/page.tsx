@@ -150,7 +150,7 @@ export default function Pricing() {
                 <li><span className="check">✓</span> Wearable device integration support</li>
               </ul>
               <div className="plan-cta">
-                <Link href="/apply" className="btn" style={{ width: '100%' }}>Apply Now</Link>
+                <Link href="/apply" className="btn btn-gold" style={{ width: '100%' }}>Apply Now</Link>
               </div>
             </div>
 

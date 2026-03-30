@@ -65,7 +65,7 @@ export default function Apply() {
           border-radius: 8px;
           background: var(--bg-alt);
           font-size: 15px;
-          font-family: 'Inter', sans-serif;
+          font-family: 'Jost', sans-serif;
           color: var(--text);
           outline: none;
           transition: border-color 0.2s;
