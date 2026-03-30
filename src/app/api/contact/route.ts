@@ -15,7 +15,7 @@ export async function POST(req: Request) {
     await resend.emails.send({
       from: 'Biolune <noreply@biolune.eu>',
       to: 'korosh@rasaian.com',
-      replyTo: email,
+      reply_to: email,
       subject: `Contact request — ${name}`,
       html: `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 32px; background: #fef9ef; border: 1px solid #e8e2d4;">
