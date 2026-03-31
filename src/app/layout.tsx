@@ -24,6 +24,22 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
+      <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-YMC268HCZ8" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('consent', 'default', {
+                'analytics_storage': 'granted'
+              });
+              gtag('config', 'G-YMC268HCZ8');
+            `,
+          }}
+        />
+      </head>
       <body>
         <Navbar />
         <main>{children}</main>
