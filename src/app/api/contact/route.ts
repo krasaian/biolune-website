@@ -7,7 +7,7 @@ export async function POST(req: Request) {
   try {
     const resend = new Resend(process.env.RESEND_API_KEY)
     const body = await req.json()
-    const { name, email, location, objective } = body
+    const { name, email, location, objective, message } = body
 
     if (!name || !email) {
       return NextResponse.json({ error: 'Name and email are required.' }, { status: 400 })
@@ -15,7 +15,7 @@ export async function POST(req: Request) {
 
     const { data, error } = await resend.emails.send({
       from: 'Biolune <noreply@biolune.eu>',
-      to: 'korosh@rasaian.com',
+      to: process.env.ADMIN_EMAIL || 'korosh@rasaian.com',
       reply_to: email,
       subject: `Contact request — ${name}`,
       html: `
@@ -37,8 +37,12 @@ export async function POST(req: Request) {
               <td style="padding: 10px 0; border-bottom: 1px solid #e8e2d4; color: #1a1916; font-size: 14px;">${location || '—'}</td>
             </tr>
             <tr>
-              <td style="padding: 10px 0; color: #6b6960; font-size: 13px;">Objective</td>
-              <td style="padding: 10px 0; color: #1a1916; font-size: 14px;">${objective || '—'}</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #e8e2d4; color: #6b6960; font-size: 13px;">Objective</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #e8e2d4; color: #1a1916; font-size: 14px;">${objective || '—'}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; color: #6b6960; font-size: 13px; vertical-align: top;">Message</td>
+              <td style="padding: 10px 0; color: #1a1916; font-size: 14px; white-space: pre-wrap;">${message || '—'}</td>
             </tr>
           </table>
 

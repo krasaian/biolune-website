@@ -33,6 +33,33 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'HealthAndBeautyBusiness',
+              name: 'Biolune',
+              url: 'https://www.biolune.eu',
+              logo: 'https://www.biolune.eu/og-image.png',
+              description: 'Biolune builds a precision longevity protocol from your HRV, hormones, and biomarkers — adapted weekly. Designed for high-performers.',
+              email: 'hello@biolune.eu',
+              sameAs: [],
+              founder: {
+                '@type': 'Person',
+                name: 'Korosh',
+                jobTitle: 'Founder',
+              },
+              offers: {
+                '@type': 'AggregateOffer',
+                priceCurrency: 'EUR',
+                lowPrice: '99',
+                highPrice: '799',
+                offerCount: '3',
+              },
+            }),
+          }}
+        />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-YMC268HCZ8" />
         <script
           dangerouslySetInnerHTML={{

@@ -3,10 +3,10 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 export default function ContactForm() {
-  const [form, setForm] = useState({ name: '', email: '', location: '', objective: '' })
+  const [form, setForm] = useState({ name: '', email: '', location: '', objective: '', message: '' })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
 
-  const set = (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
+  const set = (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setForm(prev => ({ ...prev, [field]: e.target.value }))
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -94,6 +94,17 @@ export default function ContactForm() {
           <option>Custom Protocol</option>
           <option>General enquiry</option>
         </select>
+      </div>
+
+      <div className="form-group">
+        <label className="form-label">Your message</label>
+        <textarea
+          className="form-textarea"
+          placeholder="Tell us what you're looking for…"
+          rows={4}
+          value={form.message}
+          onChange={set('message')}
+        />
       </div>
 
       {status === 'error' && (

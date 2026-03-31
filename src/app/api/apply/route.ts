@@ -16,7 +16,7 @@ export async function POST(req: Request) {
     // Send admin notification to Korosh
     const { data, error } = await resend.emails.send({
       from: 'Biolune <noreply@biolune.eu>',
-      to: 'korosh@rasaian.com',
+      to: process.env.ADMIN_EMAIL || 'korosh@rasaian.com',
       reply_to: email,
       subject: `New application — ${name}`,
       html: `
