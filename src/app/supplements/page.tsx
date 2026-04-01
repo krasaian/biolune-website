@@ -13,6 +13,8 @@ interface SupplementCard {
   benefit: string
   experts: string[]
   tier: 'foundation' | 'sleep' | 'longevity' | 'performance'
+  shopUrl: string
+  brand: string
 }
 
 const SupplementCard = ({ card }: { card: SupplementCard }) => (
@@ -32,6 +34,10 @@ const SupplementCard = ({ card }: { card: SupplementCard }) => (
     <div className="supp-experts">
       {card.experts.join(' · ')}
     </div>
+    <div className="supp-brand">{card.brand}</div>
+    <a href={card.shopUrl} target="_blank" rel="noopener noreferrer" className="btn btn-gold supp-shop-btn">
+      Shop on iHerb →
+    </a>
   </div>
 )
 
@@ -49,6 +55,8 @@ const sections = [
         benefit: 'Regulate calcium metabolism, support bone health and immune function. K2 ensures calcium goes to bones, not arteries.',
         experts: ['Huberman', 'Patrick', 'Brecka'],
         tier: 'foundation' as const,
+        brand: 'MegaFood',
+        shopUrl: 'https://www.iherb.com/pr/megafood-vitamin-d3-with-k-k2-5-000-iu-125-mcg-120-capsules/103333',
       },
       {
         name: 'Omega-3 (EPA+DHA)',
@@ -57,6 +65,8 @@ const sections = [
         benefit: 'Support brain health, reduce systemic inflammation, improve cardiovascular markers and cell membrane integrity.',
         experts: ['Patrick', 'Attia', 'Huberman'],
         tier: 'foundation' as const,
+        brand: 'Nordic Naturals — Ultimate Omega',
+        shopUrl: 'https://www.iherb.com/pr/nordic-naturals-ultimate-omega-lemon-60-soft-gels-640-mg-per-soft-gel/43654',
       },
       {
         name: 'Magnesium (Threonate or Glycinate)',
@@ -65,6 +75,8 @@ const sections = [
         benefit: 'Improve sleep quality, reduce muscle tension, support 300+ enzymatic processes and cognitive function.',
         experts: ['Huberman', 'Walker', 'Attia'],
         tier: 'foundation' as const,
+        brand: 'Designs For Health',
+        shopUrl: 'https://www.iherb.com/pr/designs-for-health-magnesium-glycinate-complex-120-vegetarian-capsules-150-mg-per-capsule/54986',
       },
       {
         name: 'Creatine Monohydrate',
@@ -73,6 +85,8 @@ const sections = [
         benefit: 'Boost ATP production, enhance muscular strength, cognitive resilience, and cellular energy reserves.',
         experts: ['Huberman', 'Attia', 'Patrick'],
         tier: 'foundation' as const,
+        brand: 'Optimum Nutrition — Micronized',
+        shopUrl: 'https://www.iherb.com/pr/optimum-nutrition-micronized-creatine-powder-unflavored-10-58-oz-300-g/36132',
       },
     ],
   },
@@ -89,6 +103,8 @@ const sections = [
         benefit: 'The only form that efficiently crosses the blood-brain barrier — enhances sleep quality and cognitive recovery.',
         experts: ['Huberman', 'Walker'],
         tier: 'sleep' as const,
+        brand: 'Life Extension — Neuro-Mag',
+        shopUrl: 'https://www.iherb.com/pr/life-extension-neuro-mag-magnesium-l-threonate-90-vegetarian-capsules-48-mg-per-capsule/40244',
       },
       {
         name: 'L-Theanine',
@@ -97,6 +113,8 @@ const sections = [
         benefit: 'Promote relaxation and sleep onset via alpha brain wave stimulation, without sedation or morning grogginess.',
         experts: ['Huberman', 'Walker'],
         tier: 'sleep' as const,
+        brand: 'Nutricost',
+        shopUrl: 'https://www.iherb.com/pr/nutricost-l-theanine-200-mg-120-capsules/140230',
       },
       {
         name: 'Apigenin',
@@ -105,6 +123,8 @@ const sections = [
         benefit: 'A natural flavonoid that lengthens sleep duration and deepens REM/NREM cycles. Found in chamomile.',
         experts: ['Huberman', 'Walker'],
         tier: 'sleep' as const,
+        brand: 'Swanson',
+        shopUrl: 'https://www.iherb.com/pr/swanson-apigenin-50-mg-90-capsules/116327',
       },
     ],
   },
@@ -121,6 +141,8 @@ const sections = [
         benefit: 'Boost NAD+ levels to support mitochondrial function, DNA repair, and cellular energy production.',
         experts: ['Sinclair', 'Attia'],
         tier: 'longevity' as const,
+        brand: 'ProHealth Longevity — Uthever NMN Pro',
+        shopUrl: 'https://www.iherb.com/pr/prohealth-longevity-uthever-nmn-pro-1000-500-mg-60-capsules/114167',
       },
       {
         name: 'Sulforaphane',
@@ -129,6 +151,8 @@ const sections = [
         benefit: 'Activate the Nrf2 pathway to upregulate your body\'s own antioxidant defenses and detoxification enzymes.',
         experts: ['Sinclair', 'Patrick'],
         tier: 'longevity' as const,
+        brand: 'Swanson — Broccoli Sprout Extract',
+        shopUrl: 'https://www.iherb.com/pr/swanson-sulforaphane-from-broccoli-sprout-extract-400-mcg-60-vegan-caps/118029',
       },
       {
         name: 'Fisetin',
@@ -137,6 +161,8 @@ const sections = [
         benefit: 'Senolytic action: helps clear senescent "zombie" cells that accumulate with age and drive inflammation.',
         experts: ['Sinclair', 'Attia'],
         tier: 'longevity' as const,
+        brand: 'California Gold Nutrition',
+        shopUrl: 'https://www.iherb.com/pr/california-gold-nutrition-fisetin-100-mg-90-veggie-capsules/142030',
       },
       {
         name: 'Resveratrol',
@@ -145,6 +171,8 @@ const sections = [
         benefit: 'Activate sirtuins to enhance autophagy, mitochondrial efficiency, and longevity-related gene expression.',
         experts: ['Sinclair'],
         tier: 'longevity' as const,
+        brand: 'Source Naturals',
+        shopUrl: 'https://www.iherb.com/pr/source-naturals-resveratrol-500-500-mg-120-tablets/119527',
       },
     ],
   },
@@ -161,6 +189,8 @@ const sections = [
         benefit: 'Optimize free testosterone naturally by reducing SHBG binding. Supports energy, libido, and work capacity.',
         experts: ['Huberman', 'Brecka'],
         tier: 'performance' as const,
+        brand: 'Solaray',
+        shopUrl: 'https://www.iherb.com/pr/solaray-tongkat-ali-400-mg-60-vegcaps/99983',
       },
       {
         name: 'Alpha-GPC',
@@ -169,6 +199,8 @@ const sections = [
         benefit: 'Enhance choline availability for acetylcholine production — sharpens focus, reaction time, and mind-muscle connection.',
         experts: ['Huberman', 'Johnson'],
         tier: 'performance' as const,
+        brand: 'NOW Foods',
+        shopUrl: 'https://www.iherb.com/pr/now-foods-alpha-gpc-300-mg-60-veg-capsules/12803',
       },
       {
         name: 'Ashwagandha (KSM-66)',
@@ -177,6 +209,8 @@ const sections = [
         benefit: 'Modulate cortisol and HPA axis, improve stress resilience, recovery, and hormonal balance.',
         experts: ['Huberman', 'Attia'],
         tier: 'performance' as const,
+        brand: 'Planetary Herbals — KSM-66',
+        shopUrl: 'https://www.iherb.com/pr/planetary-herbals-ksm-66-ashwagandha-root-extract-60-vegetarian-capsules-300-mg-per-capsule/144308',
       },
     ],
   },
@@ -295,6 +329,22 @@ export default function Supplements() {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
           gap: 24px;
+        }
+
+        .supp-brand {
+          font-family: 'Jost', sans-serif;
+          font-size: 12px;
+          color: var(--gold);
+          font-weight: 500;
+          letter-spacing: 0.3px;
+          margin-bottom: 16px;
+        }
+
+        .supp-shop-btn {
+          width: 100%;
+          margin-top: auto;
+          font-size: 11px;
+          padding: 12px 24px;
         }
 
         /* CTA Banner */
