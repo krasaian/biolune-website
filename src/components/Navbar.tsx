@@ -19,6 +19,7 @@ const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About' },
   { href: '/pricing', label: 'Pricing' },
+  { href: '/supplements', label: 'Supplements' },
   { href: '/success-stories', label: 'Success Stories' },
   { href: '/news', label: 'News' },
 ]
@@ -193,6 +194,7 @@ export default function Navbar() {
         <Link href="/">Home</Link>
         <Link href="/about">About</Link>
         <Link href="/pricing">Pricing</Link>
+        <Link href="/supplements">Supplements</Link>
         <Link href="/success-stories">Success Stories</Link>
         <Link href="/news">News</Link>
         <a href="https://biolune-app.vercel.app" className="mob-login" target="_blank" rel="noopener noreferrer">Login</a>
