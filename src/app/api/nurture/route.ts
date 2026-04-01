@@ -124,7 +124,7 @@ export async function POST(req: Request) {
     }
 
     if (day === 3) {
-      const url = bookingUrl || 'https://biolune.eu/apply'
+      const url = bookingUrl || 'https://calendly.com/korosh-biolune/30min'
       const { data, error } = await resend.emails.send({
         from: 'Korosh, Founder <hello@biolune.eu>',
         to: email,
