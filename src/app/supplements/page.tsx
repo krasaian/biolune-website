@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'The Biolune Protocol Stack — Evidence-Based Supplements',
-  description: 'Evidence-based supplement recommendations curated by Dr. Luna from 7 world-leading health experts. Personalized stacks for sleep, longevity, performance, and foundation health.',
+  description: 'Evidence-based supplement recommendations curated by Lune from 7 world-leading health experts. Personalized stacks for sleep, longevity, performance, and foundation health.',
 }
 
 interface SupplementCard {
@@ -477,7 +477,7 @@ export default function Supplements() {
           <h1 className="serif">The Biolune Protocol Stack</h1>
           <p className="subtitle">
             14 evidence-based supplements from 7 world-leading health experts.
-            Not random pills — a structured protocol, personalized by Dr. Luna.
+            Not random pills — a structured protocol, personalized by Lune.
           </p>
 
           {/* Section navigation pills */}
@@ -506,7 +506,7 @@ export default function Supplements() {
             </div>
             <div className="supp-how-step">
               <div className="supp-how-num">02</div>
-              <h3 className="serif">Dr. Luna Analyzes</h3>
+              <h3 className="serif">Lune Analyzes</h3>
               <p>Our AI cross-references your profile against protocols from Huberman, Attia, Patrick, Walker, Sinclair, Brecka, and Johnson.</p>
             </div>
             <div className="supp-how-step">
@@ -544,7 +544,7 @@ export default function Supplements() {
             <h2 className="serif">Not Sure Where to Start?</h2>
             <p>
               These are the protocols — but not everyone needs all of them.
-              Dr. Luna builds your personal stack based on your biology, goals, and lifestyle.
+              Lune builds your personal stack based on your biology, goals, and lifestyle.
             </p>
             <div className="supp-cta-buttons">
               <Link href="/quiz" className="btn btn-dark">Take the Free Quiz</Link>
@@ -560,10 +560,10 @@ export default function Supplements() {
           <div className="supp-safety-inner">
             <div>
               <p className="label" style={{ marginBottom: '12px' }}>SAFETY FIRST</p>
-              <h3 className="serif">Dr. Luna Checks for You</h3>
+              <h3 className="serif">Lune Checks for You</h3>
               <p>
                 Supplements can interact with medications and conditions.
-                Dr. Luna automatically flags contraindications based on your health profile —
+                Lune automatically flags contraindications based on your health profile —
                 something a generic supplement store never does.
               </p>
             </div>
@@ -604,7 +604,7 @@ export default function Supplements() {
 
             <div className="supp-disclaimer">
               <strong>Not a Substitute for Medical Care</strong>
-              Dr. Luna is an AI health coach, not a medical professional. If you experience adverse reactions to any supplement, stop use immediately and contact your healthcare provider. In case of emergency, call 112 (EU) or your local emergency number.
+              Lune is an AI health coach, not a medical professional. If you experience adverse reactions to any supplement, stop use immediately and contact your healthcare provider. In case of emergency, call 112 (EU) or your local emergency number.
             </div>
           </div>
         </div>

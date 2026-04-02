@@ -36,7 +36,7 @@ function onboardingHtml(firstName: string, appUrl: string) {
       <div style="background: #f4eee0; border-radius: 8px; padding: 24px; margin-bottom: 24px;">
         <p style="color: #A89879; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin: 0 0 12px 0;">Step 2 &mdash; Log in with your beta code</p>
         <p style="color: #3a3935; font-size: 14px; line-height: 1.8; margin: 0;">
-          Open the app and log in with the email you used to apply. You will receive a beta access code separately &mdash; enter it when prompted. This unlocks your personalised dashboard, Dr. Luna (your coach), and the intake form.
+          Open the app and log in with the email you used to apply. You will receive a beta access code separately &mdash; enter it when prompted. This unlocks your personalised dashboard, Lune (your coach), and the intake form.
         </p>
       </div>
 
@@ -61,15 +61,15 @@ function onboardingHtml(firstName: string, appUrl: string) {
       <div style="background: #f4eee0; border-radius: 8px; padding: 24px; margin-bottom: 24px;">
         <p style="color: #A89879; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin: 0 0 12px 0;">Step 4 &mdash; Complete your intake (3 minutes)</p>
         <p style="color: #3a3935; font-size: 14px; line-height: 1.8; margin: 0;">
-          Once logged in, you will be guided through a short intake covering your goals, sleep patterns, training history, and stress load. This is what Dr. Luna uses to build your first protocol &mdash; the more precise you are, the better your protocol will be.
+          Once logged in, you will be guided through a short intake covering your goals, sleep patterns, training history, and stress load. This is what Lune uses to build your first protocol &mdash; the more precise you are, the better your protocol will be.
         </p>
       </div>
 
-      <!-- Step 5: Talk to Dr. Luna -->
+      <!-- Step 5: Talk to Lune -->
       <div style="background: #f4eee0; border-radius: 8px; padding: 24px; margin-bottom: 28px;">
-        <p style="color: #A89879; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin: 0 0 12px 0;">Step 5 &mdash; Meet Dr. Luna</p>
+        <p style="color: #A89879; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin: 0 0 12px 0;">Step 5 &mdash; Meet Lune</p>
         <p style="color: #3a3935; font-size: 14px; line-height: 1.8; margin: 0;">
-          Dr. Luna is your personal performance coach inside Biolune. Ask her anything about your protocol, nutrition timing, supplement stacks, sleep architecture, or recovery. She knows your data and adapts her advice as your biology evolves.
+          Lune is your personal performance coach inside Biolune. Ask her anything about your protocol, nutrition timing, supplement stacks, sleep architecture, or recovery. She knows your data and adapts her advice as your biology evolves.
         </p>
       </div>
 
