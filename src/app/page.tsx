@@ -366,34 +366,34 @@ export default function Home() {
             <h2 className="serif">Three protocols. One system. Built around your biology.</h2>
           </div>
           <div className="pricing-grid">
-            {/* Essential */}
+            {/* Protocol */}
             <div className="price-card">
-              <div className="price-tier">Essential</div>
-              <div className="price-amount">€99</div>
+              <div className="price-tier">Protocol</div>
+              <div className="price-amount">€149</div>
               <div className="price-period price-muted">/month</div>
               <ul className="price-features">
-                <li>Personalised Biolune protocol</li>
-                <li>Weekly AI-generated adaptation report</li>
-                <li>Chat support (email/WhatsApp)</li>
-                <li>HRV-driven daily recommendations</li>
-                <li>Travel & jetlag protocol library</li>
+                <li>Complete AI protocol (90 days)</li>
+                <li>Lune AI coach (25 msgs/day)</li>
+                <li>Raw DNA upload + genetic personalization</li>
+                <li>Morning + Evening + Sleep stacks</li>
+                <li>IF protocol + Apple Health sync</li>
               </ul>
               <div className="price-cta">
-                <Link href="/apply" className="btn btn-outline" style={{ width: '100%' }}>Start Essential</Link>
+                <Link href="/apply" className="btn btn-outline" style={{ width: '100%' }}>Start Protocol</Link>
               </div>
             </div>
-            {/* Premium */}
+            {/* Precision */}
             <div className="price-card featured">
               <div className="price-badge">Most popular</div>
-              <div className="price-tier">Premium</div>
+              <div className="price-tier">Precision</div>
               <div className="price-amount">€299</div>
               <div className="price-period">/month</div>
               <ul className="price-features">
-                <li>Everything in Essential</li>
-                <li>1× 30-minute strategy call per month</li>
-                <li>Protocol adjustments after each call</li>
-                <li>Priority response within 24 hours</li>
-                <li>Wearable device integration support</li>
+                <li>Everything in Protocol</li>
+                <li>Unlimited Lune with autonomous actions</li>
+                <li>Decision engine (6 adaptive modes)</li>
+                <li>Pattern intelligence + correlations</li>
+                <li>Travel mode + proactive alerts</li>
               </ul>
               <div className="price-cta">
                 <Link href="/apply" className="btn btn-gold" style={{ width: '100%' }}>Apply Now</Link>
@@ -401,18 +401,18 @@ export default function Home() {
             </div>
             {/* Elite */}
             <div className="price-card">
-              <div className="price-tier">Elite</div>
-              <div className="price-amount">€799</div>
+              <div className="price-tier" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>Elite <span style={{ fontSize: '9px', letterSpacing: '1.5px', opacity: 0.6 }}>INVITE ONLY</span></div>
+              <div className="price-amount">€549</div>
               <div className="price-period price-muted">/month</div>
               <ul className="price-features">
-                <li>Everything in Premium</li>
-                <li>Full concierge: travel/jetlag optimization</li>
-                <li>Priority access & same-day adjustments</li>
-                <li>Dedicated WhatsApp line — 7 days/week</li>
-                <li>Unlimited strategy calls per month</li>
+                <li>Everything in Precision</li>
+                <li>Blood work analysis + biomarker tracking</li>
+                <li>Personal coaching with Korosh (2×/mo)</li>
+                <li>Priority WhatsApp + PDF reports</li>
+                <li>Custom protocol adjustments</li>
               </ul>
               <div className="price-cta">
-                <Link href="/apply" className="btn btn-outline" style={{ width: '100%' }}>Apply Now</Link>
+                <Link href="/apply" className="btn btn-outline" style={{ width: '100%' }}>Request Access</Link>
               </div>
             </div>
           </div>

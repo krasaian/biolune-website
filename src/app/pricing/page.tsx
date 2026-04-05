@@ -4,7 +4,7 @@ import Faq from '@/components/Faq'
 
 export const metadata: Metadata = {
   title: 'Pricing — Biolune',
-  description: 'Three precision longevity protocols. Essential €99/month, Premium €299/month, Elite €799/month. Built around your biology.',
+  description: 'Three precision longevity tiers. Protocol €149/month, Precision €299/month, Elite €549/month (invite only). Built around your biology.',
 }
 
 const faqs = [
@@ -115,39 +115,41 @@ export default function Pricing() {
       <section className="section">
         <div className="container">
           <div className="plans-grid">
-            {/* Essential */}
+            {/* Protocol */}
             <div className="plan-card">
-              <div className="plan-tier">Essential</div>
-              <div className="plan-price">€99</div>
+              <div className="plan-tier">Protocol</div>
+              <div className="plan-price">€149</div>
               <div className="plan-period">/month</div>
-              <p className="plan-tagline">Your personalised Biolune protocol, adapted weekly to your biology.</p>
+              <p className="plan-tagline">Your personalised longevity protocol with DNA personalization — adapted weekly by AI.</p>
               <div className="plan-divider" />
               <ul className="plan-features">
-                <li><span className="check">✓</span> Personalised Biolune protocol</li>
-                <li><span className="check">✓</span> Weekly AI‑generated adaptation report</li>
-                <li><span className="check">✓</span> Chat support (email/WhatsApp)</li>
-                <li><span className="check">✓</span> HRV-driven daily recommendations</li>
-                <li><span className="check">✓</span> Travel & jetlag protocol library</li>
+                <li><span className="check">✓</span> Complete AI protocol (90 days)</li>
+                <li><span className="check">✓</span> Lune AI coach (25 msgs/day)</li>
+                <li><span className="check">✓</span> Raw DNA upload + genetic personalization</li>
+                <li><span className="check">✓</span> Morning + Evening + Sleep supplement stacks</li>
+                <li><span className="check">✓</span> IF protocol + meal timing</li>
+                <li><span className="check">✓</span> Apple Health sync + weekly review</li>
               </ul>
               <div className="plan-cta">
                 <Link href="/apply" className="btn btn-outline" style={{ width: '100%' }}>Apply Now</Link>
               </div>
             </div>
 
-            {/* Premium */}
+            {/* Precision */}
             <div className="plan-card featured">
               <div className="plan-badge">Most popular</div>
-              <div className="plan-tier">Premium</div>
+              <div className="plan-tier">Precision</div>
               <div className="plan-price">€299</div>
               <div className="plan-period">/month</div>
-              <p className="plan-tagline">Everything in Essential, plus monthly strategy coaching.</p>
+              <p className="plan-tagline">Autonomous AI that adapts your protocol to your biology — in real time.</p>
               <div className="plan-divider" />
               <ul className="plan-features">
-                <li><span className="check">✓</span> Everything in Essential</li>
-                <li><span className="check">✓</span> 1× 30-minute strategy call per month</li>
-                <li><span className="check">✓</span> Protocol adjustments after each call</li>
-                <li><span className="check">✓</span> Priority response within 24 hours</li>
-                <li><span className="check">✓</span> Wearable device integration support</li>
+                <li><span className="check">✓</span> Everything in Protocol</li>
+                <li><span className="check">✓</span> Unlimited Lune with autonomous actions</li>
+                <li><span className="check">✓</span> Decision engine (6 adaptive modes)</li>
+                <li><span className="check">✓</span> Pattern intelligence + correlations</li>
+                <li><span className="check">✓</span> Travel mode with circadian reset</li>
+                <li><span className="check">✓</span> Proactive alerts + progress reports</li>
               </ul>
               <div className="plan-cta">
                 <Link href="/apply" className="btn btn-gold" style={{ width: '100%' }}>Apply Now</Link>
@@ -156,20 +158,22 @@ export default function Pricing() {
 
             {/* Elite */}
             <div className="plan-card">
+              <div className="plan-badge" style={{ background: 'rgba(168,152,121,0.15)', color: 'var(--gold)' }}>Invite Only</div>
               <div className="plan-tier">Elite</div>
-              <div className="plan-price">€799</div>
+              <div className="plan-price">€549</div>
               <div className="plan-period">/month</div>
-              <p className="plan-tagline">Full concierge for demanding schedules — travel, jetlag, and same-day adjustments.</p>
+              <p className="plan-tagline">Precision medicine meets personal coaching. Blood work, biomarkers, and direct collaboration with Korosh.</p>
               <div className="plan-divider" />
               <ul className="plan-features">
-                <li><span className="check">✓</span> Everything in Premium</li>
-                <li><span className="check">✓</span> Full concierge: travel/jetlag optimization</li>
-                <li><span className="check">✓</span> Priority access & same‑day adjustments</li>
-                <li><span className="check">✓</span> Dedicated WhatsApp line — 7 days/week</li>
-                <li><span className="check">✓</span> Unlimited strategy calls per month</li>
+                <li><span className="check">✓</span> Everything in Precision</li>
+                <li><span className="check">✓</span> Blood work analysis + AI interpretation</li>
+                <li><span className="check">✓</span> Biomarker tracking over time (ApoB, HbA1c)</li>
+                <li><span className="check">✓</span> Personal coaching with Korosh (2×/month)</li>
+                <li><span className="check">✓</span> Priority WhatsApp line</li>
+                <li><span className="check">✓</span> PDF reports + custom protocol adjustments</li>
               </ul>
               <div className="plan-cta">
-                <Link href="/apply" className="btn btn-outline" style={{ width: '100%' }}>Apply Now</Link>
+                <Link href="/apply" className="btn btn-outline" style={{ width: '100%' }}>Request Access</Link>
               </div>
             </div>
           </div>
