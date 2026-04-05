@@ -24,7 +24,12 @@ export function generateMetadata({ params }: PageProps): Metadata {
       description: article.excerpt,
       url: `https://www.biolune.eu/blog/${article.slug}`,
       type: 'article',
-      publishedTime: new Date(article.date).toISOString(),
+      publishedTime: (() => {
+        try {
+          const d = new Date(article.date + ' 1')
+          return isNaN(d.getTime()) ? new Date().toISOString() : d.toISOString()
+        } catch { return new Date().toISOString() }
+      })(),
       tags: [article.tag],
       images: [
         {
