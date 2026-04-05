@@ -1,223 +1,315 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
-type Scenario = 'bad' | 'good'
+/* ── Feature data representing real app capabilities ── */
+const features = [
+  {
+    id: 'briefing',
+    label: 'MORNING BRIEFING',
+    title: 'Lune greets you with a personalized daily protocol.',
+    description: 'Every morning, Lune analyses your overnight HRV, sleep score, and resting heart rate to determine your body\'s readiness. The daily protocol adapts in real time — training intensity, supplement timing, and recovery priorities shift based on what your biology says today.',
+    card: {
+      type: 'briefing' as const,
+      greeting: 'Good morning, Korosh.',
+      mode: 'TRAIN HARD',
+      modeColor: '#27AE60',
+      message: 'Your HRV is 14% above baseline and sleep efficiency hit 93%. Today is a peak performance window — your protocol is set for full intensity training with a post-workout cold plunge at 16:00.',
+      metrics: [
+        { label: 'HRV', value: '68', change: '+14%', positive: true },
+        { label: 'Sleep', value: '7.8h', change: '93% eff.', positive: true },
+        { label: 'RHR', value: '52', change: '-2', positive: true },
+      ],
+    },
+  },
+  {
+    id: 'supplements',
+    label: 'SUPPLEMENT TRACKING',
+    title: 'Your morning and evening stack — built and tracked.',
+    description: 'Biolune doesn\'t just recommend supplements — it structures them into morning and evening stacks based on absorption timing, nutrient interactions, and your protocol goals. One tap to log. Full compliance tracked weekly.',
+    card: {
+      type: 'supplements' as const,
+      morning: [
+        { name: 'Vitamin D3 + K2', dose: '5,000 IU + 90mcg', checked: true },
+        { name: 'Omega-3 (EPA+DHA)', dose: '2g combined', checked: true },
+        { name: 'Creatine Monohydrate', dose: '10g (5g + 5g lunch)', checked: false },
+        { name: 'Tongkat Ali', dose: '400mg', checked: true },
+      ],
+      evening: [
+        { name: 'Magnesium L-Threonate', dose: '2,000mg', checked: false },
+        { name: 'L-Theanine', dose: '200mg', checked: false },
+        { name: 'Apigenin', dose: '50mg', checked: false },
+      ],
+      compliance: 78,
+    },
+  },
+  {
+    id: 'adaptation',
+    label: 'WEEKLY ADAPTATION',
+    title: 'Your protocol evolves every 7 days.',
+    description: 'At the end of each week, Lune reviews your biometric trends, supplement compliance, sleep architecture, and training load. The next week\'s protocol is recalibrated — not just repeated. That\'s the difference between a plan and a system.',
+    card: {
+      type: 'adaptation' as const,
+      week: 'Week 6 → Week 7',
+      changes: [
+        { action: 'Increased', item: 'Magnesium dose', detail: '300mg → 400mg', reason: 'Sleep latency still >20min' },
+        { action: 'Added', item: 'Cold plunge protocol', detail: '2min @ 12°C', reason: 'HRV plateau detected' },
+        { action: 'Shifted', item: 'Training window', detail: '7:00 → 6:00', reason: 'Cortisol peak optimisation' },
+        { action: 'Maintained', item: 'Fasting window', detail: '16:8', reason: 'Metabolic markers stable' },
+      ],
+      trend: { hrv: '+31%', sleep: '+1.2h', bio_age: '-4yr' },
+    },
+  },
+  {
+    id: 'travel',
+    label: 'TRAVEL PROTOCOL',
+    title: 'Jetlag recovery in hours, not days.',
+    description: 'Flying across time zones disrupts circadian rhythm, cortisol, melatonin, and gut microbiome timing. Biolune builds a pre-flight, in-flight, and arrival protocol specific to your destination — light exposure windows, meal timing shifts, and supplement adjustments.',
+    card: {
+      type: 'travel' as const,
+      route: 'Amsterdam → Tokyo',
+      offset: '+8h',
+      phases: [
+        { phase: 'PRE-FLIGHT', items: ['Shift sleep 1h earlier for 3 nights', 'Begin light exposure protocol', 'Load magnesium + melatonin micro-dose'] },
+        { phase: 'IN-FLIGHT', items: ['Fast for first 6 hours', 'Hydrate 500ml per 2h', 'Compression + movement every 90min'] },
+        { phase: 'ARRIVAL', items: ['Morning sunlight within 30min', 'Resume local meal timing', 'Evening magnesium at destination bedtime'] },
+      ],
+    },
+  },
+]
 
-interface ScenarioData {
-  mode: string
-  modeColor: string
-  hrv: number
-  hrvChange: string
-  sleep: number
-  sleepChange: string
-  rhr: number
-  rhrChange: string
-  message: string
+function BriefingCard({ card }: { card: typeof features[0]['card'] }) {
+  if (card.type !== 'briefing') return null
+  return (
+    <div className="feature-card-inner briefing-card">
+      <div className="fc-greeting">{card.greeting}</div>
+      <div className="fc-mode" style={{ color: card.modeColor, borderColor: card.modeColor + '40', background: card.modeColor + '12' }}>
+        {card.mode}
+      </div>
+      <div className="fc-metrics">
+        {card.metrics.map(m => (
+          <div key={m.label} className="fc-metric">
+            <span className="fc-metric-val">{m.value}</span>
+            <span className="fc-metric-label">{m.label}</span>
+            <span className={`fc-metric-change ${m.positive ? 'pos' : 'neg'}`}>{m.change}</span>
+          </div>
+        ))}
+      </div>
+      <div className="fc-lune-msg">
+        <span className="fc-lune-tag">LUNE</span>
+        <p>{card.message}</p>
+      </div>
+    </div>
+  )
 }
 
-const scenarios: Record<Scenario, ScenarioData> = {
-  bad: {
-    mode: 'PROTECT SLEEP',
-    modeColor: '#E74C3C',
-    hrv: 28,
-    hrvChange: '-34%',
-    sleep: 4.8,
-    sleepChange: '-2.7h',
-    rhr: 72,
-    rhrChange: '+8',
-    message: 'Your HRV dropped 34%. Training cancelled. Recovery protocol activated.',
-  },
-  good: {
-    mode: 'TRAIN HARD',
-    modeColor: '#27AE60',
-    hrv: 72,
-    hrvChange: '+18%',
-    sleep: 8.2,
-    sleepChange: '+0.7h',
-    rhr: 52,
-    rhrChange: '-3',
-    message: 'Peak performance day. Full strength session at RPE 8-9 activated.',
-  },
+function SupplementsCard({ card }: { card: typeof features[1]['card'] }) {
+  if (card.type !== 'supplements') return null
+  return (
+    <div className="feature-card-inner supps-card">
+      <div className="fc-stack-header">
+        <span className="fc-stack-label">MORNING STACK</span>
+        <span className="fc-stack-count">{card.morning.filter(s => s.checked).length}/{card.morning.length}</span>
+      </div>
+      {card.morning.map(s => (
+        <div key={s.name} className={`fc-supp-row ${s.checked ? 'done' : ''}`}>
+          <div className={`fc-check ${s.checked ? 'checked' : ''}`}>{s.checked ? '\u2713' : ''}</div>
+          <div className="fc-supp-info">
+            <span className="fc-supp-name">{s.name}</span>
+            <span className="fc-supp-dose">{s.dose}</span>
+          </div>
+        </div>
+      ))}
+      <div className="fc-stack-header" style={{ marginTop: 16 }}>
+        <span className="fc-stack-label">EVENING STACK</span>
+        <span className="fc-stack-count">0/{card.evening.length}</span>
+      </div>
+      {card.evening.map(s => (
+        <div key={s.name} className={`fc-supp-row ${s.checked ? 'done' : ''}`}>
+          <div className={`fc-check ${s.checked ? 'checked' : ''}`}>{s.checked ? '\u2713' : ''}</div>
+          <div className="fc-supp-info">
+            <span className="fc-supp-name">{s.name}</span>
+            <span className="fc-supp-dose">{s.dose}</span>
+          </div>
+        </div>
+      ))}
+      <div className="fc-compliance">
+        <span>Weekly compliance</span>
+        <div className="fc-compliance-bar"><div style={{ width: `${card.compliance}%` }} /></div>
+        <span className="fc-compliance-pct">{card.compliance}%</span>
+      </div>
+    </div>
+  )
 }
 
-const timelineItems = {
-  bad: [
-    { time: '06:00', label: 'Wake', color: '#E74C3C' },
-    { time: '08:30', label: 'Recovery walk', color: '#E74C3C' },
-    { time: '18:00', label: 'Early sleep', color: '#E74C3C' },
-  ],
-  good: [
-    { time: '05:45', label: 'Warm-up', color: '#27AE60' },
-    { time: '07:00', label: 'Strength block', color: '#27AE60' },
-    { time: '16:00', label: 'Cold plunge', color: '#27AE60' },
-  ],
+function AdaptationCard({ card }: { card: typeof features[2]['card'] }) {
+  if (card.type !== 'adaptation') return null
+  return (
+    <div className="feature-card-inner adapt-card">
+      <div className="fc-week-label">{card.week}</div>
+      <div className="fc-adapt-list">
+        {card.changes.map(c => (
+          <div key={c.item} className="fc-adapt-row">
+            <span className={`fc-adapt-action ${c.action.toLowerCase()}`}>{c.action}</span>
+            <div className="fc-adapt-detail">
+              <span className="fc-adapt-item">{c.item}</span>
+              <span className="fc-adapt-spec">{c.detail}</span>
+            </div>
+            <span className="fc-adapt-reason">{c.reason}</span>
+          </div>
+        ))}
+      </div>
+      <div className="fc-trend-row">
+        {Object.entries(card.trend).map(([k, v]) => (
+          <div key={k} className="fc-trend-item">
+            <span className="fc-trend-val">{v}</span>
+            <span className="fc-trend-label">{k === 'bio_age' ? 'Bio Age' : k.toUpperCase()}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function TravelCard({ card }: { card: typeof features[3]['card'] }) {
+  if (card.type !== 'travel') return null
+  return (
+    <div className="feature-card-inner travel-card">
+      <div className="fc-route">
+        <span className="fc-route-cities">{card.route}</span>
+        <span className="fc-route-offset">{card.offset} timezone shift</span>
+      </div>
+      {card.phases.map(p => (
+        <div key={p.phase} className="fc-phase">
+          <span className="fc-phase-label">{p.phase}</span>
+          <div className="fc-phase-items">
+            {p.items.map((item, i) => (
+              <div key={i} className="fc-phase-item">
+                <span className="fc-phase-dash">&mdash;</span>
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  )
 }
 
 export default function AppShowcase() {
-  const [scenario, setScenario] = useState<Scenario>('good')
-  const [displayValues, setDisplayValues] = useState(scenarios['good'])
-  const [messageText, setMessageText] = useState('')
+  const [active, setActive] = useState(0)
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
-  const data = scenarios[scenario]
+  const startAutoRotate = () => {
+    if (intervalRef.current) clearInterval(intervalRef.current)
+    intervalRef.current = setInterval(() => {
+      setActive(prev => (prev + 1) % features.length)
+    }, 6000)
+  }
 
-  // Animate counter values when scenario changes
   useEffect(() => {
-    const targetHrv = data.hrv
-    const targetSleep = data.sleep
-    const targetRhr = data.rhr
-    const duration = 600 // 600ms animation
+    startAutoRotate()
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current) }
+  }, [])
 
-    const startTime = Date.now()
+  const handleTab = (i: number) => {
+    setActive(i)
+    startAutoRotate()
+  }
 
-    const prevData = scenario === 'good' ? scenarios.bad : scenarios.good
-    const startHrv = prevData.hrv
-    const startSleep = prevData.sleep
-    const startRhr = prevData.rhr
-
-    const animate = () => {
-      const elapsed = Date.now() - startTime
-      const progress = Math.min(elapsed / duration, 1)
-
-      // Easing function
-      const easeOut = 1 - Math.pow(1 - progress, 3)
-
-      setDisplayValues({
-        ...data,
-        hrv: Math.round(startHrv + (targetHrv - startHrv) * easeOut),
-        sleep: Number((startSleep + (targetSleep - startSleep) * easeOut).toFixed(1)),
-        rhr: Math.round(startRhr + (targetRhr - startRhr) * easeOut),
-      })
-
-      if (progress < 1) {
-        requestAnimationFrame(animate)
-      }
-    }
-
-    animate()
-  }, [scenario, data])
-
-  // Typewriter effect for message
-  useEffect(() => {
-    const fullMessage = data.message
-    let index = 0
-    setMessageText('')
-
-    const typeInterval = setInterval(() => {
-      if (index <= fullMessage.length) {
-        setMessageText(fullMessage.substring(0, index))
-        index++
-      } else {
-        clearInterval(typeInterval)
-      }
-    }, 30)
-
-    return () => clearInterval(typeInterval)
-  }, [scenario, data.message])
+  const feat = features[active]
 
   return (
     <>
       <style>{`
-        .app-showcase {
+        .showcase {
           padding: 100px 0;
           background: var(--bg);
         }
-
-        .showcase-header {
-          text-align: center;
-          margin-bottom: 64px;
+        .showcase-inner {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 64px;
+          align-items: start;
         }
-
-        .showcase-header .label {
-          margin-bottom: 16px;
-        }
-
-        .showcase-header h2 {
-          font-family: 'Cormorant Garamond', Georgia, serif;
-          font-size: clamp(32px, 5vw, 52px);
-          font-weight: 600;
-          margin-bottom: 24px;
-          line-height: 1.1;
-        }
-
-        .toggle-scenarios {
+        .showcase-left { position: sticky; top: 120px; }
+        .showcase-tabs {
           display: flex;
-          gap: 12px;
-          justify-content: center;
-          margin-bottom: 48px;
+          flex-direction: column;
+          gap: 0;
+          margin-bottom: 32px;
         }
-
-        .scenario-btn {
+        .showcase-tab {
+          text-align: left;
+          padding: 16px 0;
+          border-bottom: 1px solid var(--border);
           font-family: 'Jost', sans-serif;
           font-size: 12px;
-          font-weight: 500;
+          font-weight: 400;
           letter-spacing: 2px;
           text-transform: uppercase;
-          padding: 12px 28px;
-          border-radius: 4px;
-          border: 1.5px solid var(--border);
-          background: transparent;
-          color: var(--text);
+          color: var(--text-muted);
           cursor: pointer;
-          transition: all 0.3s ease;
-        }
-
-        .scenario-btn.active {
-          background: var(--gold);
-          color: var(--bg);
-          border-color: var(--gold);
-        }
-
-        .scenario-btn:hover:not(.active) {
-          border-color: var(--gold);
-          color: var(--gold);
-        }
-
-        .showcase-container {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        .phone-frame {
+          transition: all 0.25s ease;
           position: relative;
-          width: 320px;
-          height: 640px;
-          background: #1a1a1a;
-          border: 12px solid #0a0a0a;
-          border-radius: 40px;
-          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-          overflow: hidden;
-          display: flex;
-          flex-direction: column;
         }
-
-        .phone-frame::before {
+        .showcase-tab::after {
           content: '';
           position: absolute;
-          top: 0;
-          left: 50%;
-          transform: translateX(-50%);
-          width: 150px;
-          height: 24px;
-          background: #000;
-          border-radius: 0 0 24px 24px;
-          z-index: 10;
+          bottom: -1px;
+          left: 0;
+          width: 0;
+          height: 1px;
+          background: var(--gold);
+          transition: width 0.3s ease;
+        }
+        .showcase-tab.active {
+          color: var(--text);
+        }
+        .showcase-tab.active::after {
+          width: 100%;
+        }
+        .showcase-tab:hover:not(.active) {
+          color: var(--gold);
+        }
+        .showcase-text h2 {
+          font-size: clamp(24px, 3vw, 36px);
+          line-height: 1.15;
+          margin-bottom: 16px;
+        }
+        .showcase-text p {
+          font-size: 15px;
+          color: var(--text-muted);
+          line-height: 1.7;
         }
 
-        .phone-content {
-          flex: 1;
-          padding: 40px 20px 24px;
-          display: flex;
-          flex-direction: column;
-          background: linear-gradient(135deg, #0D0B08 0%, #161310 100%);
+        /* ── Right side: feature card ── */
+        .showcase-right {
+          background: #0D0B08;
+          border-radius: 16px;
+          padding: 32px;
+          min-height: 480px;
           color: #F5F0E8;
-          overflow: hidden;
+          box-shadow: 0 24px 64px rgba(26, 25, 22, 0.18);
+        }
+        .feature-card-inner {
+          animation: fadeInCard 0.35s ease-out;
+        }
+        @keyframes fadeInCard {
+          from { opacity: 0; transform: translateY(8px); }
+          to { opacity: 1; transform: translateY(0); }
         }
 
-        .mode-badge {
+        /* ── Briefing card ── */
+        .fc-greeting {
+          font-family: 'Cormorant Garamond', Georgia, serif;
+          font-size: 22px;
+          font-weight: 400;
+          margin-bottom: 16px;
+          color: #F5F0E8;
+        }
+        .fc-mode {
           display: inline-block;
-          width: fit-content;
           font-family: 'Jost', sans-serif;
           font-size: 10px;
           font-weight: 600;
@@ -225,243 +317,311 @@ export default function AppShowcase() {
           text-transform: uppercase;
           padding: 6px 14px;
           border-radius: 3px;
+          border: 1px solid;
           margin-bottom: 20px;
-          transition: all 0.4s ease;
         }
-
-        .mode-badge.bad {
-          background: rgba(231, 76, 60, 0.15);
-          color: #E74C3C;
-          border: 1px solid rgba(231, 76, 60, 0.3);
-        }
-
-        .mode-badge.good {
-          background: rgba(39, 174, 96, 0.15);
-          color: #27AE60;
-          border: 1px solid rgba(39, 174, 96, 0.3);
-        }
-
-        .metrics-grid {
+        .fc-metrics {
           display: grid;
           grid-template-columns: 1fr 1fr 1fr;
           gap: 12px;
-          margin-bottom: 24px;
+          margin-bottom: 20px;
         }
-
-        .metric-card {
-          background: rgba(196, 169, 106, 0.05);
-          border: 1px solid rgba(196, 169, 106, 0.2);
+        .fc-metric {
+          background: rgba(196, 169, 106, 0.06);
+          border: 1px solid rgba(196, 169, 106, 0.15);
           border-radius: 8px;
-          padding: 12px;
+          padding: 14px 12px;
           text-align: center;
-          transition: all 0.4s ease;
         }
-
-        .metric-value {
+        .fc-metric-val {
+          display: block;
           font-family: 'Cormorant Garamond', Georgia, serif;
-          font-size: 24px;
+          font-size: 26px;
           font-weight: 600;
-          color: #F5F0E8;
           line-height: 1;
           margin-bottom: 4px;
-          display: block;
-          transition: all 0.4s ease;
         }
-
-        .metric-label {
+        .fc-metric-label {
+          display: block;
           font-family: 'Jost', sans-serif;
           font-size: 9px;
           letter-spacing: 1px;
           text-transform: uppercase;
           color: #8A8275;
         }
-
-        .metric-change {
-          font-family: 'Jost', sans-serif;
-          font-size: 10px;
-          margin-top: 4px;
+        .fc-metric-change {
           display: block;
-          transition: all 0.4s ease;
+          font-family: 'Jost', sans-serif;
+          font-size: 11px;
+          margin-top: 4px;
         }
-
-        .metric-change.bad {
-          color: #E74C3C;
-        }
-
-        .metric-change.good {
-          color: #27AE60;
-        }
-
-        .lune-briefing {
+        .fc-metric-change.pos { color: #27AE60; }
+        .fc-metric-change.neg { color: #E74C3C; }
+        .fc-lune-msg {
           background: rgba(196, 169, 106, 0.08);
-          border-left: 2px solid var(--gold);
-          padding: 12px;
-          margin-bottom: 20px;
+          border-left: 2px solid #A89879;
+          padding: 14px;
           border-radius: 4px;
-          flex: 0;
         }
-
-        .lune-label {
+        .fc-lune-tag {
+          display: block;
           font-family: 'Jost', sans-serif;
           font-size: 9px;
-          letter-spacing: 1px;
+          letter-spacing: 1.5px;
           text-transform: uppercase;
-          color: var(--gold);
+          color: #A89879;
           margin-bottom: 6px;
-          display: block;
+        }
+        .fc-lune-msg p {
+          font-size: 13px;
+          line-height: 1.55;
+          color: #d4cfc5;
         }
 
-        .lune-message {
+        /* ── Supplements card ── */
+        .fc-stack-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 10px;
+        }
+        .fc-stack-label {
           font-family: 'Jost', sans-serif;
-          font-size: 12px;
-          line-height: 1.4;
-          color: #F5F0E8;
-          min-height: 32px;
+          font-size: 10px;
+          letter-spacing: 1.5px;
+          color: #A89879;
+        }
+        .fc-stack-count {
+          font-family: 'Jost', sans-serif;
+          font-size: 11px;
+          color: #8A8275;
+        }
+        .fc-supp-row {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 8px 0;
+          border-bottom: 1px solid rgba(196, 169, 106, 0.06);
+        }
+        .fc-supp-row.done { opacity: 0.5; }
+        .fc-check {
+          width: 18px;
+          height: 18px;
+          border-radius: 4px;
+          border: 1px solid rgba(196, 169, 106, 0.3);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 11px;
+          color: #A89879;
+          flex-shrink: 0;
+        }
+        .fc-check.checked {
+          background: rgba(168, 152, 121, 0.2);
+          border-color: #A89879;
+        }
+        .fc-supp-info {
+          display: flex;
+          justify-content: space-between;
+          flex: 1;
+          gap: 8px;
+        }
+        .fc-supp-name { font-size: 13px; color: #F5F0E8; }
+        .fc-supp-dose { font-size: 12px; color: #8A8275; white-space: nowrap; }
+        .fc-compliance {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-top: 20px;
+          padding-top: 16px;
+          border-top: 1px solid rgba(196, 169, 106, 0.1);
+          font-size: 11px;
+          color: #8A8275;
+        }
+        .fc-compliance-bar {
+          flex: 1;
+          height: 4px;
+          background: rgba(196, 169, 106, 0.1);
+          border-radius: 2px;
+          overflow: hidden;
+        }
+        .fc-compliance-bar div {
+          height: 100%;
+          background: #A89879;
+          border-radius: 2px;
+        }
+        .fc-compliance-pct {
+          font-weight: 500;
+          color: #A89879;
         }
 
-        .timeline {
+        /* ── Adaptation card ── */
+        .fc-week-label {
+          font-family: 'Jost', sans-serif;
+          font-size: 10px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: #A89879;
+          margin-bottom: 20px;
+        }
+        .fc-adapt-list {
           display: flex;
           flex-direction: column;
-          gap: 8px;
-          padding-top: 12px;
+          gap: 14px;
+          margin-bottom: 24px;
+        }
+        .fc-adapt-row {
+          display: grid;
+          grid-template-columns: 80px 1fr;
+          gap: 8px 12px;
+          padding-bottom: 14px;
+          border-bottom: 1px solid rgba(196, 169, 106, 0.06);
+        }
+        .fc-adapt-action {
+          font-family: 'Jost', sans-serif;
+          font-size: 10px;
+          font-weight: 600;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          padding: 3px 8px;
+          border-radius: 3px;
+          text-align: center;
+          align-self: start;
+        }
+        .fc-adapt-action.increased { background: rgba(39, 174, 96, 0.12); color: #27AE60; }
+        .fc-adapt-action.added { background: rgba(52, 152, 219, 0.12); color: #3498DB; }
+        .fc-adapt-action.shifted { background: rgba(243, 156, 18, 0.12); color: #F39C12; }
+        .fc-adapt-action.maintained { background: rgba(196, 169, 106, 0.12); color: #A89879; }
+        .fc-adapt-detail { display: flex; flex-direction: column; gap: 2px; }
+        .fc-adapt-item { font-size: 13px; color: #F5F0E8; }
+        .fc-adapt-spec { font-size: 12px; color: #8A8275; }
+        .fc-adapt-reason {
+          grid-column: 2;
+          font-size: 11px;
+          color: #6b6960;
+          font-style: italic;
+        }
+        .fc-trend-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 12px;
+          padding-top: 20px;
           border-top: 1px solid rgba(196, 169, 106, 0.1);
         }
+        .fc-trend-item { text-align: center; }
+        .fc-trend-val {
+          display: block;
+          font-family: 'Cormorant Garamond', Georgia, serif;
+          font-size: 22px;
+          font-weight: 600;
+          color: #27AE60;
+          line-height: 1;
+        }
+        .fc-trend-label {
+          display: block;
+          font-family: 'Jost', sans-serif;
+          font-size: 9px;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          color: #8A8275;
+          margin-top: 4px;
+        }
 
-        .timeline-item {
+        /* ── Travel card ── */
+        .fc-route {
+          display: flex;
+          justify-content: space-between;
+          align-items: baseline;
+          margin-bottom: 24px;
+          padding-bottom: 16px;
+          border-bottom: 1px solid rgba(196, 169, 106, 0.1);
+        }
+        .fc-route-cities {
+          font-family: 'Cormorant Garamond', Georgia, serif;
+          font-size: 20px;
+          font-weight: 600;
+        }
+        .fc-route-offset {
+          font-family: 'Jost', sans-serif;
+          font-size: 11px;
+          color: #A89879;
+          letter-spacing: 1px;
+        }
+        .fc-phase {
+          margin-bottom: 20px;
+        }
+        .fc-phase:last-child { margin-bottom: 0; }
+        .fc-phase-label {
+          display: block;
+          font-family: 'Jost', sans-serif;
+          font-size: 10px;
+          font-weight: 600;
+          letter-spacing: 2px;
+          color: #A89879;
+          margin-bottom: 8px;
+        }
+        .fc-phase-items {
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+        .fc-phase-item {
           display: flex;
           gap: 8px;
-          align-items: center;
-          font-size: 11px;
-          transition: all 0.3s ease;
+          font-size: 13px;
+          color: #d4cfc5;
+          line-height: 1.4;
         }
-
-        .timeline-dot {
-          width: 8px;
-          height: 8px;
-          border-radius: 50%;
+        .fc-phase-dash {
+          color: #A89879;
           flex-shrink: 0;
-          transition: all 0.3s ease;
-        }
-
-        .timeline-item.bad .timeline-dot {
-          background: #E74C3C;
-        }
-
-        .timeline-item.good .timeline-dot {
-          background: #27AE60;
-        }
-
-        .timeline-time {
-          font-family: 'Jost', sans-serif;
-          font-weight: 600;
-          color: #F5F0E8;
-          min-width: 32px;
-        }
-
-        .timeline-label {
-          color: #8A8275;
-          font-size: 10px;
         }
 
         @media (max-width: 768px) {
-          .app-showcase {
-            padding: 64px 0;
+          .showcase { padding: 64px 0; }
+          .showcase-inner {
+            grid-template-columns: 1fr;
+            gap: 40px;
           }
-
-          .showcase-header {
-            margin-bottom: 48px;
-          }
-
-          .phone-frame {
-            width: 280px;
-            height: 560px;
-            border-width: 10px;
-            border-radius: 32px;
-          }
-
-          .phone-content {
-            padding: 36px 16px 20px;
-          }
-
-          .metrics-grid {
-            gap: 10px;
-            margin-bottom: 20px;
-          }
-
-          .metric-value {
-            font-size: 20px;
-          }
+          .showcase-left { position: static; }
+          .showcase-right { min-height: auto; padding: 24px; }
+          .fc-adapt-row { grid-template-columns: 1fr; }
+          .fc-adapt-action { width: fit-content; }
+          .fc-adapt-reason { grid-column: 1; }
         }
       `}</style>
 
-      <section className="app-showcase">
+      <section className="showcase">
         <div className="container">
-          <div className="showcase-header">
-            <p className="label">APP SHOWCASE</p>
-            <h2>See the protocol in action</h2>
+          <div className="section-header" style={{ textAlign: 'center' }}>
+            <p className="label">THE SYSTEM</p>
+            <h2 className="serif">Not another dashboard. A living protocol.</h2>
           </div>
 
-          <div className="toggle-scenarios">
-            <button
-              className={`scenario-btn ${scenario === 'bad' ? 'active' : ''}`}
-              onClick={() => setScenario('bad')}
-            >
-              Bad Day
-            </button>
-            <button
-              className={`scenario-btn ${scenario === 'good' ? 'active' : ''}`}
-              onClick={() => setScenario('good')}
-            >
-              Good Day
-            </button>
-          </div>
-
-          <div className="showcase-container">
-            <div className="phone-frame">
-              <div className="phone-content">
-                <div className={`mode-badge ${scenario}`}>
-                  {displayValues.mode}
-                </div>
-
-                <div className="metrics-grid">
-                  <div className="metric-card">
-                    <span className="metric-value">{displayValues.hrv}</span>
-                    <span className="metric-label">HRV</span>
-                    <span className={`metric-change ${scenario}`}>
-                      {displayValues.hrvChange}
-                    </span>
-                  </div>
-                  <div className="metric-card">
-                    <span className="metric-value">{displayValues.sleep}</span>
-                    <span className="metric-label">Sleep</span>
-                    <span className={`metric-change ${scenario}`}>
-                      {displayValues.sleepChange}
-                    </span>
-                  </div>
-                  <div className="metric-card">
-                    <span className="metric-value">{displayValues.rhr}</span>
-                    <span className="metric-label">RHR</span>
-                    <span className={`metric-change ${scenario}`}>
-                      {displayValues.rhrChange}
-                    </span>
-                  </div>
-                </div>
-
-                <div className="lune-briefing">
-                  <span className="lune-label">Lune AI</span>
-                  <p className="lune-message">{messageText}</p>
-                </div>
-
-                <div className="timeline">
-                  {timelineItems[scenario].map((item, idx) => (
-                    <div key={idx} className={`timeline-item ${scenario}`}>
-                      <div className="timeline-dot" />
-                      <span className="timeline-time">{item.time}</span>
-                      <span className="timeline-label">{item.label}</span>
-                    </div>
-                  ))}
-                </div>
+          <div className="showcase-inner">
+            <div className="showcase-left">
+              <div className="showcase-tabs">
+                {features.map((f, i) => (
+                  <button
+                    key={f.id}
+                    className={`showcase-tab ${active === i ? 'active' : ''}`}
+                    onClick={() => handleTab(i)}
+                  >
+                    {f.label}
+                  </button>
+                ))}
               </div>
+              <div className="showcase-text">
+                <h2 className="serif">{feat.title}</h2>
+                <p>{feat.description}</p>
+              </div>
+            </div>
+
+            <div className="showcase-right" key={active}>
+              {feat.card.type === 'briefing' && <BriefingCard card={feat.card} />}
+              {feat.card.type === 'supplements' && <SupplementsCard card={feat.card as any} />}
+              {feat.card.type === 'adaptation' && <AdaptationCard card={feat.card as any} />}
+              {feat.card.type === 'travel' && <TravelCard card={feat.card as any} />}
             </div>
           </div>
         </div>

@@ -2,7 +2,6 @@ import type { Metadata } from 'next'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import ThemeToggle from '@/components/ThemeToggle'
 
 export const metadata: Metadata = {
   title: 'Biolune — Precision Longevity Protocol',
@@ -32,21 +31,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en">
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                var theme = localStorage.getItem('biolune-theme');
-                if (!theme) {
-                  theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-                }
-                document.documentElement.setAttribute('data-theme', theme);
-              })();
-            `,
-          }}
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -93,7 +79,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <main>{children}</main>
         <Footer />
-        <ThemeToggle />
       </body>
     </html>
   )
