@@ -14,36 +14,38 @@ export const blogArticles: Record<string, BlogArticle> = {
   'hrv-high-performers': {
     slug: 'hrv-high-performers',
     title: 'What Is HRV and Why High Performers Track It Daily',
-    excerpt: 'Your heart doesn\'t beat like a metronome. The variation between beats tells you more about your readiness than any fitness test ever could.',
+    excerpt: 'The variation between your heartbeats tells you more about your readiness than any fitness test. Most people have no idea this metric exists.',
     date: 'March 2026',
     readTime: 6,
     tag: 'HRV Science',
     author: '',
-    content: `I used to train on a fixed schedule. Monday legs, Wednesday push, Friday pull. Didn't matter if I slept four hours or eight. The plan was the plan. Looking back, that was dumb.
+    content: `For years I trained on a fixed schedule. Monday legs, Wednesday push, Friday pull. Whether I slept four hours or eight didn't matter. The plan was the plan. That was stupid and I wish someone had told me sooner.
 
-Then I started tracking HRV and realized my body was telling me things I'd been ignoring for years.
+Then I got an Oura ring and started looking at my HRV data. Within three weeks I realized my body had been screaming at me and I just wasn't listening.
 
 ## What HRV actually is
 
-Heart rate variability measures the tiny time gaps between each heartbeat. Not how fast your heart beats, but how irregular the spacing is. And here's the counterintuitive part — more irregularity is better. A high HRV means your autonomic nervous system is flexible. Your vagus nerve has good tone. You can shift between go-mode and recovery without getting stuck.
+Heart rate variability measures the small time gaps between each heartbeat. Not how fast your heart beats. How irregular the spacing is. The counterintuitive thing is that more irregularity is actually better. A high HRV means your nervous system is flexible. You can switch between pushing hard and recovering without getting stuck in one mode.
 
-A low HRV means you're locked into stress, whether you feel stressed or not. The metric that matters is RMSSD. It tracks parasympathetic activity specifically. Cardiologists have used it for decades in clinical settings. It just never made it to the people who arguably need it most — busy professionals running on stress and caffeine who think they're "fine" because they've forgotten what good actually feels like.
+Low HRV means you're running in stress mode whether you feel stressed or not. The specific number to look at is called RMSSD, and it tracks parasympathetic (recovery) activity. Cardiologists have been using this for decades in hospitals. It just somehow never reached the people who need it most: busy people running on caffeine who think they're doing fine because they forgot what actually feeling good is like.
 
 ## How this changed the way I train
 
-When my HRV is above my personal baseline, I go hard. Heavy lifts, sprints, deep work blocks. When it drops even 10-15%, I pull back. No ego involved anymore. Just data. The results speak for themselves — fewer injuries, faster recovery, better gains over time.
+Simple. When my HRV is above my baseline, I train hard. Heavy lifts, sprints, deep focus work. When it drops even 10 to 15 percent, I back off. Zone 2 cardio, skill work, nothing intense. No ego about it anymore. Just data.
 
-For anyone running a business or working in a high-pressure role, this is especially important. The chronic low-grade stress of back-to-back meetings, investor calls, and broken sleep suppresses your HRV silently. You feel fine because you're used to it. Your biology tells a different story.
+The results after six months were obvious. Fewer injuries. Faster recovery. Better numbers on basically everything.
+
+If you run a company or work in any high pressure role, pay attention here. The chronic stress of leadership, constant meetings, bad sleep, inbox anxiety, all of it suppresses your HRV without you noticing. You feel normal because you adapted to feeling bad. Your biology is telling a completely different story.
 
 ## Six modes instead of one plan
 
-This is why we built the decision engine with six modes. Your HRV, sleep data, and resting heart rate together determine which mode activates each day. TRAIN HARD when your nervous system is recovered. TRAIN LIGHT when you're functional but not fresh. DE-LOAD after three or more days of declining HRV. PROTECT SLEEP when sleep debt piles up. TRAVEL MODE when circadian disruption hits. BASELINE when there's not enough data yet.
+This is exactly why we built the Biolune decision engine around six modes. Your HRV combined with sleep data and resting heart rate picks the right mode each morning. TRAIN HARD when you're fully recovered. TRAIN LIGHT when you're okay but not fresh. DE-LOAD after three or more days of declining HRV. PROTECT SLEEP when sleep debt is building. TRAVEL MODE when jet lag hits. BASELINE when there's not enough data yet to make good calls.
 
-No fixed plan survives contact with your actual biology. The protocol moves with you or it's useless.
+A fixed plan doesn't survive contact with your actual biology. The protocol has to move with you or it's worthless.
 
 ## Getting started
 
-Any modern wearable does HRV now — Oura, Apple Watch, Whoop, Garmin. Measure every morning at the same time before getting out of bed. Give it three weeks of consistent data before reading into any trends. Your personal baseline matters way more than population averages. Then let the data drive decisions instead of your ego or your calendar.`,
+Pick any modern wearable. Oura, Apple Watch, Whoop, Garmin, they all track HRV now. Measure at the same time each morning before getting out of bed. Give it three solid weeks before you try to read the trends. Your personal baseline matters infinitely more than some average number on the internet. Then start making training decisions based on data instead of based on what day of the week it is.`,
     headings: [
       'What HRV actually is',
       'How this changed the way I train',
@@ -54,38 +56,38 @@ Any modern wearable does HRV now — Oura, Apple Watch, Whoop, Garmin. Measure e
   'insulin-metabolism': {
     slug: 'insulin-metabolism',
     title: 'How Insulin Shapes Your Energy, Body Composition, and Longevity',
-    excerpt: 'You don\'t have an energy problem. You have an insulin problem. And the fix isn\'t eating less — it\'s eating smarter.',
+    excerpt: 'You probably don\\'t have an energy problem. You have an insulin problem. The fix isn\\'t eating less. It\\'s eating smarter.',
     date: 'February 2026',
     readTime: 7,
     tag: 'Metabolism',
     author: '',
-    content: `If I had to pick one hormone that determines whether someone feels sharp or sluggish, lean or soft, aging fast or slow — it's insulin. Not testosterone, not cortisol. Insulin. And most people never think about it until diabetes comes up, which completely misses the point.
+    content: `If I had to pick one single hormone that determines whether you feel sharp or sluggish, lean or soft, aging fast or slow, I'd pick insulin every time. Not testosterone. Not cortisol. Insulin. And the frustrating thing is that most people only hear about it when diabetes comes up, which completely misses the point.
 
 ## Why insulin runs the show
 
-Here's the simple version. You eat, your pancreas releases insulin, glucose enters your cells. Fine. Except when you're eating six times a day, snacking between meals, and grabbing that oat milk latte at 3 PM to survive the afternoon, insulin never gets a break. Your cells stop responding to it. Like ignoring a fire alarm that goes off every hour. Your pancreas compensates by pumping out more. Now you're in a loop — more insulin, more resistance, more fat storage, more inflammation, less energy, worse sleep.
+You eat, your pancreas releases insulin, glucose enters your cells. That's the simple version. But if you're eating six times a day, snacking between meals, and grabbing a latte at 3 PM to get through the afternoon, your insulin never gets a break. Your cells start ignoring it. Think about a fire alarm that goes off every hour, eventually everyone stops evacuating. That's insulin resistance.
 
-Peter Attia frames this as the foundational driver of age-related disease. Not one of many drivers. The foundational one. It accelerates aging at the cellular level and amplifies every inflammatory process in the body.
+Your pancreas tries to compensate by making more insulin. Now you're stuck in a loop. More insulin, more resistance, more fat storage around the organs, more inflammation, less energy, worse sleep. Peter Attia calls this the foundational driver of age-related disease. Not one of many. The foundational one.
 
 ## What it feels like day to day
 
-Nobody wakes up thinking they have insulin resistance. It doesn't feel like disease. It feels like modern life. You crash after lunch. You're hungry two hours after eating. Those last 5 kilos won't budge no matter what you try. Afternoon brain fog is just "normal" now. You recover slowly from workouts and you can't figure out why.
+Nobody wakes up and thinks "I have insulin resistance." It just feels like being alive in 2026. You crash after lunch. You're hungry again two hours after eating. Those last 5 kilos won't move no matter what you do. Brain fog in the afternoon is just your normal now. You recover slowly from workouts.
 
-Jason Fung's work nailed this — obesity, type 2 diabetes, PCOS, metabolic syndrome aren't caused by eating too much. They're caused by a hormonal environment broken by constant insulin signaling. "Eat less, move more" fails because it ignores the actual mechanism.
+Jason Fung explained this better than anyone. Obesity, type 2 diabetes, PCOS, metabolic syndrome, these aren't caused by eating too much. They're caused by a hormonal environment that's been wrecked by constant insulin signaling. "Eat less, move more" keeps failing people because it ignores the actual mechanism.
 
 ## The three things that actually work
 
-Meal order matters more than people realize. Eating protein and fiber before carbs slows glucose absorption and cuts the insulin spike by up to 30%. Same food, different sequence, totally different hormonal response.
+First, meal order. Eating protein and fiber before carbs slows glucose absorption and reduces the insulin spike by up to 30 percent. Same exact food. Different sequence. Totally different hormonal response.
 
-Timing matters too. Insulin sensitivity peaks in the morning and drops as the day goes on. The same carbs at 8 AM produce a significantly smaller response than at 9 PM. This alone changes how you should structure your meals.
+Second, timing. Your insulin sensitivity is highest in the morning and drops throughout the day. Eating the same carbs at 8 AM produces a much smaller insulin response than eating them at 9 PM. This alone should change how you structure meals.
 
-And frequency matters. Three proper meals produce lower average insulin than six small ones at identical calories. Every time you eat, insulin spikes. Fewer eating events means more time in fat-burning mode. This is the core mechanism behind intermittent fasting — not calorie restriction, just fewer insulin spikes.
+Third, frequency. Three proper meals produce lower average insulin levels than six small ones at the same total calories. Each time you eat, insulin spikes. Fewer eating events means more time in fat burning mode. This is the real mechanism behind intermittent fasting. Not calorie restriction. Just fewer spikes.
 
 ## How the protocol uses this
 
-On a TRAIN HARD day with high HRV, the protocol shifts toward more carbs timed around training — the muscles are primed to absorb glucose. On a DE-LOAD or low-HRV day, carbs drop, the fasting window extends, and the body gets time to restore sensitivity. Supplements shift too. Chromium and berberine during insulin-sensitivity phases. Carnitine during fat-oxidation windows.
+On a TRAIN HARD day with high HRV, the protocol shifts toward more carbs timed around training because muscles are primed to absorb glucose efficiently. On DE-LOAD or low HRV days, carbs drop, fasting extends, and the body gets time to restore insulin sensitivity. Supplements shift too. Chromium and berberine come in during insulin sensitivity phases. Carnitine during fat oxidation windows.
 
-The principle isn't restriction. It's alignment. You eat what your body is ready for, when it's ready for it.`,
+It's not about restriction. It's about eating what your body is actually ready for, when it's ready.`,
     headings: [
       'Why insulin runs the show',
       'What it feels like day to day',
@@ -96,44 +98,44 @@ The principle isn't restriction. It's alignment. You eat what your body is ready
   'intermittent-fasting': {
     slug: 'intermittent-fasting',
     title: 'Intermittent Fasting: The Science Behind Time-Restricted Eating',
-    excerpt: 'Fasting isn\'t about eating less. It\'s about giving your body the metabolic silence it needs to actually repair itself.',
+    excerpt: 'Fasting is not about eating less. It is about giving your body the metabolic quiet it needs to actually repair itself.',
     date: 'January 2026',
     readTime: 8,
     tag: 'Fasting',
     author: '',
-    content: `Three years of fasting now. Not because some influencer sold me on it — because I tracked what it did to my HRV, body composition, and cognitive output, and the data was clear. But fasting is also one of the most misunderstood tools out there, so here's what actually matters.
+    content: `I've been fasting consistently for about three years now. Not because some influencer convinced me. Because I tracked what it did to my HRV, my body composition, and my ability to think clearly, and the numbers were hard to argue with. But fasting is also wildly misunderstood so let me break down what actually matters.
 
 ## Which protocols work and for whom
 
-16:8 is where most people should start. Skip breakfast, eat from noon to 8 PM. Easiest to sustain and you get most of the metabolic benefits right here. 18:6 hits harder — deeper fat oxidation, autophagy starts ramping up meaningfully. But the eating window is tight, so you have to be more intentional about getting enough protein and micronutrients in fewer hours.
+16:8 is where most people should start. Skip breakfast, eat between noon and 8 PM. It's the easiest to stick with and you already get most of the metabolic benefits here. 18:6 hits harder. Deeper fat oxidation, autophagy starts ramping up in a meaningful way. But the eating window gets tight, so you need to be more careful about getting enough protein and micronutrients in fewer hours.
 
-OMAD — one meal a day — produces powerful hormonal shifts. I've done stretches of it during de-load weeks and it works, but one bad meal and you're in caloric deficit with nutrient gaps. Not for everyone long-term. Extended fasts of 24 to 72 hours are tools, not habits. Once a month or quarter for deep cellular cleanup. Daily? No. Your training and recovery will suffer.
+OMAD, one meal a day, creates powerful hormonal shifts. I've done stretches of it during de-load weeks and it works. But one bad meal and you're in a caloric deficit with micronutrient gaps. Extended fasts of 24 to 72 hours are tools, not daily habits. Good for deep cellular cleanup once a month or once a quarter. Doing it daily will hurt your training and recovery.
 
-The right protocol depends on training phase, stress load, and metabolic state. Someone in heavy training might do 14:10. An entrepreneur in a cognitive-heavy week with low training volume might thrive on 18:6. One size has never fit anyone.
+The right protocol depends on what you're doing that week. Someone in heavy training might only do 14:10. Someone in a cognitive-heavy week with light training volume might thrive on 18:6.
 
 ## What happens when you stop eating
 
-Satchin Panda's circadian biology research made this click for me. We evolved to eat within a narrow daily window. The modern pattern of eating from 7 AM to 10 PM is an evolutionary anomaly. Your digestive system, liver, and pancreas never get a break.
+Satchin Panda's circadian biology research is what made this click for me. We evolved eating within a narrow daily window. The modern habit of eating from 7 AM to 10 PM is an evolutionary anomaly. Your digestive system, liver, and pancreas literally never get a break.
 
-When you stop eating, insulin drops within hours. Glycogen depletes by hour four to six. The body switches from burning glucose to burning fat. That's where the real benefits kick in — improved insulin sensitivity, growth hormone release during sleep, BDNF expression for the brain, and genuine digestive recovery. Past 16-18 hours autophagy ramps up and cells start recycling damaged proteins. David Sinclair positions this as one of the most powerful longevity interventions that exists, and it costs nothing.
+When you stop eating, insulin drops within a few hours. Glycogen runs out around hour four to six. Your body shifts from burning glucose to burning fat. That's where the real benefits start. Improved insulin sensitivity. Growth hormone release during sleep. BDNF for your brain. Real digestive recovery. Past 16 to 18 hours, autophagy kicks in and cells start recycling damaged proteins. David Sinclair calls this one of the most powerful longevity tools that exists. It's also free.
 
 ## The supplement timing problem
 
-This is where most fasting advice falls apart. Your supplement stack and your fasting window need to be coordinated and almost nobody does it.
+Here's where most fasting advice completely falls apart. Your supplement stack and your eating window need to work together. Almost nobody coordinates this properly.
 
-Fat-soluble vitamins — D3, K2, Omega-3, CoQ10, Ashwagandha — need dietary fat to absorb. Taking them during the fast is throwing money away. They go with the first meal, period. Water-soluble supplements — magnesium, electrolytes, creatine, B vitamins — are fine during the fast. Creatine in morning water with electrolytes works great. Vitamin D on an empty stomach at 7 AM is pointless.
+Fat-soluble vitamins like D3, K2, Omega-3, and CoQ10 need dietary fat to absorb. Taking them during a fast is literally throwing money away. They go with your first meal. Period. Water-soluble stuff like magnesium, electrolytes, creatine, and B vitamins are fine during fasting hours. Creatine in your morning water with electrolytes works great. Vitamin D on an empty stomach at 7 AM does basically nothing.
 
-This coordination is built into the protocol engine. The stack shifts automatically based on the eating window. Fat-soluble compounds anchor to the first meal, water-soluble ones spread through the day.
+We built this coordination directly into the protocol engine. Your supplement stack shifts automatically based on your eating window. Fat-soluble compounds anchor to the first meal. Water-soluble ones spread across the day.
 
 ## Common mistakes
 
-Undereating is the biggest one. People fast 18 hours and then eat like a bird. That's not longevity fasting, that's malnutrition. Metabolism slows, hormones crash, muscle disappears.
+Undereating is the biggest one. People fast 18 hours then eat like a bird during their 6-hour window. That's not longevity fasting. That's malnutrition. Your metabolism slows, hormones crash, and you lose muscle.
 
-Stacking stressors is the second. IF plus keto plus heavy training plus poor sleep. That's not biohacking, that's cortisol abuse. Pick one metabolic stressor at a time.
+Stacking too many stressors at once is the second. IF plus keto plus heavy training plus bad sleep. That's not biohacking. That's just cortisol abuse. Pick one metabolic stressor at a time.
 
-And ignoring sex differences. Women's reproductive hormones respond differently to fasting stress. 14:10 often works better than 16:8 for most women. Going straight to 18:6 can disrupt cycles and tank energy.
+Then there's ignoring sex differences. Women's reproductive hormones respond differently to fasting stress. 14:10 often works better than 16:8 for most women. Jumping straight to 18:6 can disrupt menstrual cycles and tank energy levels.
 
-For everyone else — if you're not doing some form of time-restricted eating, you're leaving one of the most powerful free tools on the table.`,
+If you're not doing any form of time-restricted eating, you're missing one of the most effective free tools available for metabolic health and longevity.`,
     headings: [
       'Which protocols work and for whom',
       'What happens when you stop eating',
@@ -143,97 +145,97 @@ For everyone else — if you're not doing some form of time-restricted eating, y
   },
   'autophagy': {
     slug: 'autophagy',
-    title: 'Autophagy: Your Body\'s Built-In Repair System',
-    excerpt: 'Your cells have a built-in recycling plant. Most people never turn it on. That\'s a problem if you care about aging well.',
+    title: 'Autophagy: Your Body\\'s Built-In Repair System',
+    excerpt: 'Your cells have a built-in recycling system. Most people never turn it on. That matters if you care about aging well.',
     date: 'December 2025',
     readTime: 7,
     tag: 'Longevity',
     author: '',
-    content: `Every cell in your body accumulates damage over time. Misfolded proteins, broken mitochondria, cellular junk. If you never clean house, things pile up. Cells get sluggish, then dysfunctional, then dangerous. That accumulation connects directly to Alzheimer's, Parkinson's, cancer, and basically every disease we write off as "getting old."
+    content: `Every cell in your body accumulates damage over time. Misfolded proteins, broken mitochondria, cellular junk. If you never clean house, things pile up. Cells get sluggish, then dysfunctional, then dangerous. That accumulation is directly linked to Alzheimer's, Parkinson's, cancer, and basically every disease we blame on "getting old."
 
-The body has a system for dealing with this. It's called autophagy — literally "self-eating" — and it's one of the most elegant repair mechanisms in biology. The problem is that most modern lifestyles keep it permanently switched off.
+Your body actually has a system for dealing with this. It's called autophagy, which literally means "self-eating," and it's one of the most elegant repair mechanisms in biology. The problem is that the way most people live keeps it permanently switched off.
 
 ## How it works at the cellular level
 
-Autophagy is quality control for your cells. They identify damaged parts — broken mitochondria, misfolded proteins, intracellular bacteria — isolate them, break them down, and recycle the raw materials. Amino acids from junked proteins get rebuilt into new ones. Busted mitochondria get replaced.
+Autophagy is basically quality control for your cells. They find damaged parts like broken mitochondria and misfolded proteins, wrap them up, break them down, and recycle the raw materials into new functional components. Old proteins become building blocks for new ones. Busted mitochondria get replaced with working ones.
 
-Yoshinori Ohsumi won the 2016 Nobel Prize for mapping these pathways. His work showed that without functioning autophagy, cells deteriorate fast. With it, they self-renew continuously. Think of it like renovating a house — you can either replace what's worn out periodically, or you can let it decay until the damage becomes structural.
+Yoshinori Ohsumi won the Nobel Prize in 2016 for figuring out how these pathways work. His research showed that without functioning autophagy, cells fall apart fast. With it, they keep renewing themselves. It's like the difference between maintaining a house every few years versus letting it slowly rot until the foundation cracks.
 
-## Why the longevity crowd cares so much
+## Why the longevity community is obsessed with this
 
-David Sinclair's lab at Harvard puts autophagy at the center of the aging conversation. Activating it through fasting, exercise, and caloric restriction consistently extends lifespan in animal models and improves aging biomarkers in humans. Clear the damaged material, reduce cancer risk because precancerous cells get recycled, improve immune function because pathogens get eliminated, protect the brain because protein aggregates get flushed.
+David Sinclair's lab at Harvard has put autophagy at the center of the aging conversation. Activating it through fasting, exercise, and caloric restriction consistently extends lifespan in animal models and improves biomarkers in humans. You clear out damaged material, which reduces cancer risk because precancerous cells get recycled. Immune function improves because pathogens get caught and eliminated. The brain benefits because protein aggregates get flushed out.
 
-People with naturally higher autophagy activity live longer, get fewer cancers, and keep their cognitive function deeper into old age. The question is whether you can deliberately turn it on. You can.
+People who naturally have higher autophagy activity tend to live longer, get fewer cancers, and maintain their cognitive abilities deeper into old age. The good news is you don't have to hope for good genetics. You can trigger it deliberately.
 
 ## The triggers
 
-Fasting is the strongest one. After roughly 16 hours without food, when glycogen is depleted and cellular energy runs low, autophagy ramps up hard. The longer the fast up to about 72 hours, the stronger the effect. This is the real reason intermittent fasting works for health — not just weight loss but cellular renovation.
+Fasting is the most powerful one. After roughly 16 hours without food, when glycogen is depleted and cellular energy drops, autophagy ramps up significantly. The longer you fast up to about 72 hours, the stronger the effect. This is the real mechanism behind intermittent fasting's health benefits. Not just weight loss. Actual cellular renovation.
 
-High-intensity exercise triggers it through energy depletion. Your muscles burn through ATP, cells sense the deficit, and the cleanup kicks in. Deep sleep amplifies it through circadian mechanisms. The brain's glymphatic system operates mainly during deep sleep, flushing out the exact proteins that autophagy targets. Bad sleep doesn't just make you tired — it lets cellular waste pile up.
+High intensity exercise does it too. Your muscles burn through ATP, cells sense the energy deficit, and the cleanup process activates. Deep sleep amplifies it through circadian pathways. The brain's waste clearance system runs primarily during deep sleep, clearing out the exact proteins that autophagy targets. Bad sleep doesn't just make you tired. It lets cellular garbage pile up in your brain.
 
-Cold exposure adds another stimulus. The metabolic stress activates brown fat and additional cellular cleaning pathways. Certain compounds help too — polyphenols from berries and tea, spermidine from fermented foods, resveratrol. These aren't substitutes for fasting and exercise but they add to the effect.
+Cold exposure adds another trigger through metabolic stress. And certain compounds like polyphenols from berries, spermidine from fermented foods, and resveratrol can support the process. They're not replacements for fasting and exercise but they contribute.
 
 ## The trap people fall into
 
-They hear "autophagy is good" and try to maximize it constantly. Aggressive fasting, hard training, calorie restriction, cold plunges every day. All at once. That's not optimization, that's breakdown. Autophagy cleans the mess but you need recovery to rebuild.
+People hear that autophagy is good and try to maximize it all the time. Aggressive fasting, hard training, calorie restriction, daily cold plunges. All at once. That's not optimization. That's just breaking yourself down without giving your body time to rebuild.
 
-The protocol cycles this deliberately. During DE-LOAD weeks, fasting windows extend, training intensity drops, sleep gets prioritized, and autophagy does its deep cleaning. During TRAIN HARD phases, fasts shorten, protein goes up, and the focus shifts to building. The cleaning and the building take turns. Neither alone is enough.`,
+The protocol handles this by cycling. During DE-LOAD weeks, fasting windows get longer, training drops in intensity, sleep becomes the priority, and autophagy gets to do deep cleaning. During TRAIN HARD phases, fasts shorten, protein intake goes up, and the focus shifts to building muscle and performance. The cleaning and the building need to alternate. Neither works on its own.`,
     headings: [
       'How it works at the cellular level',
-      'Why the longevity crowd cares so much',
+      'Why the longevity community is obsessed with this',
       'The triggers',
       'The trap people fall into',
     ],
   },
   'sleep-architecture': {
     slug: 'sleep-architecture',
-    title: 'The Science of Sleep Architecture: Why 8 Hours Isn\'t Enough',
-    excerpt: 'You\'re not sleeping wrong because you\'re going to bed too late. You\'re sleeping wrong because nobody taught you what sleep is actually for.',
+    title: 'The Science of Sleep Architecture: Why 8 Hours Isn\\'t Enough',
+    excerpt: 'You are not sleeping wrong because you go to bed late. You are sleeping wrong because nobody taught you what sleep actually does.',
     date: 'November 2025',
     readTime: 8,
     tag: 'Sleep Science',
     author: '',
-    content: `You can optimize training, nutrition, supplement timing — if sleep is broken, none of it matters. Sleep isn't rest. It's the most metabolically active recovery process the body does. And the gap between seven hours of fragmented garbage sleep and seven hours of solid deep-plus-REM sleep is enormous. One person is aging well. The other is falling apart and doesn't know it yet.
+    content: `I can dial in someone's training, nutrition, and supplement timing perfectly. If their sleep is broken, I've wasted everyone's time. Sleep is not rest. It is the most metabolically active recovery process your body runs. And the difference between seven hours of fragmented junk sleep and seven hours of consolidated deep plus REM sleep is massive. One person is recovering and aging well. The other is falling apart slowly and has no idea.
 
 ## What your brain actually does at night
 
-The brain doesn't shut off during sleep. It cycles through distinct stages, each doing something specific. Skip or fragment any of them and the whole system suffers.
+Your brain does not shut off when you sleep. It cycles through distinct stages and each one has a specific job. Fragment any of them and the whole system underperforms.
 
-Light sleep makes up about 50% of the night. Transition stages. Heart rate regulation, temperature control, procedural memory consolidation. That new movement pattern from the gym gets wired during light sleep.
+Light sleep is about 50 percent of the night. It's the transition phase where heart rate regulation, temperature control, and procedural memory happen. That new movement pattern you drilled at the gym gets wired into your nervous system during light sleep.
 
-Deep sleep is roughly 20%, concentrated in the first half of the night. This is where growth hormone releases — not in the gym, not during meals, during deep sleep. GH drives muscle protein synthesis, bone density, fat metabolism, and immune function. Miss the deep sleep window and you miss the GH window. Deep sleep is also when the brain's glymphatic system activates, flushing out amyloid-beta and tau proteins. The same proteins that accumulate in Alzheimer's. Matthew Walker's research made this connection undeniable.
+Deep sleep is roughly 20 percent, mostly in the first half of the night. This is where growth hormone gets released. Not in the gym. Not during meals. During deep sleep. Growth hormone drives muscle protein synthesis, bone density, fat metabolism, and immune function. Miss your deep sleep window and you miss your growth hormone window. Deep sleep is also when the brain's waste clearance system turns on, flushing out amyloid-beta and tau proteins. The same proteins that build up in Alzheimer's. Matthew Walker's research made this connection very clear.
 
-REM is about 30%, concentrated in the second half. Dreaming, emotional processing, complex learning, creative problem-solving. Cut sleep short in the morning and you're cutting REM. Walker's key point that changed how I think about it: architecture matters more than duration. Seven consolidated hours with full cycles beats nine fragmented hours every time.
+REM sleep is about 30 percent, concentrated in the second half of the night. Dreaming. Emotional processing. Complex learning. Creative problem solving. If you cut your sleep short in the morning, you're cutting your REM. Walker's biggest insight that changed how I think about all of this: architecture matters more than duration. Seven solid hours with complete cycles beats nine fragmented hours every single time.
 
 ## Why deep sleep is where recovery actually happens
 
-An athlete sleeping six fragmented hours might get 20 minutes of deep sleep. The same person sleeping seven consolidated hours gets 90 minutes. That's not marginal — it's the difference between recovering from yesterday and carrying fatigue into tomorrow.
+An athlete sleeping six fragmented hours might capture 20 minutes of deep sleep. The same athlete sleeping seven consolidated hours gets 90 minutes. That is not a small difference. It is the difference between actually recovering from yesterday's session and carrying accumulated fatigue into next week.
 
-For people under chronic stress — anyone making high-stakes decisions under pressure — deep sleep is where cortisol resets. Without it, cortisol stays elevated the next day. You're wired but tired. Making worse decisions without realizing it because your sense of "fine" has adjusted to a broken baseline.
+For anyone under chronic stress, whether that's running a company, managing a team, or just dealing with a demanding schedule, deep sleep is where cortisol gets reset. Without enough deep sleep, cortisol stays elevated the next day. You feel wired but tired. You make worse decisions and don't notice because your internal reference point for "normal" has slowly shifted to a broken baseline.
 
 ## REM is the brain's processing time
 
-Deep sleep handles the body. REM handles the mind. It's where emotional experiences get integrated and their charge gets reduced. Without enough REM, you wake up reactive, volatile, creatively flat. There's a reason "sleep on it" is universal advice. The brain processes complex problems during REM and presents solutions when you wake up.
+Deep sleep handles the body. REM handles the mind. It's where emotional experiences from the day get processed and their emotional intensity gets reduced. Without enough REM you wake up reactive, short-tempered, and creatively flat. There's a reason "sleep on it" is such universal advice. Your brain literally works on complex problems during REM and presents solutions when you wake up.
 
 ## What actually moves the needle
 
-Consistency over duration. Same bedtime, same wake time, weekdays and weekends. Every time you shift by two hours on Sunday morning you give yourself social jetlag that takes days to correct.
+Consistency beats duration. Same bedtime, same wake time, including weekends. Every time you shift by two hours on a Sunday morning you create social jetlag that takes days to fix.
 
-Temperature. Core body temperature needs to drop 1-2 degrees to initiate sleep. Bedroom at 16-19 degrees. Hot shower 90 minutes before bed — the rapid cooling afterward triggers the drop. This single intervention has the strongest evidence base in all of sleep science.
+Temperature is huge. Your core body temp needs to drop 1 to 2 degrees to initiate sleep. Keep the bedroom between 16 and 19 degrees Celsius. A hot shower 90 minutes before bed works great because the rapid cooling afterward triggers that drop. This one intervention has the strongest evidence base in all of sleep science.
 
-Light. Morning sunlight within 30 minutes of waking sets the circadian clock. Evening blue light kills melatonin. These aren't suggestions. Get outside in the morning. Kill the screens at night.
+Morning light within 30 minutes of waking sets your circadian clock. Blue light in the evening kills melatonin production. These are not nice-to-haves. Get outside in the morning. Put the screens away at night.
 
-Training timing. Hard exercise 6 or more hours before bed improves sleep. Within 3 hours of bed it disrupts it. If evening is the only option, keep it to Zone 2.
+Hard training needs to happen at least 6 hours before bed. Closer than 3 hours and it disrupts sleep. If evening is the only option, keep it to Zone 2 or lower.
 
-The sleep stack. Magnesium Glycinate 400mg supports deep sleep entry. Glycine 3g lowers core temperature. L-Theanine 200mg calms without sedating. Magnesium L-Threonate 2g crosses the blood-brain barrier. Apigenin 50mg as a mild GABAergic. No synthetic melatonin — it down-regulates natural production over time.
+The supplement stack for sleep: Magnesium Glycinate 400mg for deep sleep entry. Glycine 3g to lower core temperature. L-Theanine 200mg for calm without sedation. Magnesium L-Threonate 2g because it crosses the blood-brain barrier. Apigenin 50mg as a mild calming agent. No synthetic melatonin because it down-regulates your own production over time.
 
 ## How the protocol adapts
 
-When PROTECT SLEEP mode activates — triggered by low HRV or consecutive bad nights — the entire day reorganizes around sleep recovery. Morning light gets prioritized, training shifts to low intensity, the supplement stack front-loads calming compounds, dinner moves earlier. If last night's REM was low, bedtime moves earlier and evening stimulation drops. If deep sleep was fragmented, cold exposure gets added and training timing adjusts. Sleep architecture has patterns, and the protocol learns them.`,
+When PROTECT SLEEP mode activates, which happens after low HRV or consecutive bad nights, the entire day gets reorganized around sleep recovery. Morning light exposure becomes a priority. Training shifts to low intensity. The supplement stack front-loads calming compounds. Dinner moves earlier. If last night's REM was low, bedtime moves up and evening stimulation drops. If deep sleep was fragmented, cold exposure gets added and training timing adjusts. Everyone's sleep architecture has patterns and the protocol learns yours over time.`,
     headings: [
       'What your brain actually does at night',
       'Why deep sleep is where recovery actually happens',
-      'REM is the brain\'s processing time',
+      'REM is the brain\\'s processing time',
       'What actually moves the needle',
       'How the protocol adapts',
     ],
@@ -241,48 +243,48 @@ When PROTECT SLEEP mode activates — triggered by low HRV or consecutive bad ni
   'creatine-beyond-gym': {
     slug: 'creatine-beyond-gym',
     title: 'Creatine Beyond the Gym: Cognitive Performance, Longevity, and Cellular Energy',
-    excerpt: 'You probably think creatine is for bodybuilders. The research says it might be the most important supplement you\'re not taking for your brain.',
+    excerpt: 'You probably think creatine is for bodybuilders. The research says it might be the most important supplement you are not taking for your brain.',
     date: 'October 2025',
     readTime: 7,
     tag: 'Supplements',
     author: '',
-    content: `Over a thousand peer-reviewed studies spanning three decades make creatine monohydrate the single most researched supplement that exists. And somehow most people still write it off as gym bro stuff while spending money on things with a fraction of the evidence. That needs correcting.
+    content: `Creatine monohydrate has over a thousand peer-reviewed studies behind it spanning three decades. That makes it the most researched supplement in existence. And yet most smart people still dismiss it as gym bro stuff while spending money on things with a fraction of the evidence. This is one of those rare cases where the science is overwhelmingly clear and the public perception is just wrong.
 
 ## How cellular energy actually works
 
-Every action a cell performs — contracting a muscle, firing a neuron, synthesizing a protein, mounting an immune response — burns ATP. Adenosine triphosphate. The universal energy currency. ATP gets used fast and needs constant regeneration. Creatine phosphate is the rapid-response system. It donates a phosphate group to regenerate ATP almost instantly when demand spikes.
+Every action your cells perform, whether that's contracting a muscle, firing a neuron, making a protein, or fighting an infection, requires ATP. Adenosine triphosphate. It's the universal energy currency of your body. The problem is that ATP gets used up fast and needs constant regeneration. Creatine phosphate acts as the rapid response system. It donates a phosphate group to regenerate ATP almost instantly when energy demand spikes beyond normal capacity.
 
-Here's what makes it interesting: the brain is 2% of body weight and burns 20% of total ATP. It's the most energy-hungry organ you have. And it depends on creatine for the kind of high-demand thinking that people in high-pressure roles do all day — complex decisions, working memory, problem-solving under stress.
+Here's the part that gets interesting. Your brain is about 2 percent of your body weight but it burns 20 percent of your total ATP. It's the most energy-hungry organ you have. And it depends heavily on creatine for the kind of demanding cognitive work that high performers do all day. Complex decisions, working memory, reasoning under pressure.
 
 ## The cognitive angle
 
-Andrew Huberman has covered this extensively. Creatine supplementation increases prefrontal cortex ATP availability. That means better executive function, improved working memory, faster processing, sharper reasoning — especially under stress and sleep deprivation.
+Andrew Huberman has talked about this extensively. Creatine supplementation increases ATP availability in the prefrontal cortex. That translates to better executive function, stronger working memory, faster processing speed, and sharper reasoning. Especially under stress and sleep deprivation.
 
-That last part is what matters most practically. Everyone performs well when rested and relaxed. The question is how you perform on five hours of sleep, jet-lagged, with a critical decision due by noon. Creatine reduces the cognitive decline in exactly those conditions.
+That last point matters most in practice. We all think clearly when we're rested and relaxed. The real question is how well you think when you've had five hours of sleep, you're jet-lagged, and there's a critical decision due by noon. Creatine measurably reduces cognitive decline in exactly those conditions.
 
-Rhonda Patrick adds the longevity piece — creatine provides neuroprotection by supporting mitochondrial function and reducing oxidative stress. It protects against the protein aggregates involved in Alzheimer's and Parkinson's. One of the few supplements with a credible evidence base for long-term brain health.
+Rhonda Patrick's research adds a longevity angle. Creatine supports mitochondrial function, reduces oxidative stress, and protects against the protein aggregates involved in Alzheimer's and Parkinson's. It is genuinely one of the few supplements with a credible long-term neuroprotection case.
 
 ## Why the standard dose is probably wrong
 
-The 3-5g daily recommendation comes from studies optimized for muscle saturation in average-sized adults. Fine for a 60kg sedentary person. For an 85kg athlete training intensely four times a week, it's underdosing. Body composition determines saturation levels. Training intensity determines usage rate. Diet matters too — heavy red meat eaters already get creatine from food while vegetarians have lower baseline stores and respond more dramatically.
+The typical 3 to 5 gram recommendation comes from studies designed for muscle saturation in average-sized adults. That's fine for a 60kg sedentary person. For an 85kg athlete who trains hard four times a week, it's not enough. Body composition determines how much you can store. Training intensity determines how fast you burn through it. Diet plays a role too. If you eat a lot of red meat you already get some creatine from food. Vegetarians have lower baseline stores and tend to respond more dramatically to supplementation.
 
-In the protocol we dose at 10g minimum, split morning and lunch. During DE-LOAD or PROTECT SLEEP phases when cognitive support matters most, it goes to 15g. During travel when jet lag hits cognition hardest, up to 20g split across four doses. These aren't arbitrary numbers. They're calibrated to each protocol mode and the decision engine adjusts creatine alongside everything else.
+In the protocol we use 10g minimum, split between morning and lunch. During DE-LOAD or PROTECT SLEEP phases where cognitive support matters most, it goes up to 15g. When traveling and dealing with jet lag, up to 20g split across four doses. These numbers match the metabolic demands of each protocol mode and the decision engine adjusts them automatically.
 
 ## Myths that keep circulating
 
-The kidney damage claim has been debunked by decades of research in healthy people. The confusion comes from creatinine — a metabolite — showing up elevated on blood tests, which doctors sometimes misread as kidney dysfunction. It's not.
+The kidney damage claim has been put to rest by decades of research in healthy people. The confusion comes from creatinine, which is a normal metabolite, showing up elevated on blood panels. Some doctors see that number and assume kidney problems. It's not.
 
-The dehydration claim is the opposite of reality. Creatine increases intracellular water. Studies consistently show improved hydration.
+The dehydration claim is the opposite of what actually happens. Creatine increases water inside cells. Studies consistently show improved hydration status with supplementation.
 
-The hair loss claim comes from a single poorly designed 2009 study showing a temporary DHT increase. Never replicated. Multiple meta-analyses show no association.
+The hair loss scare comes from one poorly designed study in 2009 that found a temporary increase in DHT. It was never replicated. Multiple large meta-analyses found no connection between creatine and hair loss.
 
-And the idea that it's only for young athletes is backwards. Aging populations benefit the most. Creatine preserves lean mass during sarcopenia, supports cognition during neurological decline, and maintains metabolic rate. The case gets stronger after 40, not weaker.
+And the idea that creatine is only useful for young athletes is backwards. Older populations benefit the most. Creatine helps preserve lean mass during age-related muscle loss, supports brain function during neurological decline, and helps maintain metabolic rate. The argument for taking it gets stronger past 40, not weaker.
 
 ## Timing and context
 
-Creatine absorbs best with carbs and protein — the insulin spike drives it into muscle and brain tissue more effectively. On an empty stomach during a fast it still works but suboptimally. In the protocol, timing anchors to the first meal and the post-training window. During IF, the morning dose goes with water and electrolytes since it's water-soluble and fine for fasting, with the second dose at the first meal. During non-fasting phases, both doses go with meals.
+Creatine absorbs best with carbohydrates and protein because the insulin response helps drive it into muscle and brain tissue. Taking it on an empty stomach during a fast still works but less efficiently. In the protocol, creatine timing anchors to the first meal and the post-training window. During intermittent fasting, the morning dose goes with water and electrolytes since creatine is water-soluble and fine for fasting purposes. The second dose goes with the first real meal. During non-fasting phases, both doses go with meals.
 
-Every variable connects to every other variable. Supplement timing, fasting windows, training phase, sleep quality, stress load. That's the whole point of running a precision protocol instead of following the label on a tub.`,
+Every variable in your protocol connects to every other variable. Supplement timing, fasting windows, training phase, sleep quality, stress load. That's the whole reason to run a precision protocol instead of just following generic instructions from a supplement label.`,
     headings: [
       'How cellular energy actually works',
       'The cognitive angle',
