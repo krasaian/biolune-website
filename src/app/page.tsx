@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Faq from '@/components/Faq'
-import CinematicIntro from '@/components/CinematicIntro'
 import AppShowcase from '@/components/AppShowcase'
 
 export const metadata: Metadata = {
@@ -45,7 +44,6 @@ const whyItems = [
 export default function Home() {
   return (
     <>
-      <CinematicIntro />
       <style>{`
         body { padding-top: var(--nav-h); }
 
