@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Faq from '@/components/Faq'
+import CinematicIntro from '@/components/CinematicIntro'
+import AppShowcase from '@/components/AppShowcase'
 
 export const metadata: Metadata = {
   title: 'Biolune — Precision Longevity Protocol',
@@ -43,6 +45,7 @@ const whyItems = [
 export default function Home() {
   return (
     <>
+      <CinematicIntro />
       <style>{`
         body { padding-top: var(--nav-h); }
 
@@ -310,6 +313,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* ── APP SHOWCASE ── */}
+      <AppShowcase />
 
       {/* ── WHY US ── */}
       <section className="section">

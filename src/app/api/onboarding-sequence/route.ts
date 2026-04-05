@@ -3,6 +3,8 @@ import { NextResponse } from 'next/server'
 
 export const dynamic = 'force-dynamic'
 
+const appUrl = process.env.BIOLUNE_APP_URL || 'https://biolune-app.vercel.app'
+
 function day1Html(firstName: string) {
   return `
     <div style="font-family: 'Jost', -apple-system, BlinkMacSystemFont, sans-serif; background: #fef9ef; color: #1a1916; padding: 48px 40px; max-width: 580px; margin: 0 auto;">
@@ -28,7 +30,7 @@ function day1Html(firstName: string) {
       </div>
 
       <div style="text-align: center; margin-bottom: 32px;">
-        <a href="https://app.biolune.eu" style="display: inline-block; background: #A89879; color: #fef9ef; padding: 16px 36px; border-radius: 4px; font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; font-weight: 400;">Open Biolune</a>
+        <a href="${appUrl}" style="display: inline-block; background: #A89879; color: #fef9ef; padding: 16px 36px; border-radius: 4px; font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; font-weight: 400;">Open Biolune</a>
       </div>
 
       <p style="color: #1a1916; font-size: 15px; margin: 0; font-weight: 500;">Korosh</p>
@@ -78,7 +80,7 @@ function day3Html(firstName: string) {
       </p>
 
       <div style="text-align: center; margin-bottom: 32px;">
-        <a href="https://app.biolune.eu" style="display: inline-block; background: #A89879; color: #fef9ef; padding: 16px 36px; border-radius: 4px; font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; font-weight: 400;">Check today's mode</a>
+        <a href="${appUrl}" style="display: inline-block; background: #A89879; color: #fef9ef; padding: 16px 36px; border-radius: 4px; font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; font-weight: 400;">Check today's mode</a>
       </div>
 
       <p style="color: #1a1916; font-size: 15px; margin: 0; font-weight: 500;">Korosh</p>
@@ -107,7 +109,7 @@ function day7Html(firstName: string) {
       </p>
 
       <div style="text-align: center; margin-bottom: 32px;">
-        <a href="https://app.biolune.eu" style="display: inline-block; background: #A89879; color: #fef9ef; padding: 16px 36px; border-radius: 4px; font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; font-weight: 400;">Talk to Lune</a>
+        <a href="${appUrl}" style="display: inline-block; background: #A89879; color: #fef9ef; padding: 16px 36px; border-radius: 4px; font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; font-weight: 400;">Talk to Lune</a>
       </div>
 
       <p style="color: #1a1916; font-size: 15px; margin: 0; font-weight: 500;">Korosh</p>
@@ -140,7 +142,7 @@ function day14Html(firstName: string) {
       </p>
 
       <div style="text-align: center; margin-bottom: 32px;">
-        <a href="https://app.biolune.eu" style="display: inline-block; background: #A89879; color: #fef9ef; padding: 16px 36px; border-radius: 4px; font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; font-weight: 400;">Upload blood work</a>
+        <a href="${appUrl}" style="display: inline-block; background: #A89879; color: #fef9ef; padding: 16px 36px; border-radius: 4px; font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; font-weight: 400;">Upload blood work</a>
       </div>
 
       <p style="color: #1a1916; font-size: 15px; margin: 0; font-weight: 500;">Korosh</p>
@@ -177,7 +179,7 @@ function day30Html(firstName: string) {
       </p>
 
       <div style="text-align: center; margin-bottom: 32px;">
-        <a href="https://app.biolune.eu" style="display: inline-block; background: #A89879; color: #fef9ef; padding: 16px 36px; border-radius: 4px; font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; font-weight: 400;">View your progress</a>
+        <a href="${appUrl}" style="display: inline-block; background: #A89879; color: #fef9ef; padding: 16px 36px; border-radius: 4px; font-size: 12px; letter-spacing: 2.5px; text-transform: uppercase; text-decoration: none; font-weight: 400;">View your progress</a>
       </div>
 
       <p style="color: #1a1916; font-size: 15px; margin: 0; font-weight: 500;">Korosh</p>

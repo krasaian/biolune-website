@@ -1,7 +1,15 @@
 import { Resend } from 'resend'
 import { NextResponse } from 'next/server'
+import { createClient } from '@supabase/supabase-js'
 
 export const dynamic = 'force-dynamic'
+
+function getSupabase() {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY
+  if (!url || !key) return null
+  return createClient(url, key, { auth: { autoRefreshToken: false, persistSession: false } })
+}
 
 export async function POST(req: Request) {
   try {
@@ -11,6 +19,24 @@ export async function POST(req: Request) {
 
     if (!name || !email) {
       return NextResponse.json({ error: 'Name and email are required.' }, { status: 400 })
+    }
+
+    // Save application to Supabase
+    const supabase = getSupabase()
+    if (supabase) {
+      const { error: dbError } = await supabase
+        .from('applications')
+        .upsert({
+          name,
+          email,
+          location: location || null,
+          objective: objective || null,
+          plan: plan || null,
+          status: 'pending',
+        }, { onConflict: 'email' })
+
+      if (dbError) console.error('DB insert error:', dbError)
+      else console.log('Application saved to DB for:', email)
     }
 
     // Send admin notification to Korosh
