@@ -348,6 +348,11 @@ export default function BlogArticle({ params }: PageProps) {
               </span>
             </div>
             <h1 className="serif article-title">{article.title}</h1>
+            {article.author && (
+              <p style={{ fontSize: 14, color: 'var(--text-muted)', marginTop: 8, fontFamily: 'Jost, sans-serif', letterSpacing: '0.5px' }}>
+                By {article.author}
+              </p>
+            )}
             <p className="article-excerpt">{article.excerpt}</p>
           </div>
 
