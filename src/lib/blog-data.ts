@@ -56,7 +56,7 @@ Pick any modern wearable. Oura, Apple Watch, Whoop, Garmin, they all track HRV n
   'insulin-metabolism': {
     slug: 'insulin-metabolism',
     title: 'How Insulin Shapes Your Energy, Body Composition, and Longevity',
-    excerpt: 'You probably don\\'t have an energy problem. You have an insulin problem. The fix isn\\'t eating less. It\\'s eating smarter.',
+    excerpt: "You probably don't have an energy problem. You have an insulin problem. The fix isn't eating less. It's eating smarter.",
     date: 'February 2026',
     readTime: 7,
     tag: 'Metabolism',
@@ -145,7 +145,7 @@ If you're not doing any form of time-restricted eating, you're missing one of th
   },
   'autophagy': {
     slug: 'autophagy',
-    title: 'Autophagy: Your Body\\'s Built-In Repair System',
+    title: "Autophagy: Your Body's Built-In Repair System",
     excerpt: 'Your cells have a built-in recycling system. Most people never turn it on. That matters if you care about aging well.',
     date: 'December 2025',
     readTime: 7,
@@ -189,7 +189,7 @@ The protocol handles this by cycling. During DE-LOAD weeks, fasting windows get 
   },
   'sleep-architecture': {
     slug: 'sleep-architecture',
-    title: 'The Science of Sleep Architecture: Why 8 Hours Isn\\'t Enough',
+    title: "The Science of Sleep Architecture: Why 8 Hours Isn't Enough",
     excerpt: 'You are not sleeping wrong because you go to bed late. You are sleeping wrong because nobody taught you what sleep actually does.',
     date: 'November 2025',
     readTime: 8,
@@ -235,7 +235,7 @@ When PROTECT SLEEP mode activates, which happens after low HRV or consecutive ba
     headings: [
       'What your brain actually does at night',
       'Why deep sleep is where recovery actually happens',
-      'REM is the brain\\'s processing time',
+      "REM is the brain's processing time",
       'What actually moves the needle',
       'How the protocol adapts',
     ],
