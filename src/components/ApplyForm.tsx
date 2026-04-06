@@ -98,9 +98,9 @@ export default function ApplyForm() {
         <label className="form-label">Which protocol interests you?</label>
         <select className="form-select" value={form.plan} onChange={set('plan')}>
           <option value="">Select plan…</option>
-          <option>Essential — €99/month</option>
-          <option>Premium — €299/month</option>
-          <option>Elite — €799/month</option>
+          <option>Protocol — €149/month</option>
+          <option>Precision — €299/month</option>
+          <option>Elite — €549/month</option>
           <option>Not sure yet</option>
         </select>
       </div>

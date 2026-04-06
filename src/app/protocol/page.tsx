@@ -226,7 +226,7 @@ export default function Protocol() {
               <div className="timeline-content">
                 <div className="timeline-detail">Week 3 — Deep review</div>
                 <h3 className="serif">We sit down with your data.</h3>
-                <p>A structured review of your first two weeks — what is moving, what is not, and what needs to change. Premium and Elite members have a direct strategy call. Essential members receive a written analysis.</p>
+                <p>A structured review of your first two weeks — what is moving, what is not, and what needs to change. Precision and Elite members have a direct strategy call. Protocol members receive a written analysis.</p>
               </div>
             </div>
 
