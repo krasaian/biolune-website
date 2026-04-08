@@ -11,16 +11,58 @@ export const dynamic = 'force-dynamic'
 //   - APPLY_ENDPOINT_URL: (optional) override of the upstream URL
 const DEFAULT_UPSTREAM = 'https://biolune-app.vercel.app/api/public/apply'
 
+// W48: per-process in-memory rate limiter. Each Vercel lambda gets its own
+// Map, so this is not a hard cluster-wide cap — but it stops the dumb case of
+// a stuck client retrying 100×/sec or a script hammering the endpoint from
+// one IP. The upstream apply route in biolune-app does its own DB-backed
+// dedup; this layer is just to keep abusive traffic from reaching it. We key
+// on IP only (not IP+email) so an attacker can't sidestep the limit by
+// rotating the email field.
+const RATE_LIMIT_WINDOW_MS = 60 * 1000 // 1 minute
+const RATE_LIMIT_MAX = 3 // max requests per window per IP
+const ipBuckets = new Map<string, number[]>()
+
+function clientIp(req: Request): string {
+  // Vercel sets x-forwarded-for to a comma-separated chain; the leftmost
+  // value is the original client. Fallback to 'unknown' so the bucket still
+  // groups requests with no header (which is itself a soft cap).
+  const xff = req.headers.get('x-forwarded-for') || ''
+  const first = xff.split(',')[0]?.trim()
+  if (first) return first
+  return req.headers.get('x-real-ip') || 'unknown'
+}
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now()
+  const bucket = (ipBuckets.get(ip) || []).filter((t) => now - t < RATE_LIMIT_WINDOW_MS)
+  bucket.push(now)
+  ipBuckets.set(ip, bucket)
+  return bucket.length > RATE_LIMIT_MAX
+}
+
 export async function POST(req: Request) {
   try {
+    const ip = clientIp(req)
+    if (isRateLimited(ip)) {
+      return NextResponse.json(
+        { error: 'You sent this form a moment ago. Please wait a minute and try again.' },
+        { status: 429, headers: { 'Retry-After': '60' } },
+      )
+    }
+
     const body = await req.json().catch(() => null)
     if (!body || typeof body !== 'object') {
       return NextResponse.json({ error: 'Invalid body' }, { status: 400 })
     }
 
-    const { name, email } = body as Record<string, string | undefined>
+    const { name, email, acceptedTos } = body as Record<string, string | boolean | undefined>
     if (!name || !email) {
       return NextResponse.json({ error: 'Name and email are required.' }, { status: 400 })
+    }
+    // W47: ToS is enforced server-side too — the client checkbox is required,
+    // but anyone can hit the endpoint directly with curl. No ToS, no submit.
+    if (acceptedTos !== true) {
+      return NextResponse.json({ error: 'You must accept the terms of service to submit.' }, { status: 400 })
     }
 
     const upstreamUrl = process.env.APPLY_ENDPOINT_URL || DEFAULT_UPSTREAM

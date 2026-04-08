@@ -4,23 +4,40 @@ import Link from 'next/link'
 
 export default function ApplyForm() {
   const [form, setForm] = useState({ name: '', email: '', location: '', objective: '', plan: '' })
-  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [acceptedTos, setAcceptedTos] = useState(false)
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error' | 'rate-limited'>('idle')
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const set = (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
     setForm(prev => ({ ...prev, [field]: e.target.value }))
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+    // W47: ToS must be ticked before we even POST. The button is also
+    // `disabled` until acceptedTos flips, so this guard is the belt-and-braces.
+    if (!acceptedTos) {
+      setErrorMessage('Please confirm you accept the terms of service before submitting.')
+      setStatus('error')
+      return
+    }
+    setErrorMessage(null)
     setStatus('loading')
     try {
       const res = await fetch('/api/apply', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, acceptedTos }),
       })
       if (res.ok) {
         setStatus('success')
+      } else if (res.status === 429) {
+        // W48: rate-limited by the proxy — surface the human-readable cooldown.
+        const data = await res.json().catch(() => ({}))
+        setErrorMessage(data?.error || 'You sent this form a moment ago. Please wait a minute and try again.')
+        setStatus('rate-limited')
       } else {
+        const data = await res.json().catch(() => ({}))
+        setErrorMessage(data?.error || null)
         setStatus('error')
       }
     } catch {
@@ -105,23 +122,35 @@ export default function ApplyForm() {
         </select>
       </div>
 
-      {status === 'error' && (
+      <div className="form-group" style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>
+        <input
+          id="apply-tos"
+          type="checkbox"
+          checked={acceptedTos}
+          onChange={(e) => setAcceptedTos(e.target.checked)}
+          style={{ marginTop: 4, width: 16, height: 16, accentColor: 'var(--gold)' }}
+          required
+        />
+        <label htmlFor="apply-tos" style={{ fontSize: 13, color: 'var(--text-muted)', lineHeight: 1.5 }}>
+          I have read and agree to the <Link href="/legal/terms-of-service">terms of service</Link> and
+          {' '}<Link href="/legal/privacy-policy">privacy policy</Link>. I understand Biolune is a precision longevity protocol, not medical treatment.
+        </label>
+      </div>
+
+      {(status === 'error' || status === 'rate-limited') && (
         <p style={{ color: '#c0392b', fontSize: 13, marginBottom: 16 }}>
-          Something went wrong. Please try again or email us directly at hello@biolune.eu.
+          {errorMessage || 'Something went wrong. Please try again or email us directly at hello@biolune.eu.'}
         </p>
       )}
 
       <button
         type="submit"
         className="btn btn-gold form-submit"
-        disabled={status === 'loading'}
-        style={{ opacity: status === 'loading' ? 0.7 : 1 }}
+        disabled={status === 'loading' || !acceptedTos}
+        style={{ opacity: status === 'loading' || !acceptedTos ? 0.7 : 1 }}
       >
         {status === 'loading' ? 'Sending…' : 'Request access'}
       </button>
-      <p className="form-disclaimer">
-        By submitting, you agree to our <Link href="/legal/terms-of-service">terms of service</Link>.
-      </p>
     </form>
   )
 }
