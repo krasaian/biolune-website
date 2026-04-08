@@ -1,10 +1,45 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import Faq from '@/components/Faq'
+import { fetchPricing, tierById, type TierId } from '@/lib/pricing'
 
 export const metadata: Metadata = {
   title: 'Pricing — Biolune',
-  description: 'Three precision longevity tiers. Protocol €149/month, Precision €299/month, Elite €549/month (invite only). Built around your biology.',
+  description: 'Three precision longevity tiers. Built around your biology.',
+}
+
+// Revalidate every 5 minutes so a price change in biolune-app/src/lib/pricing.ts
+// propagates without a manual rebuild — same TTL the API uses on its CDN cache.
+export const revalidate = 300
+
+// Feature lists are marketing copy and intentionally live on the website
+// (not in the pricing API). Keyed by tier id so they render alongside whichever
+// tier the API returns.
+const FEATURES: Record<TierId, string[]> = {
+  protocol: [
+    'Complete AI protocol (90 days)',
+    'Lune AI coach (25 msgs/day)',
+    'Raw DNA upload + genetic personalization',
+    'Morning + Evening + Sleep supplement stacks',
+    'IF protocol + meal timing',
+    'Apple Health sync + weekly review',
+  ],
+  precision: [
+    'Everything in Protocol',
+    'Unlimited Lune with autonomous actions',
+    'Decision engine (6 adaptive modes)',
+    'Pattern intelligence + correlations',
+    'Travel mode with circadian reset',
+    'Proactive alerts + progress reports',
+  ],
+  elite: [
+    'Everything in Precision',
+    'Blood work analysis + AI interpretation',
+    'Biomarker tracking over time (ApoB, HbA1c)',
+    'Personal coaching with Korosh (2×/month)',
+    'Priority WhatsApp line',
+    'PDF reports + custom protocol adjustments',
+  ],
 }
 
 const faqs = [
@@ -16,7 +51,12 @@ const faqs = [
   { q: 'How often should I re-test my biological markers?', a: 'We recommend a full panel every 90 days for the first year, then bi-annually once your protocol stabilises.' },
 ]
 
-export default function Pricing() {
+export default async function Pricing() {
+  const pricing = await fetchPricing()
+  const protocol = tierById(pricing, 'protocol')
+  const precision = tierById(pricing, 'precision')
+  const elite = tierById(pricing, 'elite')
+
   return (
     <>
       <style>{`
@@ -117,18 +157,15 @@ export default function Pricing() {
           <div className="plans-grid">
             {/* Protocol */}
             <div className="plan-card">
-              <div className="plan-tier">Protocol</div>
-              <div className="plan-price">€149</div>
-              <div className="plan-period">/month</div>
-              <p className="plan-tagline">Your personalised longevity protocol with DNA personalization — adapted weekly by AI.</p>
+              <div className="plan-tier">{protocol.name}</div>
+              <div className="plan-price">€{protocol.priceEUR}</div>
+              <div className="plan-period">/{pricing.interval}</div>
+              <p className="plan-tagline">{protocol.tagline}</p>
               <div className="plan-divider" />
               <ul className="plan-features">
-                <li><span className="check">✓</span> Complete AI protocol (90 days)</li>
-                <li><span className="check">✓</span> Lune AI coach (25 msgs/day)</li>
-                <li><span className="check">✓</span> Raw DNA upload + genetic personalization</li>
-                <li><span className="check">✓</span> Morning + Evening + Sleep supplement stacks</li>
-                <li><span className="check">✓</span> IF protocol + meal timing</li>
-                <li><span className="check">✓</span> Apple Health sync + weekly review</li>
+                {FEATURES.protocol.map((f) => (
+                  <li key={f}><span className="check">✓</span> {f}</li>
+                ))}
               </ul>
               <div className="plan-cta">
                 <Link href="/apply" className="btn btn-outline" style={{ width: '100%' }}>Apply Now</Link>
@@ -138,18 +175,15 @@ export default function Pricing() {
             {/* Precision */}
             <div className="plan-card featured">
               <div className="plan-badge">Most popular</div>
-              <div className="plan-tier">Precision</div>
-              <div className="plan-price">€299</div>
-              <div className="plan-period">/month</div>
-              <p className="plan-tagline">Autonomous AI that adapts your protocol to your biology — in real time.</p>
+              <div className="plan-tier">{precision.name}</div>
+              <div className="plan-price">€{precision.priceEUR}</div>
+              <div className="plan-period">/{pricing.interval}</div>
+              <p className="plan-tagline">{precision.tagline}</p>
               <div className="plan-divider" />
               <ul className="plan-features">
-                <li><span className="check">✓</span> Everything in Protocol</li>
-                <li><span className="check">✓</span> Unlimited Lune with autonomous actions</li>
-                <li><span className="check">✓</span> Decision engine (6 adaptive modes)</li>
-                <li><span className="check">✓</span> Pattern intelligence + correlations</li>
-                <li><span className="check">✓</span> Travel mode with circadian reset</li>
-                <li><span className="check">✓</span> Proactive alerts + progress reports</li>
+                {FEATURES.precision.map((f) => (
+                  <li key={f}><span className="check">✓</span> {f}</li>
+                ))}
               </ul>
               <div className="plan-cta">
                 <Link href="/apply" className="btn btn-gold" style={{ width: '100%' }}>Apply Now</Link>
@@ -159,18 +193,15 @@ export default function Pricing() {
             {/* Elite */}
             <div className="plan-card">
               <div className="plan-badge" style={{ background: 'rgba(168,152,121,0.15)', color: 'var(--gold)' }}>Invite Only</div>
-              <div className="plan-tier">Elite</div>
-              <div className="plan-price">€549</div>
-              <div className="plan-period">/month</div>
-              <p className="plan-tagline">Precision medicine meets personal coaching. Blood work, biomarkers, and direct collaboration with Korosh.</p>
+              <div className="plan-tier">{elite.name}</div>
+              <div className="plan-price">€{elite.priceEUR}</div>
+              <div className="plan-period">/{pricing.interval}</div>
+              <p className="plan-tagline">{elite.tagline}</p>
               <div className="plan-divider" />
               <ul className="plan-features">
-                <li><span className="check">✓</span> Everything in Precision</li>
-                <li><span className="check">✓</span> Blood work analysis + AI interpretation</li>
-                <li><span className="check">✓</span> Biomarker tracking over time (ApoB, HbA1c)</li>
-                <li><span className="check">✓</span> Personal coaching with Korosh (2×/month)</li>
-                <li><span className="check">✓</span> Priority WhatsApp line</li>
-                <li><span className="check">✓</span> PDF reports + custom protocol adjustments</li>
+                {FEATURES.elite.map((f) => (
+                  <li key={f}><span className="check">✓</span> {f}</li>
+                ))}
               </ul>
               <div className="plan-cta">
                 <Link href="/apply" className="btn btn-outline" style={{ width: '100%' }}>Request Access</Link>
