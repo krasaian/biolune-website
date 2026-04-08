@@ -3,6 +3,7 @@ import * as Sentry from '@sentry/nextjs'
 import './globals.css'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import CookieConsent from '@/components/CookieConsent'
 
 // Converted from `export const metadata` to `generateMetadata()` so we
 // can spread Sentry.getTraceData() into the `other` field. This injects
@@ -77,8 +78,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
+              // GDPR: default to denied. CookieConsent.tsx flips this to
+              // 'granted' on Accept and re-applies the persisted choice on
+              // every page load. Without explicit consent, GA4 drops hits
+              // client-side and never identifies the visitor.
               gtag('consent', 'default', {
-                'analytics_storage': 'granted'
+                'analytics_storage': 'denied'
               });
               gtag('config', 'G-YMC268HCZ8');
             `,
@@ -89,6 +94,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <CookieConsent />
       </body>
     </html>
   )

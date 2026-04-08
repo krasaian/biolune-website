@@ -145,6 +145,20 @@ export default function Footer() {
                 <Link href="/legal/privacy-policy" className="footer-link">Privacy Policy</Link>
                 <Link href="/legal/terms-of-service" className="footer-link">Terms of Service</Link>
                 <Link href="/legal/cookie-policy" className="footer-link">Cookie Policy</Link>
+                <button
+                  type="button"
+                  className="footer-link"
+                  style={{ background: 'none', border: 0, padding: 0, textAlign: 'left', cursor: 'pointer', font: 'inherit' }}
+                  onClick={() => {
+                    if (typeof window !== 'undefined') {
+                      try { window.localStorage.removeItem('biolune-cookie-consent') } catch {}
+                      const open = (window as unknown as { biolune_openCookieSettings?: () => void }).biolune_openCookieSettings
+                      if (typeof open === 'function') open()
+                    }
+                  }}
+                >
+                  Cookie Settings
+                </button>
                 <Link href="/legal/licensing-agreement" className="footer-link">Licensing Agreement</Link>
               </div>
             </div>
