@@ -1,7 +1,18 @@
 'use client'
 import { useState } from 'react'
 
-export default function NewsletterSignup() {
+// W26: single canonical newsletter form. Footer.tsx and the blog pages both
+// render this component instead of duplicating the fetch/form/state logic.
+// The `variant` prop swaps the styling between the centered inline blog
+// version and the footer's pill-input + button-row layout.
+type Variant = 'inline' | 'footer'
+
+interface Props {
+  variant?: Variant
+  className?: string
+}
+
+export default function NewsletterSignup({ variant = 'inline', className }: Props) {
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
 
@@ -23,14 +34,56 @@ export default function NewsletterSignup() {
 
   if (status === 'success') {
     return (
-      <p style={{ color: 'var(--gold)', fontSize: 14, letterSpacing: 1, marginTop: 8 }}>
-        You're subscribed. First issue arrives this week.
+      <p
+        style={{
+          color: 'var(--gold)',
+          fontSize: 14,
+          letterSpacing: 1,
+          marginTop: variant === 'footer' ? 28 : 8,
+        }}
+      >
+        You&rsquo;re subscribed. First issue arrives this week.
       </p>
     )
   }
 
+  if (variant === 'footer') {
+    return (
+      <form
+        className={`newsletter-form ${className ?? ''}`}
+        style={{ marginTop: 28 }}
+        onSubmit={handleSubmit}
+      >
+        <input
+          type="email"
+          className="newsletter-input"
+          placeholder="Your email address"
+          value={email}
+          onChange={e => setEmail(e.target.value)}
+          required
+        />
+        <button
+          type="submit"
+          className="btn btn-gold"
+          disabled={status === 'loading'}
+          style={{ opacity: status === 'loading' ? 0.7 : 1 }}
+        >
+          {status === 'loading' ? 'Subscribing…' : 'Subscribe'}
+        </button>
+        {status === 'error' && (
+          <p style={{ width: '100%', color: '#c0392b', fontSize: 12, marginTop: 8 }}>
+            Something went wrong. Please try again.
+          </p>
+        )}
+      </form>
+    )
+  }
+
   return (
-    <div style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginTop: 8 }}>
+    <div
+      className={className}
+      style={{ display: 'flex', gap: 12, justifyContent: 'center', flexWrap: 'wrap', marginTop: 8 }}
+    >
       <form onSubmit={handleSubmit} style={{ display: 'flex', gap: 12, flexWrap: 'wrap', justifyContent: 'center' }}>
         <input
           type="email"

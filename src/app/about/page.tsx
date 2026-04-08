@@ -179,7 +179,9 @@ export default function About() {
               <h2 className="serif" style={{ marginTop: 12, fontSize: 'clamp(24px, 3vw, 36px)' }}>Need Help?</h2>
               <p style={{ marginTop: 12, color: 'var(--text-muted)', fontSize: 15, lineHeight: 1.65 }}>We aim to provide absolute clarity regarding your biological data and personalized wellness protocols.</p>
               <div style={{ marginTop: 24 }}>
-                <Link href="/contact" className="btn btn-outline" style={{ padding: '11px 24px', fontSize: '11px' }}>Contact us</Link>
+                {/* W27: this used to point at /contact, leaking visitors out of the funnel.
+                    The about page is high-intent — push them straight to /apply instead. */}
+                <Link href="/apply" className="btn btn-outline" style={{ padding: '11px 24px', fontSize: '11px' }}>Apply for access</Link>
               </div>
             </div>
             <Faq items={faqs} />
