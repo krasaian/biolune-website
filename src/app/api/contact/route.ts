@@ -1,13 +1,27 @@
 import { Resend } from 'resend'
 import { NextResponse } from 'next/server'
+import { runSpamChecks, escapeHtml } from '@/lib/anti-spam'
 
 export const dynamic = 'force-dynamic'
 
 export async function POST(req: Request) {
   try {
+    const body = await req.json().catch(() => null)
+    if (!body || typeof body !== 'object') {
+      return NextResponse.json({ error: 'Invalid body' }, { status: 400 })
+    }
+
+    // Spam protection: honeypot, IP rate limit, content heuristics on the
+    // free-text message. Silent-drop responses (status 200) so bots don't
+    // learn how to evade the filter.
+    const spam = runSpamChecks(req, body, { endpoint: 'contact', contentField: 'message' })
+    if (!spam.ok) {
+      if (spam.error === 'silent-drop') return NextResponse.json({ success: true })
+      return NextResponse.json({ error: spam.error }, { status: spam.status })
+    }
+
     const resend = new Resend(process.env.RESEND_API_KEY)
-    const body = await req.json()
-    const { name, email, location, objective, message } = body
+    const { name, email, location, objective, message } = body as Record<string, string | undefined>
 
     if (!name || !email) {
       return NextResponse.json({ error: 'Name and email are required.' }, { status: 400 })
@@ -26,28 +40,28 @@ export async function POST(req: Request) {
           <table style="width: 100%; border-collapse: collapse;">
             <tr>
               <td style="padding: 10px 0; border-bottom: 1px solid #e8e2d4; color: #6b6960; font-size: 13px; width: 140px;">Name</td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #e8e2d4; color: #1a1916; font-size: 14px; font-weight: 500;">${name}</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #e8e2d4; color: #1a1916; font-size: 14px; font-weight: 500;">${escapeHtml(name)}</td>
             </tr>
             <tr>
               <td style="padding: 10px 0; border-bottom: 1px solid #e8e2d4; color: #6b6960; font-size: 13px;">Email</td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #e8e2d4; color: #1a1916; font-size: 14px;">${email}</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #e8e2d4; color: #1a1916; font-size: 14px;">${escapeHtml(email)}</td>
             </tr>
             <tr>
               <td style="padding: 10px 0; border-bottom: 1px solid #e8e2d4; color: #6b6960; font-size: 13px;">Location</td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #e8e2d4; color: #1a1916; font-size: 14px;">${location || '—'}</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #e8e2d4; color: #1a1916; font-size: 14px;">${escapeHtml(location) || '—'}</td>
             </tr>
             <tr>
               <td style="padding: 10px 0; border-bottom: 1px solid #e8e2d4; color: #6b6960; font-size: 13px;">Objective</td>
-              <td style="padding: 10px 0; border-bottom: 1px solid #e8e2d4; color: #1a1916; font-size: 14px;">${objective || '—'}</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #e8e2d4; color: #1a1916; font-size: 14px;">${escapeHtml(objective) || '—'}</td>
             </tr>
             <tr>
               <td style="padding: 10px 0; color: #6b6960; font-size: 13px; vertical-align: top;">Message</td>
-              <td style="padding: 10px 0; color: #1a1916; font-size: 14px; white-space: pre-wrap;">${message || '—'}</td>
+              <td style="padding: 10px 0; color: #1a1916; font-size: 14px; white-space: pre-wrap;">${escapeHtml(message) || '—'}</td>
             </tr>
           </table>
 
           <div style="margin-top: 28px; padding: 16px; background: #A89879; border-radius: 4px;">
-            <a href="mailto:${email}" style="color: #fef9ef; font-size: 13px; text-decoration: none; letter-spacing: 1.5px; text-transform: uppercase;">Reply to ${name} →</a>
+            <a href="mailto:${encodeURIComponent(email)}" style="color: #fef9ef; font-size: 13px; text-decoration: none; letter-spacing: 1.5px; text-transform: uppercase;">Reply to ${escapeHtml(name)} →</a>
           </div>
         </div>
       `,

@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 export default function ApplyForm() {
-  const [form, setForm] = useState({ name: '', email: '', location: '', objective: '', plan: '' })
+  const [form, setForm] = useState({ name: '', email: '', location: '', objective: '', plan: '', _botField: '' })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
 
   const set = (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
@@ -44,6 +44,22 @@ export default function ApplyForm() {
 
   return (
     <form onSubmit={handleSubmit}>
+      {/* Honeypot — hidden from real users; bots that auto-fill text inputs
+          will populate this and the server silently drops the submission. */}
+      <div
+        aria-hidden="true"
+        style={{ position: 'absolute', left: '-10000px', width: 1, height: 1, overflow: 'hidden' }}
+      >
+        <label htmlFor="apply-_botField">Leave this field empty</label>
+        <input
+          id="apply-_botField"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={form._botField}
+          onChange={(e) => setForm((prev) => ({ ...prev, _botField: e.target.value }))}
+        />
+      </div>
       <div className="form-group">
         <label className="form-label">Your name</label>
         <input

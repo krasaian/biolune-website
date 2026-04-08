@@ -16,6 +16,7 @@ const BioluneLogo = () => (
 
 function NewsletterForm() {
   const [email, setEmail] = useState('')
+  const [botField, setBotField] = useState('')
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -26,7 +27,7 @@ function NewsletterForm() {
       const res = await fetch('/api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, _botField: botField }),
       })
       setStatus(res.ok ? 'success' : 'error')
     } catch {
@@ -44,6 +45,22 @@ function NewsletterForm() {
 
   return (
     <form className="newsletter-form" style={{ marginTop: 28 }} onSubmit={handleSubmit}>
+      {/* Honeypot — hidden from real users; bots that auto-fill text inputs
+          will populate this and the server silently drops the submission. */}
+      <div
+        aria-hidden="true"
+        style={{ position: 'absolute', left: '-10000px', width: 1, height: 1, overflow: 'hidden' }}
+      >
+        <label htmlFor="newsletter-_botField">Leave this field empty</label>
+        <input
+          id="newsletter-_botField"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={botField}
+          onChange={e => setBotField(e.target.value)}
+        />
+      </div>
       <input
         type="email"
         className="newsletter-input"

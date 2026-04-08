@@ -3,7 +3,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 
 export default function ContactForm() {
-  const [form, setForm] = useState({ name: '', email: '', location: '', objective: '', message: '' })
+  const [form, setForm] = useState({ name: '', email: '', location: '', objective: '', message: '', _botField: '' })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
 
   const set = (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
@@ -44,6 +44,23 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit}>
+      {/* Honeypot — hidden from real users via inert positioning + aria-hidden.
+          Bots that auto-fill every text input will populate this and the
+          server will silently drop the submission. */}
+      <div
+        aria-hidden="true"
+        style={{ position: 'absolute', left: '-10000px', width: 1, height: 1, overflow: 'hidden' }}
+      >
+        <label htmlFor="contact-_botField">Leave this field empty</label>
+        <input
+          id="contact-_botField"
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          value={form._botField}
+          onChange={(e) => setForm((prev) => ({ ...prev, _botField: e.target.value }))}
+        />
+      </div>
       <div className="form-group">
         <label className="form-label">Your name</label>
         <input
