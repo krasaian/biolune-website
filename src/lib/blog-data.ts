@@ -18,7 +18,7 @@ export const blogArticles: Record<string, BlogArticle> = {
     date: 'March 2026',
     readTime: 6,
     tag: 'HRV Science',
-    author: '',
+    author: 'Korosh Rasaian',
     content: `For years I trained on a fixed schedule. Monday legs, Wednesday push, Friday pull. Whether I slept four hours or eight didn't matter. The plan was the plan. That was stupid and I wish someone had told me sooner.
 
 Then I got an Oura ring and started looking at my HRV data. Within three weeks I realized my body had been screaming at me and I just wasn't listening.
@@ -60,7 +60,7 @@ Pick any modern wearable. Oura, Apple Watch, Whoop, Garmin, they all track HRV n
     date: 'February 2026',
     readTime: 7,
     tag: 'Metabolism',
-    author: '',
+    author: 'Korosh Rasaian',
     content: `If I had to pick one single hormone that determines whether you feel sharp or sluggish, lean or soft, aging fast or slow, I'd pick insulin every time. Not testosterone. Not cortisol. Insulin. And the frustrating thing is that most people only hear about it when diabetes comes up, which completely misses the point.
 
 ## Why insulin runs the show
@@ -102,7 +102,7 @@ It's not about restriction. It's about eating what your body is actually ready f
     date: 'January 2026',
     readTime: 8,
     tag: 'Fasting',
-    author: '',
+    author: 'Korosh Rasaian',
     content: `I've been fasting consistently for about three years now. Not because some influencer convinced me. Because I tracked what it did to my HRV, my body composition, and my ability to think clearly, and the numbers were hard to argue with. But fasting is also wildly misunderstood so let me break down what actually matters.
 
 ## Which protocols work and for whom
@@ -150,7 +150,7 @@ If you're not doing any form of time-restricted eating, you're missing one of th
     date: 'December 2025',
     readTime: 7,
     tag: 'Longevity',
-    author: '',
+    author: 'Korosh Rasaian',
     content: `Every cell in your body accumulates damage over time. Misfolded proteins, broken mitochondria, cellular junk. If you never clean house, things pile up. Cells get sluggish, then dysfunctional, then dangerous. That accumulation is directly linked to Alzheimer's, Parkinson's, cancer, and basically every disease we blame on "getting old."
 
 Your body actually has a system for dealing with this. It's called autophagy, which literally means "self-eating," and it's one of the most elegant repair mechanisms in biology. The problem is that the way most people live keeps it permanently switched off.
@@ -194,7 +194,7 @@ The protocol handles this by cycling. During DE-LOAD weeks, fasting windows get 
     date: 'November 2025',
     readTime: 8,
     tag: 'Sleep Science',
-    author: '',
+    author: 'Korosh Rasaian',
     content: `I can dial in someone's training, nutrition, and supplement timing perfectly. If their sleep is broken, I've wasted everyone's time. Sleep is not rest. It is the most metabolically active recovery process your body runs. And the difference between seven hours of fragmented junk sleep and seven hours of consolidated deep plus REM sleep is massive. One person is recovering and aging well. The other is falling apart slowly and has no idea.
 
 ## What your brain actually does at night
@@ -247,7 +247,7 @@ When PROTECT SLEEP mode activates, which happens after low HRV or consecutive ba
     date: 'October 2025',
     readTime: 7,
     tag: 'Supplements',
-    author: '',
+    author: 'Korosh Rasaian',
     content: `Creatine monohydrate has over a thousand peer-reviewed studies behind it spanning three decades. That makes it the most researched supplement in existence. And yet most smart people still dismiss it as gym bro stuff while spending money on things with a fraction of the evidence. This is one of those rare cases where the science is overwhelmingly clear and the public perception is just wrong.
 
 ## How cellular energy actually works

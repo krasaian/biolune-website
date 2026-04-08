@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { trackCtaClick } from '@/lib/analytics'
 
 const BioluneLogo = () => (
   <Link href="/" style={{ display: 'block', lineHeight: 0 }}>
@@ -162,7 +163,10 @@ export default function Navbar() {
           border: none;
         }
 
-        @media (max-width: 900px) {
+        /* W31: was 900px, which left a tablet gap (768-900) where desktop
+           nav links cramped against the CTA. Bumped to 1024 so tablets
+           and small laptops get the cleaner hamburger UX. */
+        @media (max-width: 1024px) {
           .nav-links { display: none; }
           .nav-actions .btn { display: none; }
           .hamburger { display: flex; }
@@ -181,8 +185,23 @@ export default function Navbar() {
             ))}
           </ul>
           <div className="nav-actions">
-            <a href="https://biolune-app.vercel.app" className="nav-login" target="_blank" rel="noopener noreferrer">Login</a>
-            <Link href="/apply" className="btn btn-gold" style={{ fontSize: '11px', letterSpacing: '2px', padding: '11px 24px' }}>Apply for access</Link>
+            <a
+              href="https://biolune-app.vercel.app"
+              className="nav-login"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => trackCtaClick('Login', 'navbar')}
+            >
+              Login
+            </a>
+            <Link
+              href="/apply"
+              className="btn btn-gold"
+              style={{ fontSize: '11px', letterSpacing: '2px', padding: '11px 24px' }}
+              onClick={() => trackCtaClick('Apply for access', 'navbar')}
+            >
+              Apply for access
+            </Link>
             <button className={`hamburger${open ? ' open' : ''}`} onClick={toggleMenu} aria-label="Toggle menu">
               <span /><span /><span />
             </button>
@@ -197,8 +216,18 @@ export default function Navbar() {
         <Link href="/supplements">Supplements</Link>
         <Link href="/success-stories">Success Stories</Link>
         <Link href="/blog">Blog</Link>
-        <a href="https://biolune-app.vercel.app" className="mob-login" target="_blank" rel="noopener noreferrer">Login</a>
-        <Link href="/apply" className="mob-cta">Apply for access</Link>
+        <a
+          href="https://biolune-app.vercel.app"
+          className="mob-login"
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => trackCtaClick('Login', 'mobile-menu')}
+        >
+          Login
+        </a>
+        <Link href="/apply" className="mob-cta" onClick={() => trackCtaClick('Apply for access', 'mobile-menu')}>
+          Apply for access
+        </Link>
       </div>
     </>
   )

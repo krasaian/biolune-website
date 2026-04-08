@@ -181,7 +181,11 @@ h1, h2, h3, h4 {
   transition: max-height 0.35s ease, padding 0.25s;
 }
 .faq-answer p { padding-bottom: 20px; color: var(--text-muted); line-height: 1.7; font-size: 15px; }
-.faq-item.open .faq-answer { max-height: 300px; }
+/* W32: was hardcoded to 300px which clipped the longer FAQ answers
+   ("How does Biolune use my data?" was getting cut off at the third
+   paragraph). Bumped to 1200px which is enough for any plausible answer
+   while still animating smoothly. */
+.faq-item.open .faq-answer { max-height: 1200px; }
 
 /* ── Newsletter strip ── */
 .newsletter {
