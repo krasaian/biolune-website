@@ -17,3 +17,4 @@ next-env.d.ts
 
 # Vercel CLI env backups (may contain real secrets — never commit)
 .env.vercel.backup.*
+tsconfig.tsbuildinfo
