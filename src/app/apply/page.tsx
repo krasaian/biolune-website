@@ -100,8 +100,8 @@ export default function Apply() {
           <p className="label" style={{ marginBottom: 16 }}>Apply for access</p>
           <h1 className="serif">Design your health.</h1>
           <p>Connect with our wellness experts to explore how Biolune can build a personalized system based on your unique biological data.</p>
-          <p style={{ fontStyle: 'italic', fontSize: 15 }}>"Biolune provided the high-fidelity foundation required for me to take full control of my long-term health."</p>
-          <p style={{ fontSize: 13, color: 'var(--gold)' }}>— A. Martin, Founder</p>
+          {/* W44: removed the "A. Martin, Founder" placeholder testimonial.
+              We won't ship a fabricated quote on our highest-intent page. */}
           <div>
             <div className="apply-stat">
               <span className="apply-stat-num">+31%</span>

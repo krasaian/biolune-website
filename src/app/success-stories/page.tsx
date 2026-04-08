@@ -6,62 +6,22 @@ export const metadata: Metadata = {
   description: 'Real results from Biolune members. Measurable improvements in HRV, biological age, sleep, and recovery — backed by biomarker data.',
 }
 
-const stories = [
-  {
-    name: 'L. van der Berg',
-    role: 'Managing Director, Amsterdam',
-    tag: 'Biological age −11 years',
-    plan: 'Precision',
-    duration: '8 months',
-    story: 'I was sceptical. I had tried every executive health programme — the supplements, the cold plunges, the coaches. None of it moved my numbers. After eight months on Precision, my biological age marker dropped eleven years according to my bloodwork. My GP asked what I changed. I told him I stopped guessing.',
-    metrics: ['+28% HRV', '−11yr biological age', 'Sleep efficiency 89%'],
-  },
-  {
-    name: 'T. Fischer',
-    role: 'Competitive cyclist, Berlin',
-    tag: 'Recovery score 94% avg',
-    plan: 'Elite',
-    duration: '6 months',
-    story: 'Coming back from a knee injury, I needed a recovery framework that was built around my actual physiology — not a generic return-to-sport protocol. Biolune built my entire recovery around my HRV patterns and hormonal profile. I came back stronger than pre-injury and haven\'t had a setback since.',
-    metrics: ['Recovery 94% avg', 'Zero injury recurrence', 'Power output +19%'],
-  },
-  {
-    name: 'Dr. S. Okafor',
-    role: 'Emergency physician, London',
-    tag: 'Cortisol normalised · focus sustained',
-    plan: 'Precision',
-    duration: '5 months',
-    story: 'Working 60-hour weeks in emergency medicine, I had normalised feeling depleted. After my biomarker panel revealed chronically elevated cortisol and suppressed testosterone, Biolune restructured my entire recovery protocol around my shift pattern. Five months later my colleagues asked if I\'d changed something. I had.',
-    metrics: ['Cortisol normalised', '+35% deep sleep', 'Focus sustained 12hr shifts'],
-  },
-  {
-    name: 'A. Johansson',
-    role: 'Venture partner, Stockholm',
-    tag: 'HRV: 41 → 67',
-    plan: 'Protocol',
-    duration: '12 weeks',
-    story: 'I travel every week and my HRV was a disaster. I started with Protocol because I was unsure — within 12 weeks my HRV went from 41 to 67. The travel protocol alone was worth it. I now recover from long-haul flights in under a day. That used to take me a full week.',
-    metrics: ['HRV 41 → 67', 'Jetlag recovery: 5 days → <1', 'Morning energy up'],
-  },
-  {
-    name: 'M. Dubois',
-    role: 'Semi-professional triathlete, Paris',
-    tag: 'Training load +22% · zero overtraining',
-    plan: 'Elite',
-    duration: '10 months',
-    story: 'My previous coach used the same periodisation blocks for every athlete. Biolune introduced me to HRV-guided training load — I now train harder when my body is ready and back off when it isn\'t. My race times improved and I finished my first full Ironman without injury for the first time in three attempts.',
-    metrics: ['Training load +22%', 'Zero overtraining events', 'Ironman PB'],
-  },
-  {
-    name: 'R. Al-Rashid',
-    role: 'CEO, Dubai',
-    tag: 'Biological age −9 years · energy transformed',
-    plan: 'Elite',
-    duration: '7 months',
-    story: 'Running a company across three time zones had aged me. My biological age markers said I was 14 years older than my chronological age. Seven months in, the gap is down to 5. My cognitive clarity in board meetings is sharper than it was ten years ago. Biolune is not wellness — it is infrastructure.',
-    metrics: ['Biological age gap: 14yr → 5yr', 'HRV +41%', 'Sleep latency −60%'],
-  },
-]
+// W6: empty shell. The 6 hardcoded testimonials this used to render were
+// unverified pre-beta copy and risked being read as fabricated by anyone
+// who could see the launch date. Real tester results get back-filled here
+// during the day-7+ beta cohort review (see BIOLUNE_KOROSH_BLOCKERS).
+//
+// Schema is preserved so re-populating is a 1-line append.
+type Story = {
+  name: string
+  role: string
+  tag: string
+  plan: string
+  duration: string
+  story: string
+  metrics: string[]
+}
+const stories: Story[] = []
 
 export default function SuccessStories() {
   return (
@@ -164,23 +124,40 @@ export default function SuccessStories() {
 
       <section className="section">
         <div className="container">
-          <div className="stories-grid">
-            {stories.map(s => (
-              <div key={s.name} className="story-card">
-                <div className="story-tag">{s.tag}</div>
-                <blockquote className="story-quote">"{s.story}"</blockquote>
-                <div className="story-name">{s.name}</div>
-                <div className="story-role">{s.role}</div>
-                <div className="story-meta">
-                  <span>{s.plan}</span>
-                  <span>{s.duration}</span>
+          {stories.length === 0 ? (
+            <div style={{ textAlign: 'center', maxWidth: 560, margin: '0 auto', padding: '48px 24px' }}>
+              <p className="label" style={{ marginBottom: 16 }}>Beta cohort in progress</p>
+              <h2 className="serif" style={{ fontSize: 'clamp(22px, 3vw, 32px)', marginBottom: 16 }}>
+                Real results land here as our first cohort completes their protocol.
+              </h2>
+              <p style={{ color: 'var(--text-muted)', lineHeight: 1.7, fontSize: 15 }}>
+                We will not publish testimonials we cannot back with biomarker data. Our beta members
+                started in April 2026 — their verified outcomes will be added here as they reach
+                3-, 6-, and 12-month milestones.
+              </p>
+              <p style={{ marginTop: 24 }}>
+                <Link href="/apply" className="btn btn-dark">Apply for access</Link>
+              </p>
+            </div>
+          ) : (
+            <div className="stories-grid">
+              {stories.map(s => (
+                <div key={s.name} className="story-card">
+                  <div className="story-tag">{s.tag}</div>
+                  <blockquote className="story-quote">&ldquo;{s.story}&rdquo;</blockquote>
+                  <div className="story-name">{s.name}</div>
+                  <div className="story-role">{s.role}</div>
+                  <div className="story-meta">
+                    <span>{s.plan}</span>
+                    <span>{s.duration}</span>
+                  </div>
+                  <div className="story-metrics">
+                    {s.metrics.map(m => <span key={m} className="story-metric">{m}</span>)}
+                  </div>
                 </div>
-                <div className="story-metrics">
-                  {s.metrics.map(m => <span key={m} className="story-metric">{m}</span>)}
-                </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
