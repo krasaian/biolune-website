@@ -42,10 +42,14 @@ export default function ApplyForm() {
         setStatus('rate-limited')
       } else {
         const data = await res.json().catch(() => ({}))
-        setErrorMessage(data?.error || null)
+        setErrorMessage(
+          (data && typeof data.error === 'string' && data.error) ||
+          'Something went wrong. Please try again or email us directly at hello@biolune.eu.'
+        )
         setStatus('error')
       }
     } catch {
+      setErrorMessage('Network error. Please check your connection and try again, or email us at hello@biolune.eu.')
       setStatus('error')
     }
   }

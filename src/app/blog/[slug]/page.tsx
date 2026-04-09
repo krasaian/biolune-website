@@ -27,7 +27,7 @@ export function generateMetadata({ params }: PageProps): Metadata {
       type: 'article',
       publishedTime: (() => {
         try {
-          const d = new Date(article.date + ' 1')
+          const d = new Date(article.dateIso)
           return isNaN(d.getTime()) ? new Date().toISOString() : d.toISOString()
         } catch { return new Date().toISOString() }
       })(),

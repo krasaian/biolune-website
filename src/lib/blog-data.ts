@@ -2,7 +2,14 @@ export interface BlogArticle {
   slug: string
   title: string
   excerpt: string
+  /** Human-readable for the article header (e.g. "March 2026"). */
   date: string
+  /**
+   * W38: ISO date string (YYYY-MM-DD) used for sorting and JSON-LD
+   * `datePublished`. Defaults to the first of the month so the
+   * "March 2026" → "2026-03-01" mapping is unambiguous.
+   */
+  dateIso: string
   readTime: number
   tag: string
   author: string
@@ -16,6 +23,7 @@ export const blogArticles: Record<string, BlogArticle> = {
     title: 'What Is HRV and Why High Performers Track It Daily',
     excerpt: 'The variation between your heartbeats tells you more about your readiness than any fitness test. Most people have no idea this metric exists.',
     date: 'March 2026',
+    dateIso: '2026-03-01',
     readTime: 6,
     tag: 'HRV Science',
     author: 'Korosh Rasaian',
@@ -58,6 +66,7 @@ Pick any modern wearable. Oura, Apple Watch, Whoop, Garmin, they all track HRV n
     title: 'How Insulin Shapes Your Energy, Body Composition, and Longevity',
     excerpt: "You probably don't have an energy problem. You have an insulin problem. The fix isn't eating less. It's eating smarter.",
     date: 'February 2026',
+    dateIso: '2026-02-01',
     readTime: 7,
     tag: 'Metabolism',
     author: 'Korosh Rasaian',
@@ -100,6 +109,7 @@ It's not about restriction. It's about eating what your body is actually ready f
     title: 'Intermittent Fasting: The Science Behind Time-Restricted Eating',
     excerpt: 'Fasting is not about eating less. It is about giving your body the metabolic quiet it needs to actually repair itself.',
     date: 'January 2026',
+    dateIso: '2026-01-01',
     readTime: 8,
     tag: 'Fasting',
     author: 'Korosh Rasaian',
@@ -148,6 +158,7 @@ If you're not doing any form of time-restricted eating, you're missing one of th
     title: "Autophagy: Your Body's Built-In Repair System",
     excerpt: 'Your cells have a built-in recycling system. Most people never turn it on. That matters if you care about aging well.',
     date: 'December 2025',
+    dateIso: '2025-12-01',
     readTime: 7,
     tag: 'Longevity',
     author: 'Korosh Rasaian',
@@ -192,6 +203,7 @@ The protocol handles this by cycling. During DE-LOAD weeks, fasting windows get 
     title: "The Science of Sleep Architecture: Why 8 Hours Isn't Enough",
     excerpt: 'You are not sleeping wrong because you go to bed late. You are sleeping wrong because nobody taught you what sleep actually does.',
     date: 'November 2025',
+    dateIso: '2025-11-01',
     readTime: 8,
     tag: 'Sleep Science',
     author: 'Korosh Rasaian',
@@ -245,6 +257,7 @@ When PROTECT SLEEP mode activates, which happens after low HRV or consecutive ba
     title: 'Creatine Beyond the Gym: Cognitive Performance, Longevity, and Cellular Energy',
     excerpt: 'You probably think creatine is for bodybuilders. The research says it might be the most important supplement you are not taking for your brain.',
     date: 'October 2025',
+    dateIso: '2025-10-01',
     readTime: 7,
     tag: 'Supplements',
     author: 'Korosh Rasaian',

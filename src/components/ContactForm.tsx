@@ -5,6 +5,7 @@ import Link from 'next/link'
 export default function ContactForm() {
   const [form, setForm] = useState({ name: '', email: '', location: '', objective: '', message: '', _botField: '' })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [errorMsg, setErrorMsg] = useState<string>('')
 
   const set = (field: string) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
     setForm(prev => ({ ...prev, [field]: e.target.value }))
@@ -12,6 +13,7 @@ export default function ContactForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus('loading')
+    setErrorMsg('')
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
@@ -21,9 +23,16 @@ export default function ContactForm() {
       if (res.ok) {
         setStatus('success')
       } else {
+        let upstream = ''
+        try {
+          const data = await res.json()
+          if (data && typeof data.error === 'string') upstream = data.error
+        } catch {}
+        setErrorMsg(upstream || 'Something went wrong. Please try again or email us at hello@biolune.eu.')
         setStatus('error')
       }
     } catch {
+      setErrorMsg('Network error. Please check your connection and try again, or email us at hello@biolune.eu.')
       setStatus('error')
     }
   }
@@ -126,7 +135,7 @@ export default function ContactForm() {
 
       {status === 'error' && (
         <p style={{ color: '#c0392b', fontSize: 13, marginBottom: 16 }}>
-          Something went wrong. Please try again or email us at hello@biolune.eu.
+          {errorMsg || 'Something went wrong. Please try again or email us at hello@biolune.eu.'}
         </p>
       )}
 
