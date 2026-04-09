@@ -25,6 +25,15 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Email is required.' }, { status: 400 })
     }
 
+    // W16: validate format. Anything not matching a basic local@domain.tld
+    // pattern is rejected before we ever forward it to Resend, so admin
+    // inboxes don't fill up with garbage like "asdf" or "test@test".
+    const trimmed = String(email).trim()
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
+    if (trimmed.length > 254 || !emailPattern.test(trimmed)) {
+      return NextResponse.json({ error: 'Please enter a valid email address.' }, { status: 400 })
+    }
+
     const resend = new Resend(process.env.RESEND_API_KEY)
 
     const { data, error } = await resend.emails.send({

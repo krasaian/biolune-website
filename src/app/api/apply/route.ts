@@ -64,7 +64,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: spam.error }, { status: spam.status })
     }
 
-    const { name, email, acceptedTos } = body as Record<string, string | boolean | undefined>
+    const { name, email, plan, location, objective, acceptedTos } = body as Record<string, string | boolean | undefined>
     if (!name || !email) {
       return NextResponse.json({ error: 'Name and email are required.' }, { status: 400 })
     }
@@ -72,6 +72,22 @@ export async function POST(req: Request) {
     // but anyone can hit the endpoint directly with curl. No ToS, no submit.
     if (acceptedTos !== true) {
       return NextResponse.json({ error: 'You must accept the terms of service to submit.' }, { status: 400 })
+    }
+    // W17: enforce plan server-side too. The client form has `required`
+    // on the select but a determined caller can still POST without it,
+    // and we want every row in the upstream `applications` table to
+    // carry a tier so the admin queue is sortable.
+    if (typeof plan !== 'string' || !plan.trim()) {
+      return NextResponse.json({ error: 'Please pick a plan that interests you.' }, { status: 400 })
+    }
+    // W18: location + objective are also required by the form. Mirror
+    // the same enforcement at the proxy edge so the upstream row never
+    // ends up half-populated.
+    if (typeof location !== 'string' || !location.trim()) {
+      return NextResponse.json({ error: 'Please tell us where you\'re located.' }, { status: 400 })
+    }
+    if (typeof objective !== 'string' || !objective.trim()) {
+      return NextResponse.json({ error: 'Please pick a primary objective.' }, { status: 400 })
     }
 
     const upstreamUrl = process.env.APPLY_ENDPOINT_URL || DEFAULT_UPSTREAM
