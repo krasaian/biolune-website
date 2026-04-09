@@ -20,14 +20,10 @@ export function generateMetadata(): Metadata {
       url: 'https://www.biolune.eu',
       siteName: 'Biolune',
       type: 'website',
-      images: [
-        {
-          url: '/og-image.png',
-          width: 1200,
-          height: 630,
-          alt: 'Biolune — Precision Longevity Protocol',
-        },
-      ],
+      // OG image is generated dynamically by app/opengraph-image.tsx via
+      // next/og's Satori-based ImageResponse. Next.js auto-wires that
+      // file into the openGraph + twitter image meta tags for every
+      // route, so we no longer need to reference a static file here.
     },
     twitter: {
       card: 'summary_large_image',
