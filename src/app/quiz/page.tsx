@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import QuizClient from './QuizClient'
 
 export const metadata: Metadata = {
-  title: 'Longevity Readiness Score — Biolune',
-  description: 'Take the 90-second quiz to discover your Longevity Readiness Score. 8 questions across sleep, HRV, nutrition, and recovery.',
+  title: 'Find Your Tier — Biolune',
+  description: 'Five questions about how you live, train, and track your biology. We tell you which Biolune protocol — Protocol, Precision, or Elite — fits you right now.',
 }
 
 export default function QuizPage() {

@@ -1,10 +1,31 @@
 'use client'
 import { useState } from 'react'
+import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { trackEvent } from '@/lib/analytics'
 
+// Map ?tier=protocol|precision|elite query param (set by the
+// /quiz "Find your tier" recommender) to the matching <option>
+// label in the plan dropdown so it preselects on landing.
+const TIER_TO_PLAN: Record<string, string> = {
+  protocol: 'Protocol — €149/month',
+  precision: 'Precision — €299/month',
+  elite: 'Elite — €549/month',
+}
+
 export default function ApplyForm() {
-  const [form, setForm] = useState({ name: '', email: '', location: '', objective: '', plan: '', _botField: '' })
+  const searchParams = useSearchParams()
+  const tierParam = searchParams?.get('tier')?.toLowerCase() ?? ''
+  const initialPlan = TIER_TO_PLAN[tierParam] ?? ''
+
+  const [form, setForm] = useState({
+    name: '',
+    email: '',
+    location: '',
+    objective: '',
+    plan: initialPlan,
+    _botField: '',
+  })
   const [acceptedTos, setAcceptedTos] = useState(false)
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error' | 'rate-limited'>('idle')
   const [errorMessage, setErrorMessage] = useState<string | null>(null)

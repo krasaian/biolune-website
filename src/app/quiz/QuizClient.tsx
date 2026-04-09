@@ -2,138 +2,197 @@
 import { useState } from 'react'
 import Link from 'next/link'
 
-const questions = [
+/**
+ * "Find your tier" recommender (W23).
+ *
+ * Repurposed from the original Longevity Readiness Score quiz. Same UX
+ * scaffolding (intro → questions → email capture → result), but the
+ * scoring is now a tier vote. Each answer votes for one of three tiers
+ * — Protocol, Precision, or Elite — and the final recommendation is
+ * the tier with the most votes (ties break to Precision, the
+ * "most popular" middle option).
+ *
+ * The result CTA deep-links into /apply?tier=<protocol|precision|elite>
+ * which preselects the matching plan in ApplyForm. This preserves
+ * Max's "keep the site alive and kicking" feedback while collapsing
+ * two parallel funnels (quiz + apply) into one continuous path.
+ */
+
+type Tier = 'protocol' | 'precision' | 'elite'
+
+type Question = {
+  id: number
+  label: string
+  question: string
+  options: { text: string; tier: Tier }[]
+}
+
+const questions: Question[] = [
   {
     id: 1,
-    label: 'Sleep Quality',
-    question: 'How would you describe your sleep over the past month?',
+    label: 'Coaching Style',
+    question: 'How much hands-on coaching do you actually want?',
     options: [
-      { text: '7–9 hours, consistent timing, wake refreshed', points: 3 },
-      { text: '6–7 hours, some variability, usually OK', points: 2 },
-      { text: 'Under 6 hours, irregular, often tired on waking', points: 0 },
+      {
+        text: "Give me a clear protocol I can run on my own — I'll execute.",
+        tier: 'protocol',
+      },
+      {
+        text: 'Adapt the plan to me weekly, but I prefer software over conversations.',
+        tier: 'precision',
+      },
+      {
+        text: 'I want a real human in the loop. Calls, biomarkers, and direct feedback.',
+        tier: 'elite',
+      },
     ],
   },
   {
     id: 2,
-    label: 'HRV Tracking',
-    question: 'Do you track your HRV (Heart Rate Variability) in the morning?',
+    label: 'Bloodwork',
+    question: 'How current is your bloodwork?',
     options: [
-      { text: 'Yes, daily — and I understand what the numbers mean', points: 3 },
-      { text: 'I track it occasionally but don\'t use the data', points: 1 },
-      { text: 'No — I don\'t track HRV', points: 0 },
+      {
+        text: "I haven't had a panel in years — or ever.",
+        tier: 'protocol',
+      },
+      {
+        text: 'I have something recent but I want it interpreted properly.',
+        tier: 'precision',
+      },
+      {
+        text: 'I run regular panels and want hormones, ApoB, and HbA1c tracked over time.',
+        tier: 'elite',
+      },
     ],
   },
   {
     id: 3,
-    label: 'Energy & Cognition',
-    question: 'How is your afternoon energy and mental clarity on a typical weekday?',
+    label: 'Biometric Data',
+    question: 'What kind of daily data do you already collect?',
     options: [
-      { text: 'Sharp and consistent throughout the day', points: 3 },
-      { text: 'Notable dip after lunch, need caffeine to push through', points: 1 },
-      { text: 'Chronically low, hard to focus for more than 60 minutes', points: 0 },
+      {
+        text: 'None, or just step count from my phone.',
+        tier: 'protocol',
+      },
+      {
+        text: 'A wearable (Apple Watch, Oura, WHOOP) — but I rarely act on the numbers.',
+        tier: 'precision',
+      },
+      {
+        text: 'Continuous data plus context — and I want pattern correlations across all of it.',
+        tier: 'elite',
+      },
     ],
   },
   {
     id: 4,
-    label: 'Training & Recovery',
-    question: 'How do you determine whether to train hard or recover on a given day?',
+    label: 'Lifestyle Complexity',
+    question: 'How complex is your day-to-day?',
     options: [
-      { text: 'I use biometric data (HRV, sleep score) to decide', points: 3 },
-      { text: 'I follow a fixed program regardless of how I feel', points: 1 },
-      { text: 'I train when motivated, rest when I\'m too tired', points: 0 },
+      {
+        text: "Mostly routine. Same city, same schedule. I need to start somewhere.",
+        tier: 'protocol',
+      },
+      {
+        text: 'Variable training load and some travel. I need a plan that adapts.',
+        tier: 'precision',
+      },
+      {
+        text: 'Heavy travel, high-stakes work, multiple time zones. I need real-time adjustments.',
+        tier: 'elite',
+      },
     ],
   },
   {
     id: 5,
-    label: 'Stress & Nervous System',
-    question: 'How often do you feel in a state of sustained stress or low-grade anxiety?',
+    label: 'Commitment',
+    question: 'What level of investment fits you right now?',
     options: [
-      { text: 'Rarely — I have clear strategies to regulate', points: 3 },
-      { text: 'Several times a week, I manage it', points: 1 },
-      { text: 'Almost daily — it feels like the default state', points: 0 },
-    ],
-  },
-  {
-    id: 6,
-    label: 'Nutrition & Timing',
-    question: 'How structured is your nutrition protocol?',
-    options: [
-      { text: 'I eat strategically — timing, macros, and composition are deliberate', points: 3 },
-      { text: 'I eat reasonably well but without a clear structure', points: 1 },
-      { text: 'I eat reactively — convenience and cravings drive most decisions', points: 0 },
-    ],
-  },
-  {
-    id: 7,
-    label: 'Biomarker Tracking',
-    question: 'When did you last test your key biomarkers (hormones, inflammation, metabolic panel)?',
-    options: [
-      { text: 'In the last 6 months, with follow-up action taken', points: 3 },
-      { text: '1–2 years ago, but I haven\'t acted on the results', points: 1 },
-      { text: 'I\'ve never tested, or it\'s been over 2 years', points: 0 },
-    ],
-  },
-  {
-    id: 8,
-    label: 'Longevity Orientation',
-    question: 'How would you describe your current health investment?',
-    options: [
-      { text: 'I\'m proactively building long-term physiological capital', points: 3 },
-      { text: 'I\'m managing symptoms and trying to stay healthy day-to-day', points: 1 },
-      { text: 'I\'m mostly reactive — I only focus on health when something goes wrong', points: 0 },
+      {
+        text: 'Entry point. Prove the system works before I scale up.',
+        tier: 'protocol',
+      },
+      {
+        text: 'Serious — this matters and I want the autonomous version.',
+        tier: 'precision',
+      },
+      {
+        text: 'Premium. I want direct access to the founder and the deepest layer of the system.',
+        tier: 'elite',
+      },
     ],
   },
 ]
 
-type Tier = {
+type TierMeta = {
   badge: string
+  name: string
+  price: string
   headline: string
   body: string
   detail: string
   cta: string
+  href: string
 }
 
-function getTier(score: number): Tier {
-  if (score >= 17) {
-    return {
-      badge: 'LONGEVITY-READY',
-      headline: 'You\'re already operating at the top 10%.',
-      body: 'Your biology is in a strong state of readiness. Your habits, data, and daily decisions are working in your favour. The question now isn\'t how to start — it\'s how to maintain and extend your edge as demands increase.',
-      detail: 'Weekly protocol refinement based on your biometric trends. AI-guided coaching that catches what you miss — before it becomes a problem. The infrastructure to stay optimised through travel, stress, and age.',
-      cta: 'Apply for the Biolune Protocol',
-    }
-  }
-  if (score >= 8) {
-    return {
-      badge: 'BUILDING YOUR BASELINE',
-      headline: 'You\'re doing more than most — but there\'s a gap.',
-      body: 'You have some strong foundations, but there are clear areas where your biology is leaking performance. The good news: gaps at this tier are the most responsive to a structured protocol. Small, targeted interventions here produce outsized results.',
-      detail: 'Start tracking HRV every morning — it will change how you make decisions. Get a full biomarker panel if you haven\'t in the last year. Structure your nutrition around your training load, not the other way around.',
-      cta: 'See how Biolune can close the gap',
-    }
-  }
-  return {
-    badge: 'GROUND ZERO',
-    headline: 'Your biology is running on autopilot.',
-    body: 'That\'s not a judgement — it\'s a starting point. Most high-performers are in exactly this position: performing well on willpower and discipline while their biology quietly accumulates debt. The fact that you took this quiz means you\'re ready to change that.',
-    detail: 'Your highest-leverage move right now is visibility. You need to see what your body is actually doing — not what you think it\'s doing. HRV tracking, a baseline blood panel, and a structured sleep protocol are where every Biolune member starts.',
-    cta: 'Start with a Biolune consultation',
-  }
+const TIER_META: Record<Tier, TierMeta> = {
+  protocol: {
+    badge: 'PROTOCOL — €149/MONTH',
+    name: 'Protocol',
+    price: '€149/month',
+    headline: 'Start with Protocol.',
+    body: "You're at the beginning of a real, structured approach — and that's exactly the right place to be. Protocol gives you a complete daily routine built from your DNA, your training load, and your goals. Run it, see what changes, decide where to go next.",
+    detail: 'Complete AI protocol for 90 days. Lune AI coach (25 messages/day). Raw DNA upload + genetic personalization. Morning, evening, and sleep stacks. IF protocol and meal timing. Apple Health sync + weekly review.',
+    cta: 'Start your Protocol',
+    href: '/apply?tier=protocol',
+  },
+  precision: {
+    badge: 'PRECISION — €299/MONTH · MOST POPULAR',
+    name: 'Precision',
+    price: '€299/month',
+    headline: 'Precision is built for you.',
+    body: "You already collect data but haven't found a system that uses it intelligently. Precision is the autonomous version of Biolune — your protocol adapts in real time based on HRV, sleep, training, and stress. You stay in the driver's seat, but the plan keeps moving with you.",
+    detail: 'Everything in Protocol, plus unlimited Lune with autonomous actions, a six-mode decision engine, pattern intelligence and correlations across your data, travel mode with circadian reset, and proactive alerts and progress reports.',
+    cta: 'Start your Precision protocol',
+    href: '/apply?tier=precision',
+  },
+  elite: {
+    badge: 'ELITE — €549/MONTH · INVITE ONLY',
+    name: 'Elite',
+    price: '€549/month',
+    headline: 'Elite is where you belong.',
+    body: 'You want the deepest layer of the system: precision medicine, real biomarker tracking, and a human in the loop. Elite is invite-only and pairs the autonomous protocol with direct collaboration with Korosh — calls, blood work interpretation, and custom adjustments tailored to your trajectory.',
+    detail: 'Everything in Precision, plus blood work analysis with AI interpretation, biomarker tracking over time (ApoB, HbA1c, hormones), personal coaching with Korosh twice a month, a priority WhatsApp line, and PDF reports with custom protocol adjustments.',
+    cta: 'Request Elite access',
+    href: '/apply?tier=elite',
+  },
+}
+
+function recommendTier(votes: Tier[]): Tier {
+  const counts: Record<Tier, number> = { protocol: 0, precision: 0, elite: 0 }
+  for (const v of votes) counts[v] += 1
+  const max = Math.max(counts.protocol, counts.precision, counts.elite)
+  // Tie breaker: prefer Precision (the "most popular" middle tier),
+  // then Protocol (lower commitment), then Elite (gated upper tier).
+  if (counts.precision === max) return 'precision'
+  if (counts.protocol === max) return 'protocol'
+  return 'elite'
 }
 
 export default function QuizClient() {
   const [step, setStep] = useState<'intro' | 'quiz' | 'capture' | 'result'>('intro')
   const [current, setCurrent] = useState(0)
-  const [answers, setAnswers] = useState<number[]>([])
+  const [answers, setAnswers] = useState<Tier[]>([])
   const [email, setEmail] = useState('')
   const [emailStatus, setEmailStatus] = useState<'idle' | 'loading' | 'done'>('idle')
 
-  const totalScore = answers.reduce((a, b) => a + b, 0)
-  const tier = getTier(totalScore)
+  const recommendedTier = recommendTier(answers)
+  const meta = TIER_META[recommendedTier]
   const progress = step === 'quiz' ? ((current + 1) / questions.length) * 100 : 0
 
-  const selectAnswer = (points: number) => {
-    const newAnswers = [...answers, points]
+  const selectAnswer = (tier: Tier) => {
+    const newAnswers = [...answers, tier]
     setAnswers(newAnswers)
     if (current < questions.length - 1) {
       setCurrent(current + 1)
@@ -149,10 +208,14 @@ export default function QuizClient() {
       await fetch('/api/newsletter', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, source: 'quiz', score: totalScore }),
+        body: JSON.stringify({
+          email,
+          source: 'tier-quiz',
+          tier: recommendTier(answers),
+        }),
       })
     } catch {
-      // Still show results even if email capture fails
+      // Still show the result even if capture fails
     }
     setEmailStatus('done')
     setStep('result')
@@ -327,20 +390,8 @@ export default function QuizClient() {
           border-radius: 4px;
           margin-bottom: 24px;
         }
-        .result-score {
-          font-size: clamp(48px, 8vw, 72px);
-          color: var(--gold);
-          margin-bottom: 8px;
-        }
-        .result-max {
-          font-family: 'Jost', sans-serif;
-          font-size: 14px;
-          color: var(--text-muted);
-          letter-spacing: 1px;
-          margin-bottom: 32px;
-        }
         .quiz-result h2 {
-          font-size: clamp(22px, 3.5vw, 32px);
+          font-size: clamp(24px, 4vw, 38px);
           margin-bottom: 16px;
           max-width: 500px;
           margin-left: auto;
@@ -388,15 +439,15 @@ export default function QuizClient() {
           {/* Intro */}
           {step === 'intro' && (
             <div className="quiz-intro">
-              <p className="label" style={{ marginBottom: 16 }}>90-second diagnostic</p>
-              <h1 className="serif">Most people are optimising the wrong things.</h1>
-              <p>Your biology has a readiness score — and right now, you don't know what it is. This quiz analyses 8 key longevity markers and tells you exactly where you stand.</p>
+              <p className="label" style={{ marginBottom: 16 }}>2-minute recommender</p>
+              <h1 className="serif">Find your tier.</h1>
+              <p>Five questions about how you live, train, and track your biology — and we&rsquo;ll tell you which Biolune protocol fits you right now. No guessing, no upsell.</p>
               <button
                 className="btn btn-gold"
                 style={{ padding: '16px 40px', fontSize: '12px' }}
                 onClick={() => setStep('quiz')}
               >
-                Find my score
+                Find my tier
               </button>
             </div>
           )}
@@ -417,7 +468,7 @@ export default function QuizClient() {
                   <button
                     key={i}
                     className="quiz-option"
-                    onClick={() => selectAnswer(opt.points)}
+                    onClick={() => selectAnswer(opt.tier)}
                   >
                     {opt.text}
                   </button>
@@ -429,9 +480,9 @@ export default function QuizClient() {
           {/* Email capture */}
           {step === 'capture' && (
             <div className="quiz-capture">
-              <p className="label" style={{ marginBottom: 16 }}>Your score is ready</p>
-              <h2 className="serif">Your Longevity Score is ready.</h2>
-              <p>Enter your email to see your score, your tier breakdown, and a personalised action recommendation.</p>
+              <p className="label" style={{ marginBottom: 16 }}>Your tier is ready</p>
+              <h2 className="serif">Your tier is ready.</h2>
+              <p>Enter your email to see your recommendation, the full breakdown, and a deep link straight into the application.</p>
               <form className="capture-form" onSubmit={submitEmail}>
                 <input
                   type="email"
@@ -446,12 +497,12 @@ export default function QuizClient() {
                   style={{ padding: '14px 28px', fontSize: '12px', whiteSpace: 'nowrap' }}
                   disabled={emailStatus === 'loading'}
                 >
-                  {emailStatus === 'loading' ? 'Loading...' : 'Show my score'}
+                  {emailStatus === 'loading' ? 'Loading...' : 'Show my tier'}
                 </button>
               </form>
               <p className="capture-micro">No spam. No hard sell. Unsubscribe any time.</p>
               <button className="skip-link" onClick={() => setStep('result')}>
-                Skip — show my score without email
+                Skip — show my tier without email
               </button>
             </div>
           )}
@@ -459,21 +510,19 @@ export default function QuizClient() {
           {/* Result */}
           {step === 'result' && (
             <div className="quiz-result">
-              <div className="result-badge">{tier.badge}</div>
-              <h1 className="serif result-score">{totalScore}</h1>
-              <p className="result-max">out of 24</p>
-              <h2 className="serif">{tier.headline}</h2>
-              <p className="result-body">{tier.body}</p>
+              <div className="result-badge">{meta.badge}</div>
+              <h2 className="serif">{meta.headline}</h2>
+              <p className="result-body">{meta.body}</p>
               <div className="result-detail">
-                <div className="result-detail-label">What to focus on</div>
-                {tier.detail}
+                <div className="result-detail-label">What&rsquo;s included</div>
+                {meta.detail}
               </div>
               <Link
-                href="/apply"
+                href={meta.href}
                 className="btn btn-gold"
                 style={{ padding: '16px 40px', fontSize: '12px' }}
               >
-                {tier.cta}
+                {meta.cta}
               </Link>
             </div>
           )}
