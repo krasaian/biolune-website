@@ -64,7 +64,13 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: spam.error }, { status: spam.status })
     }
 
-    const { name, email, plan, location, objective, acceptedTos } = body as Record<string, string | boolean | undefined>
+    // W-Wave-2: the apply form is now a 6-step ritual. Two new fields
+    // come in alongside the legacy 5: `vision` (the reflective 12-months
+    // answer) and `tried` (the loss-frame answer). Both are forwarded
+    // upstream as part of `body`. biolune-app will surface them in the
+    // admin queue once its own W-Wave-2 cutover lands; until then they
+    // still ride along in the row payload so nothing is lost.
+    const { name, email, plan, location, objective, vision, tried, acceptedTos } = body as Record<string, string | boolean | undefined>
     if (!name || !email) {
       return NextResponse.json({ error: 'Name and email are required.' }, { status: 400 })
     }
@@ -88,6 +94,17 @@ export async function POST(req: Request) {
     }
     if (typeof objective !== 'string' || !objective.trim()) {
       return NextResponse.json({ error: 'Please pick a primary objective.' }, { status: 400 })
+    }
+    // W-Wave-2 ritual validation: keep these soft. The client enforces
+    // minimum lengths (vision ≥20 chars, tried ≥10 chars) so the ritual
+    // can't be fast-clicked. The proxy accepts anything non-empty so
+    // older clients without the new fields still work if we ever need
+    // to revert the ritual in a hurry.
+    if (vision !== undefined && typeof vision !== 'string') {
+      return NextResponse.json({ error: 'Invalid vision field.' }, { status: 400 })
+    }
+    if (tried !== undefined && typeof tried !== 'string') {
+      return NextResponse.json({ error: 'Invalid tried field.' }, { status: 400 })
     }
 
     const upstreamUrl = process.env.APPLY_ENDPOINT_URL || DEFAULT_UPSTREAM
