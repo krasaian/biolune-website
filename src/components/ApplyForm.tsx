@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import Link from 'next/link'
+import { trackEvent } from '@/lib/analytics'
 
 export default function ApplyForm() {
   const [form, setForm] = useState({ name: '', email: '', location: '', objective: '', plan: '' })
@@ -29,6 +30,10 @@ export default function ApplyForm() {
         body: JSON.stringify({ ...form, acceptedTos }),
       })
       if (res.ok) {
+        // W33: GA4 conversion event for successful applications. The plan
+        // and location dimensions let us segment which protocol tier and
+        // which geography are converting best.
+        trackEvent('apply_submitted', { plan: form.plan || 'unspecified', location: form.location || 'unspecified' })
         setStatus('success')
       } else if (res.status === 429) {
         // W48: rate-limited by the proxy — surface the human-readable cooldown.

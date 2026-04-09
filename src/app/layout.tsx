@@ -34,6 +34,14 @@ export function generateMetadata(): Metadata {
       title: 'Biolune — Precision Longevity Protocol',
       description: 'Precision longevity protocol for high-performers. Built on your biology.',
     },
+    // W34: explicit favicon set. Falls back to /favicon.ico in /public.
+    icons: {
+      icon: [
+        { url: '/favicon.ico', sizes: 'any' },
+        { url: '/icon.svg', type: 'image/svg+xml' },
+      ],
+      apple: '/apple-touch-icon.png',
+    },
     other: {
       ...Sentry.getTraceData(),
     },
@@ -55,11 +63,31 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               logo: 'https://www.biolune.eu/og-image.png',
               description: 'Biolune builds a precision longevity protocol from your HRV, hormones, and biomarkers — adapted weekly. Designed for high-performers.',
               email: 'hello@biolune.eu',
-              sameAs: [],
+              // W30: filled-out organisation + founder schema. Search engines
+              // can now show authorship cards, social profile links, and the
+              // founder's credentials in rich results.
+              sameAs: [
+                'https://x.com/biolune',
+                'https://www.instagram.com/biolune',
+                'https://www.linkedin.com/company/biolune',
+              ],
               founder: {
                 '@type': 'Person',
-                name: 'Korosh',
+                name: 'Korosh Rasaian',
                 jobTitle: 'Founder',
+                image: 'https://www.biolune.eu/founder.jpg',
+                url: 'https://www.biolune.eu/about',
+                sameAs: [
+                  'https://www.linkedin.com/in/koroshrasaian',
+                  'https://x.com/koroshrasaian',
+                ],
+                knowsAbout: [
+                  'Heart Rate Variability',
+                  'Longevity protocols',
+                  'Hormonal optimisation',
+                  'Precision nutrition',
+                  'Sleep architecture',
+                ],
               },
               offers: {
                 '@type': 'AggregateOffer',
