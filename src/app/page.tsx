@@ -287,26 +287,26 @@ export default async function Home() {
         <div className="container">
           <div className="hero-content">
             <p className="label" style={{ marginBottom: 20 }}>Precision Longevity</p>
-            <h1 className="serif">The AI longevity protocol built for high-performers.</h1>
-            <p>Generic health plans weren't designed for your life. Biolune builds a precision protocol from your HRV, hormones, and biomarkers — adapted weekly as your biology changes.</p>
+            <h1 className="serif">
+              The protocol I built because the one I needed didn&rsquo;t exist.
+            </h1>
+            <p>
+              I&rsquo;m Korosh, founder of Biolune. One daily routine shaped by your HRV,
+              hormones, and biomarkers &mdash; adapted weekly as your biology changes. Built
+              for the people generic health plans were never written for.
+            </p>
             <div className="hero-ctas">
-              <Link href="/apply" className="btn btn-gold">See if you qualify →</Link>
-              <Link href="/about" className="hero-text-link">See how it works</Link>
+              <Link href="/apply" className="btn btn-gold">Start your protocol →</Link>
+              <Link href="/about" className="hero-text-link">Read my story</Link>
             </div>
-            <div className="hero-stats">
-              <div className="stat-item">
-                <div className="stat-num">+31%</div>
-                <div className="stat-label">HRV improvement</div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-num">−12yr</div>
-                <div className="stat-label">Biological age shift</div>
-              </div>
-              <div className="stat-item">
-                <div className="stat-num">94%</div>
-                <div className="stat-label">Member retention</div>
-              </div>
-            </div>
+            {/*
+              Hero stats (+31% HRV / -12yr biological age / 94% retention)
+              removed pending verifiable source data per
+              BIOLUNE_KOROSH_BLOCKERS.md Block 4. The founder-first hero
+              archetype carries credibility through the founder voice; we
+              re-add real cohort numbers once the first 5 testers complete
+              their first cycle and we have actual delta data to cite.
+            */}
           </div>
         </div>
       </section>
@@ -399,7 +399,7 @@ export default async function Home() {
                 <li>IF protocol + Apple Health sync</li>
               </ul>
               <div className="price-cta">
-                <Link href="/apply" className="btn btn-outline" style={{ width: '100%' }}>Start Protocol</Link>
+                <Link href="/apply" className="btn btn-outline" style={{ width: '100%' }}>Start your protocol</Link>
               </div>
             </div>
             {/* Precision */}
@@ -416,7 +416,7 @@ export default async function Home() {
                 <li>Travel mode + proactive alerts</li>
               </ul>
               <div className="price-cta">
-                <Link href="/apply" className="btn btn-gold" style={{ width: '100%' }}>Apply Now</Link>
+                <Link href="/apply" className="btn btn-gold" style={{ width: '100%' }}>Start your protocol</Link>
               </div>
             </div>
             {/* Elite */}
@@ -460,7 +460,7 @@ export default async function Home() {
         <div className="container">
           <p className="label" style={{ marginBottom: 16 }}>Ready to begin?</p>
           <h2 className="serif" style={{ fontSize: 'clamp(28px, 4vw, 48px)', marginBottom: 24 }}>Your biology is unique.<br/>Your protocol should be too.</h2>
-          <Link href="/apply" className="btn btn-dark">Apply for access</Link>
+          <Link href="/apply" className="btn btn-dark">Start your protocol</Link>
         </div>
       </section>
     </>

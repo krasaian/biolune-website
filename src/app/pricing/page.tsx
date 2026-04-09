@@ -168,7 +168,7 @@ export default async function Pricing() {
                 ))}
               </ul>
               <div className="plan-cta">
-                <Link href="/apply" className="btn btn-outline" style={{ width: '100%' }}>Apply Now</Link>
+                <Link href="/apply" className="btn btn-outline" style={{ width: '100%' }}>Start your protocol</Link>
               </div>
             </div>
 
@@ -186,7 +186,7 @@ export default async function Pricing() {
                 ))}
               </ul>
               <div className="plan-cta">
-                <Link href="/apply" className="btn btn-gold" style={{ width: '100%' }}>Apply Now</Link>
+                <Link href="/apply" className="btn btn-gold" style={{ width: '100%' }}>Start your protocol</Link>
               </div>
             </div>
 

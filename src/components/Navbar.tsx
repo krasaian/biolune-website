@@ -198,9 +198,9 @@ export default function Navbar() {
               href="/apply"
               className="btn btn-gold"
               style={{ fontSize: '11px', letterSpacing: '2px', padding: '11px 24px' }}
-              onClick={() => trackCtaClick('Apply for access', 'navbar')}
+              onClick={() => trackCtaClick('Start your protocol', 'navbar')}
             >
-              Apply for access
+              Start your protocol
             </Link>
             <button className={`hamburger${open ? ' open' : ''}`} onClick={toggleMenu} aria-label="Toggle menu">
               <span /><span /><span />
@@ -225,8 +225,8 @@ export default function Navbar() {
         >
           Login
         </a>
-        <Link href="/apply" className="mob-cta" onClick={() => trackCtaClick('Apply for access', 'mobile-menu')}>
-          Apply for access
+        <Link href="/apply" className="mob-cta" onClick={() => trackCtaClick('Start your protocol', 'mobile-menu')}>
+          Start your protocol
         </Link>
       </div>
     </>
