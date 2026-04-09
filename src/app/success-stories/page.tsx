@@ -2,8 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 
 export const metadata: Metadata = {
-  title: 'Success Stories — Biolune',
-  description: 'Real results from Biolune members. Measurable improvements in HRV, biological age, sleep, and recovery — backed by biomarker data.',
+  title: 'Founding cohort — Biolune',
+  description: 'Biolune is in its founding cohort. Verified member outcomes will be published here as our first beta members complete their protocols.',
 }
 
 // W6: empty shell. The 6 hardcoded testimonials this used to render were
@@ -116,9 +116,9 @@ export default function SuccessStories() {
 
       <section className="stories-hero">
         <div className="container">
-          <p className="label">Client Results</p>
-          <h1 className="serif">Real people. Measurable results.</h1>
-          <p>Every story here is backed by biomarker data — not marketing claims.</p>
+          <p className="label">Founding cohort</p>
+          <h1 className="serif">We publish results, not promises.</h1>
+          <p>Biolune is in its founding cohort. Verified member outcomes land here as they complete their protocols.</p>
         </div>
       </section>
 
