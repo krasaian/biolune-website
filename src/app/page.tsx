@@ -2,6 +2,11 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Faq from '@/components/Faq'
 import AppShowcase from '@/components/AppShowcase'
+import { fetchPricing, tierById } from '@/lib/pricing'
+
+// Revalidate every 5 minutes so pricing changes propagate without a manual
+// rebuild — same TTL the public pricing API uses on its CDN cache.
+export const revalidate = 300
 
 export const metadata: Metadata = {
   title: 'Biolune — Precision Longevity Protocol',
@@ -41,7 +46,11 @@ const whyItems = [
   { title: 'One integrated system', body: 'Sleep tracker, meal plan, gym program — all disconnected. Biolune integrates HRV, hormones, nutrition, and recovery into a single protocol that talks to itself.' },
 ]
 
-export default function Home() {
+export default async function Home() {
+  const pricing = await fetchPricing()
+  const tProtocol = tierById(pricing, 'protocol')
+  const tPrecision = tierById(pricing, 'precision')
+  const tElite = tierById(pricing, 'elite')
   return (
     <>
       <style>{`
@@ -368,9 +377,9 @@ export default function Home() {
           <div className="pricing-grid">
             {/* Protocol */}
             <div className="price-card">
-              <div className="price-tier">Protocol</div>
-              <div className="price-amount">€149</div>
-              <div className="price-period price-muted">/month</div>
+              <div className="price-tier">{tProtocol.name}</div>
+              <div className="price-amount">€{tProtocol.priceEUR}</div>
+              <div className="price-period price-muted">/{pricing.interval}</div>
               <ul className="price-features">
                 <li>Complete AI protocol (90 days)</li>
                 <li>Lune AI coach (25 msgs/day)</li>
@@ -385,9 +394,9 @@ export default function Home() {
             {/* Precision */}
             <div className="price-card featured">
               <div className="price-badge">Most popular</div>
-              <div className="price-tier">Precision</div>
-              <div className="price-amount">€299</div>
-              <div className="price-period">/month</div>
+              <div className="price-tier">{tPrecision.name}</div>
+              <div className="price-amount">€{tPrecision.priceEUR}</div>
+              <div className="price-period">/{pricing.interval}</div>
               <ul className="price-features">
                 <li>Everything in Protocol</li>
                 <li>Unlimited Lune with autonomous actions</li>
@@ -401,9 +410,9 @@ export default function Home() {
             </div>
             {/* Elite */}
             <div className="price-card">
-              <div className="price-tier" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>Elite <span style={{ fontSize: '9px', letterSpacing: '1.5px', opacity: 0.6 }}>INVITE ONLY</span></div>
-              <div className="price-amount">€549</div>
-              <div className="price-period price-muted">/month</div>
+              <div className="price-tier" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>{tElite.name} <span style={{ fontSize: '9px', letterSpacing: '1.5px', opacity: 0.6 }}>INVITE ONLY</span></div>
+              <div className="price-amount">€{tElite.priceEUR}</div>
+              <div className="price-period price-muted">/{pricing.interval}</div>
               <ul className="price-features">
                 <li>Everything in Precision</li>
                 <li>Blood work analysis + biomarker tracking</li>
