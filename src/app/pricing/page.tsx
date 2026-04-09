@@ -17,28 +17,28 @@ export const revalidate = 300
 // tier the API returns.
 const FEATURES: Record<TierId, string[]> = {
   protocol: [
-    'Complete AI protocol (90 days)',
-    'Lune AI coach (25 msgs/day)',
-    'Raw DNA upload + genetic personalization',
-    'Morning + Evening + Sleep supplement stacks',
-    'IF protocol + meal timing',
-    'Apple Health sync + weekly review',
+    'Full 90-day protocol built from your biology',
+    'Lune in your pocket (25 messages a day)',
+    'Raw DNA upload read into your plan',
+    'Morning, evening, and sleep supplement stacks',
+    'Fasting window + meal timing that fits your week',
+    'Apple Health sync + weekly Sunday review',
   ],
   precision: [
     'Everything in Protocol',
-    'Unlimited Lune with autonomous actions',
-    'Decision engine (6 adaptive modes)',
-    'Pattern intelligence + correlations',
-    'Travel mode with circadian reset',
-    'Proactive alerts + progress reports',
+    'Lune unlimited, with room to act on your day',
+    'Six adaptive modes for how your week actually runs',
+    'Pattern reads across sleep, HRV, training, and stress',
+    'Travel Mode with circadian reset for your next flight',
+    'Proactive alerts and weekly progress reports',
   ],
   elite: [
     'Everything in Precision',
-    'Blood work analysis + AI interpretation',
-    'Biomarker tracking over time (ApoB, HbA1c)',
-    'Personal coaching with Korosh (2×/month)',
-    'Priority WhatsApp line',
-    'PDF reports + custom protocol adjustments',
+    'Full bloodwork read, interpreted in plain language',
+    'Long-term biomarker tracking (ApoB, HbA1c, and more)',
+    'Two private calls a month with Korosh',
+    'Priority WhatsApp line straight to me',
+    'PDF reports and protocol adjustments on demand',
   ],
 }
 
@@ -46,8 +46,8 @@ const faqs = [
   { q: 'How do I prepare for my initial biomarker test?', a: 'Fast for 8–12 hours before your blood draw. Stay well-hydrated with water, avoid intense exercise the day before, and get your normal amount of sleep.' },
   { q: 'Is my personal health data kept private and secure?', a: 'Yes. All data is encrypted in transit and at rest, stored under GDPR-compliant protocols, and never sold or shared with third parties.' },
   { q: 'How long does it take to receive my health results?', a: 'Your initial protocol is ready within 48 hours of completing your intake. Biomarker results from lab partners typically arrive within 5–7 business days.' },
-  { q: 'Can I share my reports with my primary care physician?', a: 'Yes. All reports are exportable as PDFs. We encourage sharing with your physician — Biolune is designed to complement, not replace, your existing healthcare team.' },
-  { q: 'Do I need a wearable device to use the platform?', a: 'Not required. Manual daily logging takes under 60 seconds. A wearable gives the AI richer data, but many members start without one.' },
+  { q: 'Can I share my reports with my primary care physician?', a: 'Yes. All reports export to PDF. Share them with your doctor. Biolune is built to sit next to your healthcare team, not replace it.' },
+  { q: 'Do I need a wearable device to use the platform?', a: 'Not required. Daily logging takes under 60 seconds by hand. A wearable gives Lune richer data, but plenty of members start without one.' },
   { q: 'How often should I re-test my biological markers?', a: 'We recommend a full panel every 90 days for the first year, then bi-annually once your protocol stabilises.' },
 ]
 

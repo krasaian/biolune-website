@@ -11,12 +11,12 @@ const items: CarouselItem[] = [
   {
     label: 'Biological Data',
     title: 'Biological Data',
-    description: 'We analyze your unique biomarkers to understand exactly what your body needs. HRV, hormones, sleep patterns — translated into a protocol built for you.',
+    description: 'Lune reads your HRV, hormones, and sleep patterns and turns them into a protocol built for your actual biology. Not a generic template with your name on it.',
   },
   {
     label: 'Smart Longevity',
     title: 'Smart Longevity',
-    description: 'Custom frameworks designed to help you live better and stay active longer. Not reactive medicine — proactive precision that keeps you ahead of decline.',
+    description: 'A system built to help you live better and stay active longer. Not reactive medicine. Precision that keeps you ahead of decline.',
   },
   {
     label: 'Real-Time Tracking',

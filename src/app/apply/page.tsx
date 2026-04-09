@@ -4,7 +4,7 @@ import ApplyForm from '@/components/ApplyForm'
 
 export const metadata: Metadata = {
   title: 'Start Your Protocol — Biolune',
-  description: 'Apply for your precision longevity protocol. Built on your biology — HRV, hormones, and biomarkers — adapted weekly by AI.',
+  description: 'Apply for your precision longevity protocol. Built from your HRV, hormones, and biomarkers. Rebuilt every Sunday from your data.',
 }
 
 export default function Apply() {

@@ -529,7 +529,7 @@ export default async function Home() {
         <div className="container">
           <div className="section-header">
             <p className="label">HOW IT WORKS</p>
-            <h2 className="serif">From intake to optimised in 48 hours.</h2>
+            <h2 className="serif">From intake to your first protocol in 48 hours.</h2>
           </div>
           <div className="steps-grid">
             {steps.map(s => (
@@ -553,9 +553,9 @@ export default async function Home() {
             <div>
               <p className="label">Why us?</p>
               <h2 className="serif" style={{ marginTop: 12, fontSize: 'clamp(28px, 4vw, 44px)' }}>Not another health app. A system built on your biology.</h2>
-              <p style={{ marginTop: 20, color: 'var(--text-muted)', lineHeight: 1.7 }}>Most people follow generic advice and wonder why they're still exhausted. Biolune builds a living protocol from your actual biomarkers — and updates it every week as your body changes.</p>
+              <p style={{ marginTop: 20, color: 'var(--text-muted)', lineHeight: 1.7 }}>Most people follow generic advice and wonder why they're still tired. Biolune builds a living protocol from your actual biomarkers. Then it updates every week as your body changes.</p>
               <div className="divider" style={{ marginTop: 28 }} />
-              <p style={{ fontSize: 14, color: 'var(--text-muted)', fontStyle: 'italic' }}>Our mission: while others react to symptoms, Biolune optimises proactively.</p>
+              <p style={{ fontSize: 14, color: 'var(--text-muted)', fontStyle: 'italic' }}>Most programs react to symptoms. This one moves before them.</p>
             </div>
             <div className="why-items">
               {whyItems.map(w => (

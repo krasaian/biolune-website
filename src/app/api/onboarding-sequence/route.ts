@@ -163,11 +163,11 @@ function day30Html(firstName: string) {
       </p>
 
       <p style="line-height: 1.8; color: #3a3935; margin-bottom: 20px; font-size: 15px;">
-        The 30-day HRV baseline you've built is now the foundation that everything is measured against. Every future decision &mdash; every recommendation, every mode assignment, every protocol adjustment &mdash; is calibrated against this baseline. It's your personal normal.
+        The 30-day HRV baseline you've built is now the floor everything is measured against. Every future decision. Every recommendation. Every mode assignment. Every protocol adjustment. All of it calibrated against this baseline. Your personal normal.
       </p>
 
       <p style="line-height: 1.8; color: #3a3935; margin-bottom: 20px; font-size: 15px;">
-        Month two brings protocol refinement. Lune now has 30 days of signal to work with. Where are the highest-impact intervention points for your specific biology? Which parts of the stack are creating the most leverage? Where are diminishing returns? These questions are answerable now.
+        Month two is where the protocol sharpens. Lune now has 30 days of signal to read. Which interventions are actually moving your body? Which parts of the stack are pulling the most weight? Where are the diminishing returns? These questions can be answered now.
       </p>
 
       <p style="line-height: 1.8; color: #3a3935; margin-bottom: 20px; font-size: 15px;">
@@ -175,7 +175,7 @@ function day30Html(firstName: string) {
       </p>
 
       <p style="line-height: 1.8; color: #3a3935; margin-bottom: 28px; font-size: 15px;">
-        You're no longer in the calibration phase. You're in the optimization phase.
+        You're no longer in the calibration phase. You're in the compounding phase.
       </p>
 
       <div style="text-align: center; margin-bottom: 32px;">

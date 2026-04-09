@@ -14,7 +14,7 @@ const features = [
       greeting: 'Good morning, Korosh.',
       mode: 'TRAIN HARD',
       modeColor: '#27AE60',
-      message: 'Your HRV is 14% above baseline and sleep efficiency hit 93%. Today is a peak performance window — your protocol is set for full intensity training with a post-workout cold plunge at 16:00.',
+      message: 'Your HRV is 14% above baseline. Sleep efficiency hit 93%. Your body is ready to train hard today. Full intensity session, then a cold plunge at 16:00.',
       metrics: [
         { label: 'HRV', value: '68', change: '+14%', positive: true },
         { label: 'Sleep', value: '7.8h', change: '93% eff.', positive: true },
@@ -47,14 +47,14 @@ const features = [
     id: 'adaptation',
     label: 'WEEKLY ADAPTATION',
     title: 'Your protocol evolves every 7 days.',
-    description: 'At the end of each week, Lune reviews your biometric trends, supplement compliance, sleep architecture, and training load. The next week\'s protocol is recalibrated — not just repeated. That\'s the difference between a plan and a system.',
+    description: 'Every Sunday, Lune reviews your biometric trends, supplement compliance, sleep architecture, and training load. Next week\'s protocol gets rebuilt from what actually happened this week. Not repeated. That\'s the difference between a plan and a system.',
     card: {
       type: 'adaptation' as const,
       week: 'Week 6 → Week 7',
       changes: [
         { action: 'Increased', item: 'Magnesium dose', detail: '300mg → 400mg', reason: 'Sleep latency still >20min' },
         { action: 'Added', item: 'Cold plunge protocol', detail: '2min @ 12°C', reason: 'HRV plateau detected' },
-        { action: 'Shifted', item: 'Training window', detail: '7:00 → 6:00', reason: 'Cortisol peak optimisation' },
+        { action: 'Shifted', item: 'Training window', detail: '7:00 → 6:00', reason: 'Catches the cortisol peak' },
         { action: 'Maintained', item: 'Fasting window', detail: '16:8', reason: 'Metabolic markers stable' },
       ],
       trend: { hrv: '+31%', sleep: '+1.2h', bio_age: '-4yr' },
@@ -64,7 +64,7 @@ const features = [
     id: 'travel',
     label: 'TRAVEL PROTOCOL',
     title: 'Jetlag recovery in hours, not days.',
-    description: 'Flying across time zones disrupts circadian rhythm, cortisol, melatonin, and gut microbiome timing. Biolune builds a pre-flight, in-flight, and arrival protocol specific to your destination — light exposure windows, meal timing shifts, and supplement adjustments.',
+    description: 'Flying across time zones breaks your circadian rhythm, cortisol, melatonin, and gut timing. Lune builds a pre-flight, in-flight, and arrival protocol for your exact destination. Light exposure windows, meal timing shifts, supplement adjustments. You land ready.',
     card: {
       type: 'travel' as const,
       route: 'Amsterdam → Tokyo',
