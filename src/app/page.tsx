@@ -24,14 +24,15 @@ const faqs = [
   { q: 'Is my health data private and secure?', a: "Your data is encrypted, never sold, and only accessible by you. We follow GDPR-compliant data handling. Your biological data is yours — we use it only to improve your protocol." },
 ]
 
-const testimonials = [
-  { name: 'Marcus T.', role: 'Crypto trader, London', stat: 'HRV: 38 → 61 in 12 weeks', quote: "I trade 14-hour sessions and used to crash every afternoon. My HRV went from 38 to 61 in 12 weeks. I haven't touched an energy drink since month two. This is not a supplement stack — it's a system." },
-  { name: 'Sophia R.', role: 'Startup founder', stat: 'Deep sleep +38% · cortisol normalised', quote: "I was running a Series A on four hours of sleep and completely ignoring my hormones. After three months on Precision, my mental clarity is back. I make better decisions and I can actually feel the difference in board meetings." },
-  { name: 'Captain Nina V.', role: 'Commercial pilot', stat: 'Jetlag recovery: 3 days → 8 hours', quote: "Long-haul flying wrecked my sleep for years. The travel protocol Biolune built for me cut my jetlag recovery from three days to under eight hours. My crew thinks I'm on something. I just tell them it's science." },
-  { name: 'James O.', role: 'Corporate executive, Amsterdam', stat: 'Biological age dropped 9 years', quote: "I've tried every executive wellness programme. Biolune is different — it actually measures what changes. My biological age marker dropped nine years in six months. That's not marketing, that's in my bloodwork." },
-  { name: 'Daniel F.', role: 'Former professional athlete', stat: 'Recovery score 91% avg · zero injuries', quote: "Coming out of competitive sport, I needed a recovery framework that would last decades, not just seasons. Biolune gave me that. My average recovery score sits at 91% and I haven't had an injury in eight months." },
-  { name: 'Dr. Amir K.', role: 'Surgeon', stat: 'Focus sustained through 12-hour shifts', quote: "Operating theatre performance is non-negotiable. Biolune built me a stress management protocol around my shift pattern. Cortisol under control, focus sharper, and I stopped dreading the night shifts." },
-]
+// W7: testimonials are now an empty array. The previous 6 hardcoded
+// quotes were unverified pre-beta copy. The home page renders a
+// "beta cohort in progress" message until real verified outcomes
+// land here. The schema is preserved so re-populating is a simple
+// data swap — eventually this should move to a JSON file or CMS
+// (BIOLUNE_BACKLOG W7) but for the launch the empty state is the
+// honest move.
+type Testimonial = { name: string; role: string; stat: string; quote: string }
+const testimonials: Testimonial[] = []
 
 const steps = [
   { n: '01', title: 'Apply & get assessed', body: "Fill in your intake form. We assess your health goals, lifestyle, travel schedule, and stress profile to build your starting baseline." },
@@ -348,24 +349,26 @@ export default async function Home() {
       </section>
 
       {/* ── TESTIMONIALS ── */}
-      <section className="section" style={{ background: 'var(--bg-alt)' }}>
-        <div className="container">
-          <div className="section-header">
-            <p className="label">CLIENT RESULTS</p>
-            <h2 className="serif">Real people. Measurable results.</h2>
+      {testimonials.length > 0 && (
+        <section className="section" style={{ background: 'var(--bg-alt)' }}>
+          <div className="container">
+            <div className="section-header">
+              <p className="label">CLIENT RESULTS</p>
+              <h2 className="serif">Real people. Measurable results.</h2>
+            </div>
+            <div className="testimonials-grid">
+              {testimonials.map(t => (
+                <div key={t.name} className="testimonial-card">
+                  <blockquote>&ldquo;{t.quote}&rdquo;</blockquote>
+                  <div className="testimonial-name">{t.name}</div>
+                  <div className="testimonial-role">{t.role}</div>
+                  <span className="testimonial-stat">{t.stat}</span>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="testimonials-grid">
-            {testimonials.map(t => (
-              <div key={t.name} className="testimonial-card">
-                <blockquote>"{t.quote}"</blockquote>
-                <div className="testimonial-name">{t.name}</div>
-                <div className="testimonial-role">{t.role}</div>
-                <span className="testimonial-stat">{t.stat}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* ── PRICING PREVIEW ── */}
       <section className="section">

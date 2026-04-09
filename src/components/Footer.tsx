@@ -126,7 +126,7 @@ export default function Footer() {
             <div>
               <p style={{ fontFamily: 'Jost,sans-serif', fontSize: 11, letterSpacing: 3, textTransform: 'uppercase', color: 'var(--gold)', marginBottom: 16 }}>Resources</p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-                <Link href="/news" className="footer-link">News</Link>
+                <Link href="/blog" className="footer-link">Blog</Link>
                 <Link href="/success-stories" className="footer-link">Success Stories</Link>
                 <Link href="/pricing#faq" className="footer-link">FAQs</Link>
               </div>
