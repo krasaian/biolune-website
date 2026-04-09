@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { runSpamChecks } from '@/lib/anti-spam'
 
 export const dynamic = 'force-dynamic'
 
@@ -53,6 +54,14 @@ export async function POST(req: Request) {
     const body = await req.json().catch(() => null)
     if (!body || typeof body !== 'object') {
       return NextResponse.json({ error: 'Invalid body' }, { status: 400 })
+    }
+
+    // Spam protection at the edge: honeypot + per-IP rate limit on this
+    // proxy means we don't even forward bot traffic to the upstream app.
+    const spam = runSpamChecks(req, body as Record<string, unknown>, { endpoint: 'apply' })
+    if (!spam.ok) {
+      if (spam.error === 'silent-drop') return NextResponse.json({ success: true })
+      return NextResponse.json({ error: spam.error }, { status: spam.status })
     }
 
     const { name, email, acceptedTos } = body as Record<string, string | boolean | undefined>
