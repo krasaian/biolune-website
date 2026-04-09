@@ -98,7 +98,13 @@ export async function POST(req: Request) {
     }
 
     const firstName = name.split(' ')[0]
-    const appUrl = process.env.BIOLUNE_APP_URL || 'https://biolune-app.vercel.app'
+    // W20: no hardcoded staging fallback. We'd rather fail loudly in dev
+    // than ship a welcome email pointing testers at the old preview URL.
+    const appUrl = process.env.BIOLUNE_APP_URL
+    if (!appUrl) {
+      console.error('BIOLUNE_APP_URL is not configured — refusing to send onboarding email with a fallback URL.')
+      return NextResponse.json({ error: 'Server misconfigured.' }, { status: 500 })
+    }
 
     const { data, error } = await resend.emails.send({
       from: 'Korosh, Founder <hello@biolune.eu>',

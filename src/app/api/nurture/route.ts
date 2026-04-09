@@ -124,7 +124,14 @@ export async function POST(req: Request) {
     }
 
     if (day === 3) {
-      const url = bookingUrl || 'https://calendly.com/korosh-biolune/30min'
+      // W21: no hardcoded Calendly fallback. The booking URL is configured
+      // per-environment via the request body or BIOLUNE_BOOKING_URL env. We
+      // refuse to send a nurture email pointing at the wrong calendar.
+      const url = bookingUrl || process.env.BIOLUNE_BOOKING_URL
+      if (!url) {
+        console.error('BIOLUNE_BOOKING_URL is not configured and no bookingUrl in body — refusing to send nurture day-3 email.')
+        return NextResponse.json({ error: 'Server misconfigured: booking URL missing.' }, { status: 500 })
+      }
       const { data, error } = await resend.emails.send({
         from: 'Korosh, Founder <hello@biolune.eu>',
         to: email,
