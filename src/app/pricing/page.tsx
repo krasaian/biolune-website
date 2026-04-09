@@ -168,7 +168,7 @@ export default async function Pricing() {
                 ))}
               </ul>
               <div className="plan-cta">
-                <Link href="/apply" className="btn btn-outline" style={{ width: '100%' }}>Start your protocol</Link>
+                <Link href="/apply?tier=protocol" className="btn btn-outline" style={{ width: '100%' }}>Start your protocol</Link>
               </div>
             </div>
 
@@ -186,7 +186,7 @@ export default async function Pricing() {
                 ))}
               </ul>
               <div className="plan-cta">
-                <Link href="/apply" className="btn btn-gold" style={{ width: '100%' }}>Start your protocol</Link>
+                <Link href="/apply?tier=precision" className="btn btn-gold" style={{ width: '100%' }}>Start your protocol</Link>
               </div>
             </div>
 
@@ -204,7 +204,7 @@ export default async function Pricing() {
                 ))}
               </ul>
               <div className="plan-cta">
-                <Link href="/apply" className="btn btn-outline" style={{ width: '100%' }}>Request Access</Link>
+                <Link href="/apply?tier=elite" className="btn btn-outline" style={{ width: '100%' }}>Start your protocol</Link>
               </div>
             </div>
           </div>
