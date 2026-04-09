@@ -6,11 +6,15 @@ import { trackEvent } from '@/lib/analytics'
 
 // Map ?tier=protocol|precision|elite query param (set by the
 // /quiz "Find your tier" recommender) to the matching <option>
-// label in the plan dropdown so it preselects on landing.
+// value in the plan dropdown so it preselects on landing.
+// Values must exactly match the <option> values below — the form
+// uses bare tier names (no "— €X/month" suffix) so the price can
+// stay authoritative in the central pricing API without forcing
+// a ripple edit every time tiers move.
 const TIER_TO_PLAN: Record<string, string> = {
-  protocol: 'Protocol — €149/month',
-  precision: 'Precision — €299/month',
-  elite: 'Elite — €549/month',
+  protocol: 'Protocol',
+  precision: 'Precision',
+  elite: 'Elite',
 }
 
 export default function ApplyForm() {
@@ -195,7 +199,7 @@ export default function ApplyForm() {
         disabled={status === 'loading' || !acceptedTos}
         style={{ opacity: status === 'loading' || !acceptedTos ? 0.7 : 1 }}
       >
-        {status === 'loading' ? 'Sending…' : 'Request access'}
+        {status === 'loading' ? 'Sending…' : 'Start your protocol'}
       </button>
     </form>
   )

@@ -399,7 +399,7 @@ export default async function Home() {
                 <li>IF protocol + Apple Health sync</li>
               </ul>
               <div className="price-cta">
-                <Link href="/apply" className="btn btn-outline" style={{ width: '100%' }}>Start your protocol</Link>
+                <Link href="/apply?tier=protocol" className="btn btn-outline" style={{ width: '100%' }}>Start your protocol</Link>
               </div>
             </div>
             {/* Precision */}
@@ -416,7 +416,7 @@ export default async function Home() {
                 <li>Travel mode + proactive alerts</li>
               </ul>
               <div className="price-cta">
-                <Link href="/apply" className="btn btn-gold" style={{ width: '100%' }}>Start your protocol</Link>
+                <Link href="/apply?tier=precision" className="btn btn-gold" style={{ width: '100%' }}>Start your protocol</Link>
               </div>
             </div>
             {/* Elite */}
@@ -432,7 +432,7 @@ export default async function Home() {
                 <li>Custom protocol adjustments</li>
               </ul>
               <div className="price-cta">
-                <Link href="/apply" className="btn btn-outline" style={{ width: '100%' }}>Request Access</Link>
+                <Link href="/apply?tier=elite" className="btn btn-outline" style={{ width: '100%' }}>Start your protocol</Link>
               </div>
             </div>
           </div>
