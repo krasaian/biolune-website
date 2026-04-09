@@ -59,7 +59,7 @@ function nurture3Html(firstName: string, bookingUrl: string) {
       </p>
 
       <p style="line-height: 1.8; color: #3a3935; margin-bottom: 20px; font-size: 15px;">
-        Based on what you shared, I believe there&rsquo;s a genuine fit between your current situation and what the Biolune Protocol is designed to do. The next step is a 20-minute protocol consultation &mdash; not a sales call, but a working session where we look at your data, identify your highest-leverage intervention points, and establish whether the full protocol is the right move for you right now.
+        Based on what you shared, I believe there&rsquo;s a real fit between where you are now and what Biolune is built to do. The next step is a 20-minute protocol consultation. Not a sales call. A working session where we look at your data, find the two or three biggest moves for you, and figure out whether the full protocol is the right step right now.
       </p>
 
       <p style="line-height: 1.8; color: #3a3935; margin-bottom: 28px; font-size: 15px;">
@@ -78,9 +78,9 @@ function nurture3Html(firstName: string, bookingUrl: string) {
         <p style="color: #A89879; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin: 0 0 12px 0;">What to expect on the call</p>
         <ul style="color: #3a3935; font-size: 14px; line-height: 2.2; margin: 0; padding-left: 20px;">
           <li>15 minutes reviewing your current biometric picture</li>
-          <li>Identification of your 2&ndash;3 highest-priority interventions</li>
-          <li>Clear outline of what a personalised protocol would look like for you</li>
-          <li>No pressure &mdash; only a decision if it makes sense for both sides</li>
+          <li>The 2 to 3 biggest moves available to you right now</li>
+          <li>Clear outline of what your protocol would look like</li>
+          <li>No pressure. A decision only if it makes sense for both sides.</li>
         </ul>
       </div>
 
@@ -205,7 +205,7 @@ export async function POST(req: Request) {
               <ol style="color: #C4C0B8; font-size: 14px; line-height: 2.2; margin: 0; padding-left: 20px;">
                 <li>Click the link above and enter your access code</li>
                 <li>Complete the 5-minute health intake questionnaire</li>
-                <li>Lune (your AI coach) will generate your personalised protocol</li>
+                <li>Lune will build your protocol from your answers</li>
                 <li>Connect your wearable (Apple Health, Oura, or WHOOP) for daily HRV sync</li>
               </ol>
             </div>

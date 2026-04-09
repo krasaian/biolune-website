@@ -62,7 +62,7 @@ function generateNextWeekFocus(stats: BiometricStats): string {
   if (stats.timelineCompliance < 85) weakPoints.push('protocol adherence')
 
   if (weakPoints.length === 0) {
-    return 'Maintain your current protocol consistency—your metrics are optimizing well.'
+    return 'Hold your protocol as is. Your metrics are trending the right way.'
   }
 
   if (weakPoints.length === 1) {
@@ -70,10 +70,10 @@ function generateNextWeekFocus(stats: BiometricStats): string {
   }
 
   if (weakPoints.length === 2) {
-    return `Prioritize ${weakPoints[0]} and ${weakPoints[1]} to optimize your protocol response.`
+    return `Prioritise ${weakPoints[0]} and ${weakPoints[1]} this week. These two will move the most.`
   }
 
-  return `Address ${weakPoints.slice(0, 2).join(' and ')} to unlock greater protocol benefits.`
+  return `Start with ${weakPoints.slice(0, 2).join(' and ')}. Those are the two biggest gaps right now.`
 }
 
 function weeklyReportHtml(

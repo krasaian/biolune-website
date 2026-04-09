@@ -21,17 +21,17 @@ const items: CarouselItem[] = [
   {
     label: 'Real-Time Tracking',
     title: 'Real-Time Tracking',
-    description: 'We remove the guesswork by monitoring your health metrics around the clock. Every data point feeds the system — better data in, better protocol out.',
+    description: 'We remove the guesswork by tracking your metrics around the clock. Every data point feeds the system. Better data in, better protocol out.',
   },
   {
     label: 'Evidence-Based Care',
     title: 'Evidence-Based Care',
-    description: 'Every recommendation is backed by science and personalized for your biology. No wellness trends. No guesswork. Only what the data supports.',
+    description: 'Every recommendation is backed by science and built from your biology. No wellness trends. No guesswork. Only what the data supports.',
   },
   {
     label: 'Sustainable Growth',
     title: 'Sustainable Growth',
-    description: 'We focus on long-term wellness rather than quick fixes or temporary trends. A protocol that compounds over years — not a sprint, a system.',
+    description: 'Long game over quick fixes. A protocol that compounds over years. Not a sprint, a system.',
   },
 ]
 

@@ -132,21 +132,21 @@ export default function About() {
           <div className="integrity-grid">
             <div>
               <p className="label">Why us?</p>
-              <h2 className="serif" style={{ marginTop: 12, fontSize: 'clamp(28px, 4vw, 44px)' }}>Biological integrity in every layer.</h2>
-              <p style={{ marginTop: 20, color: 'var(--text-muted)', lineHeight: 1.7 }}>We aim to provide the high-fidelity foundation for your complex systems. High-performance health should be mathematically precise — our framework empowers you to deploy complex wellness protocols.</p>
+              <h2 className="serif" style={{ marginTop: 12, fontSize: 'clamp(28px, 4vw, 44px)' }}>Precision, not wellness LARPing.</h2>
+              <p style={{ marginTop: 20, color: 'var(--text-muted)', lineHeight: 1.7 }}>High-performance health should be as precise as the cockpit. Every recommendation traces back to a specific signal in your data. No horoscopes, no guesswork, no generic templates.</p>
             </div>
             <div className="integrity-items">
               <div className="integrity-item">
                 <h3 className="serif">Biological Precision</h3>
-                <p>We prioritize analytical rigour to ensure every recommendation serves your body. No assumptions, no guesswork — only what your data supports.</p>
+                <p>Every recommendation starts from a number in your data. No assumptions. No guesswork. Only what your biology supports.</p>
               </div>
               <div className="integrity-item">
                 <h3 className="serif">Systemic Growth</h3>
-                <p>We build scalable architectures that evolve alongside your biology's complex needs. A protocol that compounds over years, not months.</p>
+                <p>A protocol that evolves with your biology. Compounds over years, not months. Designed to outlast the hype cycle.</p>
               </div>
               <div className="integrity-item">
                 <h3 className="serif">Integrated Delivery</h3>
-                <p>We eliminate friction to help you launch data-driven wellness routines. Your protocol fits your life — not the other way around.</p>
+                <p>Your protocol fits your life, not the other way around. Morning stack in 90 seconds. Weekly check-in in five minutes. That's the deal.</p>
               </div>
             </div>
           </div>
@@ -165,7 +165,7 @@ export default function About() {
             <div className="team-photo">Photo<br/>coming soon</div>
             <h3 className="serif team-name">Korosh</h3>
             <div className="team-title">Founder of Biolune</div>
-            <p className="team-bio">Built this between cockpits, time zones, and training mats. Pilot. Athlete. Father of two. Obsessed with what the human body is capable of.</p>
+            <p className="team-bio">Built this between cockpits, time zones, and training mats. Pilot. Athlete. Traveler. Father of two. Obsessed with what the human body is capable of.</p>
           </div>
         </div>
       </section>
@@ -177,7 +177,7 @@ export default function About() {
             <div>
               <p className="label">FAQ</p>
               <h2 className="serif" style={{ marginTop: 12, fontSize: 'clamp(24px, 3vw, 36px)' }}>Need Help?</h2>
-              <p style={{ marginTop: 12, color: 'var(--text-muted)', fontSize: 15, lineHeight: 1.65 }}>We aim to provide absolute clarity regarding your biological data and personalized wellness protocols.</p>
+              <p style={{ marginTop: 12, color: 'var(--text-muted)', fontSize: 15, lineHeight: 1.65 }}>Questions about the data, the protocol, or the process. Ask directly.</p>
               <div style={{ marginTop: 24 }}>
                 {/* W27: this used to point at /contact, leaking visitors out of the funnel.
                     The about page is high-intent — push them straight to /apply instead. */}

@@ -99,8 +99,8 @@ export default function Apply() {
       <div className="apply-page">
         <div className="apply-left">
           <p className="label" style={{ marginBottom: 16 }}>Start your protocol</p>
-          <h1 className="serif">Design your health.</h1>
-          <p>Connect with our wellness experts to explore how Biolune can build a personalized system based on your unique biological data.</p>
+          <h1 className="serif">Build your protocol.</h1>
+          <p>I built Biolune because I couldn't find a system that actually used my data. Tell me about your goals and your biology. I'll respond personally with whether it's a fit right now and what the first step looks like.</p>
           {/*
             W44 removed the fabricated "A. Martin, Founder" placeholder testimonial.
             W14 removed the +31% HRV / -12yr / 94% stats block — see

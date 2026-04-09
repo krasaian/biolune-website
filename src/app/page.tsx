@@ -10,18 +10,18 @@ export const revalidate = 300
 
 export const metadata: Metadata = {
   title: 'Biolune — Precision Longevity Protocol',
-  description: 'Biolune builds a precision longevity protocol from your HRV, hormones, and biomarkers — adapted weekly by AI. Designed for high-performers who want measurable results.',
+  description: 'A precision longevity protocol built from your HRV, hormones, and biomarkers. Updated weekly based on how your body actually responds. Built by a pilot-athlete-traveler-father who needed it himself.',
 }
 
 const faqs = [
-  { q: 'What exactly is a "precision longevity protocol"?', a: "It's a personalised health system built from your biological data — HRV, hormones, sleep patterns, and lifestyle. Unlike generic advice, it's specific to you and adapts weekly based on how your body responds." },
-  { q: 'How is Biolune different from a regular health coach?', a: "A coach gives you advice. Biolune gives you a living protocol built on your actual biomarkers — and updates it every week using AI-driven adaptation. There are no generic templates and no guesswork." },
-  { q: 'Is this medical advice?', a: "No. Biolune is a performance optimisation protocol, not medical treatment. We work alongside your existing healthcare team, not in place of it. Always consult your physician for medical decisions." },
-  { q: 'What results can I expect in the first 30 days?', a: "Most members report noticeable improvements in sleep quality and morning energy within the first two weeks. HRV trends typically stabilise by week three, and cognitive clarity tends to follow shortly after. Measurable biomarker changes appear at 60–90 days." },
-  { q: 'Do I need a wearable device to use Biolune?', a: "Not required. You can log data manually each morning in under 60 seconds. That said, a wearable like Oura or Whoop gives the AI more to work with — and produces more precise weekly adaptations." },
-  { q: 'How much time does this require each week?', a: "About 5–10 minutes per week. A daily morning log (60 seconds), a weekly check-in (5 minutes), and reading your updated protocol. The protocol fits around your schedule — not the other way around." },
-  { q: 'Can I cancel or pause my subscription?', a: "Yes. Cancel or pause anytime from your dashboard with no penalties. We don't lock you in because we don't need to — most members stay because the protocol works." },
-  { q: 'Is my health data private and secure?', a: "Your data is encrypted, never sold, and only accessible by you. We follow GDPR-compliant data handling. Your biological data is yours — we use it only to improve your protocol." },
+  { q: 'What exactly is a "precision longevity protocol"?', a: "A health system built from your own data. HRV, hormones, sleep, training, lifestyle. Unlike generic advice, it's specific to you and updates every week based on how your body actually responds." },
+  { q: 'How is Biolune different from a regular health coach?', a: "A coach gives you advice. Biolune gives you a living protocol built from your real biomarkers and updates it every week based on how you're responding. No generic templates, no guesswork." },
+  { q: 'Is this medical advice?', a: "No. Biolune is a performance protocol, not medical treatment. It works alongside your healthcare team, not in place of it. Always consult your physician for medical decisions." },
+  { q: 'What results can I expect in the first 30 days?', a: "Most people notice better sleep and sharper mornings in the first two weeks. HRV trends usually stabilise by week three and cognitive clarity follows shortly after. Measurable biomarker changes show up at 60 to 90 days." },
+  { q: 'Do I need a wearable device to use Biolune?', a: "Not required. You can log data manually each morning in under 60 seconds. That said, an Oura or Whoop gives Lune more to work with and sharpens the weekly adjustments." },
+  { q: 'How much time does this require each week?', a: "About 5 to 10 minutes. A daily morning log (60 seconds), a weekly check-in (5 minutes), and reading your updated protocol. The protocol fits around your schedule, not the other way around." },
+  { q: 'Can I cancel or pause my subscription?', a: "Yes. Cancel or pause anytime from your dashboard, no penalties. We don't lock you in because we don't need to. Most people stay because the protocol works." },
+  { q: 'Is my health data private and secure?', a: "Your data is encrypted, never sold, and only accessible by you. GDPR-compliant handling. Your biological data is yours. We use it only to improve your protocol." },
 ]
 
 // W7: testimonials are now an empty array. The previous 6 hardcoded
@@ -36,15 +36,15 @@ const testimonials: Testimonial[] = []
 
 const steps = [
   { n: '01', title: 'Apply & get assessed', body: "Fill in your intake form. We assess your health goals, lifestyle, travel schedule, and stress profile to build your starting baseline." },
-  { n: '02', title: 'Receive your protocol', body: "Built from your HRV baseline, hormonal data, and biomarkers. Your personalised sleep, nutrition, training, and recovery protocol is ready within 48 hours." },
-  { n: '03', title: 'Weekly AI adaptation', body: "The protocol evolves as your body does. Better data in, better protocol out — every single week. No generic plans that go stale after month one." },
+  { n: '02', title: 'Receive your protocol', body: "Built from your HRV baseline, hormonal data, and biomarkers. Sleep, nutrition, training, recovery. Ready within 48 hours." },
+  { n: '03', title: 'Weekly adjustment', body: "The protocol evolves as your body does. Better data in, better protocol out, every single week. No generic plans that go stale after month one." },
   { n: '04', title: 'Track measurable results', body: "HRV trends, biological age shift, energy levels, sleep quality. All tracked, compared week-on-week, and reflected in your next protocol update." },
 ]
 
 const whyItems = [
-  { title: 'Built on your biomarkers', body: 'Not generic advice from an app. A protocol engineered from your HRV, cortisol, and sleep data — specific to you, updated weekly.' },
-  { title: 'Proactive, not reactive', body: 'Most people see a doctor when something breaks. Biolune catches the signal before it becomes a symptom — and adjusts your protocol accordingly.' },
-  { title: 'One integrated system', body: 'Sleep tracker, meal plan, gym program — all disconnected. Biolune integrates HRV, hormones, nutrition, and recovery into a single protocol that talks to itself.' },
+  { title: 'Built on your biomarkers', body: 'Not generic advice from an app. A protocol built from your HRV, cortisol, and sleep data. Specific to you, updated weekly.' },
+  { title: 'Proactive, not reactive', body: 'Most people see a doctor when something breaks. Biolune catches the signal before it becomes a symptom and adjusts your protocol accordingly.' },
+  { title: 'One integrated system', body: 'Sleep tracker, meal plan, gym program, all disconnected. Biolune integrates HRV, hormones, nutrition, and recovery into a single protocol that talks to itself.' },
 ]
 
 export default async function Home() {
@@ -392,9 +392,9 @@ export default async function Home() {
               <div className="price-amount">€{tProtocol.priceEUR}</div>
               <div className="price-period price-muted">/{pricing.interval}</div>
               <ul className="price-features">
-                <li>Complete AI protocol (90 days)</li>
-                <li>Lune AI coach (25 msgs/day)</li>
-                <li>Raw DNA upload + genetic personalization</li>
+                <li>Full protocol (90 days)</li>
+                <li>Lune (25 messages/day)</li>
+                <li>Raw DNA upload + genetic layer</li>
                 <li>Morning + Evening + Sleep stacks</li>
                 <li>IF protocol + Apple Health sync</li>
               </ul>
@@ -437,7 +437,7 @@ export default async function Home() {
             </div>
           </div>
           <p style={{ textAlign: 'center', marginTop: 32, fontSize: 14, color: 'var(--text-muted)' }}>
-            Biolune is a precision longevity protocol for high performers. Science-backed. AI-personalised. Built to last decades.
+            A precision longevity protocol for people who take their body as seriously as their work. Built on data. Updated weekly. For the long game.
           </p>
         </div>
       </section>

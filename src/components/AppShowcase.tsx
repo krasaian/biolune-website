@@ -7,8 +7,8 @@ const features = [
   {
     id: 'briefing',
     label: 'MORNING BRIEFING',
-    title: 'Lune greets you with a personalized daily protocol.',
-    description: 'Every morning, Lune analyses your overnight HRV, sleep score, and resting heart rate to determine your body\'s readiness. The daily protocol adapts in real time — training intensity, supplement timing, and recovery priorities shift based on what your biology says today.',
+    title: 'Lune greets you with a fresh daily protocol.',
+    description: 'Every morning, Lune reads your overnight HRV, sleep score, and resting heart rate and decides what your body is ready for today. Training intensity, supplement timing, and recovery priorities all shift based on what your biology says right now.',
     card: {
       type: 'briefing' as const,
       greeting: 'Good morning, Korosh.',
@@ -25,8 +25,8 @@ const features = [
   {
     id: 'supplements',
     label: 'SUPPLEMENT TRACKING',
-    title: 'Your morning and evening stack — built and tracked.',
-    description: 'Biolune doesn\'t just recommend supplements — it structures them into morning and evening stacks based on absorption timing, nutrient interactions, and your protocol goals. One tap to log. Full compliance tracked weekly.',
+    title: 'Your morning and evening stack, built and tracked.',
+    description: 'Biolune doesn\'t just recommend supplements. It structures them into morning and evening stacks based on absorption timing, nutrient interactions, and your protocol goals. One tap to log. Full compliance tracked weekly.',
     card: {
       type: 'supplements' as const,
       morning: [
