@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Suspense } from 'react'
 import ApplyForm from '@/components/ApplyForm'
 
 export const metadata: Metadata = {
@@ -122,7 +123,15 @@ export default function Apply() {
           <h2 className="serif">Start your application</h2>
           <p className="sub">We review every application personally. Expect a response within 48 hours.</p>
 
-          <ApplyForm />
+          {/*
+            ApplyForm reads ?tier= via useSearchParams to preselect the
+            plan dropdown when arriving from /quiz. Next 14 requires
+            useSearchParams consumers to live inside a Suspense boundary,
+            otherwise the route is forced to client-side rendering.
+          */}
+          <Suspense fallback={null}>
+            <ApplyForm />
+          </Suspense>
         </div>
       </div>
     </>
