@@ -131,7 +131,7 @@ export default function Pricing() {
                 <li><span className="check">✓</span> Apple Health sync + weekly review</li>
               </ul>
               <div className="plan-cta">
-                <Link href="/apply" className="btn btn-outline" style={{ width: '100%' }}>Apply Now</Link>
+                <Link href="/apply" className="btn btn-outline" style={{ width: '100%' }}>Start your protocol</Link>
               </div>
             </div>
 
@@ -152,7 +152,7 @@ export default function Pricing() {
                 <li><span className="check">✓</span> Proactive alerts + progress reports</li>
               </ul>
               <div className="plan-cta">
-                <Link href="/apply" className="btn btn-gold" style={{ width: '100%' }}>Apply Now</Link>
+                <Link href="/apply" className="btn btn-gold" style={{ width: '100%' }}>Start your protocol</Link>
               </div>
             </div>
 

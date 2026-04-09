@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import ApplyForm from '@/components/ApplyForm'
 
 export const metadata: Metadata = {
-  title: 'Apply for Access — Biolune',
+  title: 'Start Your Protocol — Biolune',
   description: 'Apply for your precision longevity protocol. Built on your biology — HRV, hormones, and biomarkers — adapted weekly by AI.',
 }
 
@@ -97,25 +97,15 @@ export default function Apply() {
 
       <div className="apply-page">
         <div className="apply-left">
-          <p className="label" style={{ marginBottom: 16 }}>Apply for access</p>
+          <p className="label" style={{ marginBottom: 16 }}>Start your protocol</p>
           <h1 className="serif">Design your health.</h1>
           <p>Connect with our wellness experts to explore how Biolune can build a personalized system based on your unique biological data.</p>
-          <p style={{ fontStyle: 'italic', fontSize: 15 }}>"Biolune provided the high-fidelity foundation required for me to take full control of my long-term health."</p>
-          <p style={{ fontSize: 13, color: 'var(--gold)' }}>— A. Martin, Founder</p>
-          <div>
-            <div className="apply-stat">
-              <span className="apply-stat-num">+31%</span>
-              <span className="apply-stat-label">Average HRV improvement in 12 weeks</span>
-            </div>
-            <div className="apply-stat">
-              <span className="apply-stat-num">−12yr</span>
-              <span className="apply-stat-label">Average biological age shift at 6 months</span>
-            </div>
-            <div className="apply-stat">
-              <span className="apply-stat-num">94%</span>
-              <span className="apply-stat-label">Member retention after 12 months</span>
-            </div>
-          </div>
+          {/*
+            Stats block (+31% HRV / -12yr / 94%) removed pending real cohort data.
+            See BIOLUNE_KOROSH_BLOCKERS.md Block 4. Founder-first archetype carries
+            credibility through founder voice rather than aggregate numbers until
+            we have verified outcomes from the founding cohort.
+          */}
         </div>
 
         <div className="apply-right">

@@ -182,7 +182,7 @@ export default function Navbar() {
           </ul>
           <div className="nav-actions">
             <a href="https://biolune-app.vercel.app" className="nav-login" target="_blank" rel="noopener noreferrer">Login</a>
-            <Link href="/apply" className="btn btn-gold" style={{ fontSize: '11px', letterSpacing: '2px', padding: '11px 24px' }}>Apply for access</Link>
+            <Link href="/apply" className="btn btn-gold" style={{ fontSize: '11px', letterSpacing: '2px', padding: '11px 24px' }}>Start your protocol</Link>
             <button className={`hamburger${open ? ' open' : ''}`} onClick={toggleMenu} aria-label="Toggle menu">
               <span /><span /><span />
             </button>
@@ -198,7 +198,7 @@ export default function Navbar() {
         <Link href="/success-stories">Success Stories</Link>
         <Link href="/blog">Blog</Link>
         <a href="https://biolune-app.vercel.app" className="mob-login" target="_blank" rel="noopener noreferrer">Login</a>
-        <Link href="/apply" className="mob-cta">Apply for access</Link>
+        <Link href="/apply" className="mob-cta">Start your protocol</Link>
       </div>
     </>
   )

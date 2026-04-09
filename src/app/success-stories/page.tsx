@@ -188,7 +188,7 @@ export default function SuccessStories() {
         <div className="container">
           <p className="label" style={{ marginBottom: 16 }}>Ready?</p>
           <h2 className="serif" style={{ fontSize: 'clamp(24px, 3.5vw, 40px)', marginBottom: 24 }}>Your results start with an application.</h2>
-          <Link href="/apply" className="btn btn-dark">Apply for access</Link>
+          <Link href="/apply" className="btn btn-dark">Start your protocol</Link>
         </div>
       </section>
     </>
