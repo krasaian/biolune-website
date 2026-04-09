@@ -15,10 +15,9 @@ export const metadata: Metadata = {
 }
 
 export default function Blog() {
-  const articles = getAllBlogArticles().sort((a, b) => {
-    const dateOrder = ['March 2026', 'February 2026', 'January 2026', 'December 2025', 'November 2025', 'October 2025']
-    return dateOrder.indexOf(a.date) - dateOrder.indexOf(b.date)
-  })
+  // W38: sort by ISO date so adding a new article doesn't require
+  // updating a hardcoded dateOrder array. Newest first.
+  const articles = getAllBlogArticles().sort((a, b) => b.dateIso.localeCompare(a.dateIso))
   return (
     <>
       <style>{`
