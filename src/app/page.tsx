@@ -54,7 +54,15 @@ export default function Home() {
           display: flex;
           align-items: center;
           overflow: hidden;
-          background: var(--bg);
+          /* W9: even if the hero video fails to load (Framer CDN outage,
+             corp firewall, slow mobile connection), the hero falls back
+             to a deep luxe gradient instead of a flat empty rectangle.
+             The video sits on top with opacity 0.18, so the gradient
+             still shows through during normal playback too. */
+          background:
+            radial-gradient(120% 80% at 20% 10%, rgba(168, 152, 121, 0.10), transparent 60%),
+            radial-gradient(80% 60% at 80% 90%, rgba(168, 152, 121, 0.06), transparent 60%),
+            var(--bg);
         }
         .hero-video {
           position: absolute;

@@ -68,7 +68,7 @@ export default function ContactForm() {
       </div>
       <div className="form-group">
         <label className="form-label">Where are you located?</label>
-        <select className="form-select" value={form.location} onChange={set('location')}>
+        <select className="form-select" required value={form.location} onChange={set('location')}>
           <option value="">Select…</option>
           <option>Netherlands</option>
           <option>United Kingdom</option>
@@ -83,7 +83,7 @@ export default function ContactForm() {
       </div>
       <div className="form-group">
         <label className="form-label">What is your primary objective?</label>
-        <select className="form-select" value={form.objective} onChange={set('objective')}>
+        <select className="form-select" required value={form.objective} onChange={set('objective')}>
           <option value="">Select…</option>
           <option>Longevity</option>
           <option>Performance</option>

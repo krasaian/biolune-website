@@ -13,6 +13,15 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: 'Email is required.' }, { status: 400 })
     }
 
+    // W16: validate format. Anything not matching a basic local@domain.tld
+    // pattern is rejected before we ever forward it to Resend, so admin
+    // inboxes don't fill up with garbage like "asdf" or "test@test".
+    const trimmed = String(email).trim()
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
+    if (trimmed.length > 254 || !emailPattern.test(trimmed)) {
+      return NextResponse.json({ error: 'Please enter a valid email address.' }, { status: 400 })
+    }
+
     const { data, error } = await resend.emails.send({
       from: 'Biolune <noreply@biolune.eu>',
       to: process.env.ADMIN_EMAIL || 'korosh@rasaian.com',
