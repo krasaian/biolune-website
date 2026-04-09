@@ -12,11 +12,11 @@ import CookieConsent from '@/components/CookieConsent'
 export function generateMetadata(): Metadata {
   return {
     title: 'Biolune — Precision Longevity Protocol',
-    description: 'Biolune builds a precision longevity protocol from your HRV, hormones, and biomarkers — adapted weekly by AI. Designed for high-performers who want measurable results.',
+    description: 'Biolune builds a precision longevity protocol from your HRV, hormones, and biomarkers. Rebuilt every Sunday from your data. For people who take their body as seriously as their work.',
     metadataBase: new URL('https://www.biolune.eu'),
     openGraph: {
       title: 'Biolune — Precision Longevity Protocol',
-      description: 'Biolune builds a precision longevity protocol from your HRV, hormones, and biomarkers — adapted weekly by AI.',
+      description: 'A precision longevity protocol built from your HRV, hormones, and biomarkers. Rebuilt every Sunday from your data.',
       url: 'https://www.biolune.eu',
       siteName: 'Biolune',
       type: 'website',
@@ -57,7 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               name: 'Biolune',
               url: 'https://www.biolune.eu',
               logo: 'https://www.biolune.eu/og-image.png',
-              description: 'Biolune builds a precision longevity protocol from your HRV, hormones, and biomarkers — adapted weekly. Designed for high-performers.',
+              description: 'A precision longevity protocol built from your HRV, hormones, and biomarkers. Rebuilt every Sunday from your data.',
               email: 'hello@biolune.eu',
               // W30: filled-out organisation + founder schema. Search engines
               // can now show authorship cards, social profile links, and the
@@ -80,7 +80,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 knowsAbout: [
                   'Heart Rate Variability',
                   'Longevity protocols',
-                  'Hormonal optimisation',
+                  'Hormonal balance',
                   'Precision nutrition',
                   'Sleep architecture',
                 ],

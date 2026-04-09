@@ -76,15 +76,15 @@ export default function Contact() {
       <div className="contact-page">
         <div className="contact-left">
           <p className="label" style={{ marginBottom: 16 }}>Get started</p>
-          <h1 className="serif">Design your health.</h1>
-          <p>Connect with our wellness experts to explore how Biolune can build a personalized system based on your unique biological data.</p>
+          <h1 className="serif">Build your protocol.</h1>
+          <p>Tell us about your goals and your data. We'll respond with whether Biolune is a fit for you right now, and what the first step looks like.</p>
           <ContactForm />
         </div>
 
         <div className="contact-right">
           <p className="label" style={{ marginBottom: 16 }}>FAQ</p>
           <h2 className="serif" style={{ fontSize: 'clamp(24px, 3vw, 36px)', marginBottom: 8 }}>Need Help?</h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: 15, marginBottom: 32 }}>We aim to provide absolute clarity regarding your biological data and personalized wellness protocols.</p>
+          <p style={{ color: 'var(--text-muted)', fontSize: 15, marginBottom: 32 }}>Questions about the data, the protocol, or the process. Ask directly.</p>
           <Faq items={faqs} />
         </div>
       </div>

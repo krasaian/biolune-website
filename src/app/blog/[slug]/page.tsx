@@ -393,7 +393,7 @@ export default function BlogArticle({ params }: PageProps) {
 
           <div className="article-cta">
             <h3 className="serif">Ready to apply?</h3>
-            <p>Build a personalized precision health protocol adapted to your biology.</p>
+            <p>Build a precision protocol from your actual biology. Rebuilt every Sunday from your data.</p>
             <Link href="/apply" className="btn btn-gold">
               Start Your Application
             </Link>
@@ -427,7 +427,7 @@ export default function BlogArticle({ params }: PageProps) {
         <div className="container">
           <p className="label" style={{ marginBottom: 16 }}>Get it weekly</p>
           <h2 className="serif">The protocol. In your inbox.</h2>
-          <p>Join 1,200+ high-performers. No noise — only signal.</p>
+          <p>Join 1,200+ high performers. No noise. Just signal.</p>
           <NewsletterSignup />
         </div>
       </section>

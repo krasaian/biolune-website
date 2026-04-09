@@ -17,7 +17,7 @@ function day1Html(firstName: string) {
       </p>
 
       <p style="line-height: 1.8; color: #3a3935; margin-bottom: 20px; font-size: 15px;">
-        Over the next seven days, you'll see how the system works. Your morning timeline will appear by 6 AM each day &mdash; this is your personalized day ahead, built from overnight biometric data. Lune is ready to answer any questions about your protocol, your data, or what you're seeing.
+        Over the next seven days you'll see how the system works. Your morning timeline lands by 6 AM each day. Your day ahead, built from overnight biometric data. Lune is ready to answer any questions about your protocol, your data, or what you're seeing.
       </p>
 
       <p style="line-height: 1.8; color: #3a3935; margin-bottom: 28px; font-size: 15px;">
@@ -25,7 +25,7 @@ function day1Html(firstName: string) {
       </p>
 
       <div style="background: #f4eee0; border-radius: 8px; padding: 24px; margin-bottom: 28px;">
-        <p style="color: #A89879; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin: 0 0 12px 0;">Highest-leverage action today</p>
+        <p style="color: #A89879; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin: 0 0 12px 0;">The biggest move you can make today</p>
         <p style="color: #1a1916; font-size: 15px; margin: 0; line-height: 1.7;">Get 10 minutes of outdoor light within 60 minutes of waking. This anchors your circadian rhythm and sets the day's biometric trajectory.</p>
       </div>
 
@@ -51,7 +51,7 @@ function day3Html(firstName: string) {
       </p>
 
       <p style="line-height: 1.8; color: #3a3935; margin-bottom: 20px; font-size: 15px;">
-        The Decision Engine is how Biolune becomes personalized to you. It reads three core signals &mdash; your HRV, sleep architecture, and resting heart rate &mdash; and translates them into one of six daily modes. Each mode prescribes different training intensity, supplement timing, and lifestyle priorities.
+        The Decision Engine is how Biolune tunes to your biology. It reads three core signals, your HRV, sleep architecture, and resting heart rate, and translates them into one of six daily modes. Each mode prescribes different training intensity, supplement timing, and lifestyle priorities.
       </p>
 
       <div style="background: #f4eee0; border-radius: 8px; padding: 24px; margin-bottom: 28px;">
@@ -76,7 +76,7 @@ function day3Html(firstName: string) {
       </div>
 
       <p style="line-height: 1.8; color: #3a3935; margin-bottom: 28px; font-size: 15px;">
-        In four days, you'll have seven days of data. That's when the engine activates fully and the personalization deepens. Until then, the mode recommendations are still being calibrated to your signal pattern.
+        In four days you'll have seven days of data. That's when the engine activates fully and the protocol sharpens to you. Until then, the mode recommendations are still calibrating to your signal pattern.
       </p>
 
       <div style="text-align: center; margin-bottom: 32px;">
@@ -163,11 +163,11 @@ function day30Html(firstName: string) {
       </p>
 
       <p style="line-height: 1.8; color: #3a3935; margin-bottom: 20px; font-size: 15px;">
-        The 30-day HRV baseline you've built is now the foundation that everything is measured against. Every future decision &mdash; every recommendation, every mode assignment, every protocol adjustment &mdash; is calibrated against this baseline. It's your personal normal.
+        The 30-day HRV baseline you've built is now the floor everything is measured against. Every future decision. Every recommendation. Every mode assignment. Every protocol adjustment. All of it calibrated against this baseline. Your personal normal.
       </p>
 
       <p style="line-height: 1.8; color: #3a3935; margin-bottom: 20px; font-size: 15px;">
-        Month two brings protocol refinement. Lune now has 30 days of signal to work with. Where are the highest-impact intervention points for your specific biology? Which parts of the stack are creating the most leverage? Where are diminishing returns? These questions are answerable now.
+        Month two is where the protocol sharpens. Lune now has 30 days of signal to read. Which interventions are actually moving your body? Which parts of the stack are pulling the most weight? Where are the diminishing returns? These questions can be answered now.
       </p>
 
       <p style="line-height: 1.8; color: #3a3935; margin-bottom: 20px; font-size: 15px;">
@@ -175,7 +175,7 @@ function day30Html(firstName: string) {
       </p>
 
       <p style="line-height: 1.8; color: #3a3935; margin-bottom: 28px; font-size: 15px;">
-        You're no longer in the calibration phase. You're in the optimization phase.
+        You're no longer in the calibration phase. You're in the compounding phase.
       </p>
 
       <div style="text-align: center; margin-bottom: 32px;">

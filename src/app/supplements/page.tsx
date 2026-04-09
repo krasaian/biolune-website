@@ -3,7 +3,7 @@ import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'The Biolune Protocol Stack — Evidence-Based Supplements',
-  description: 'Evidence-based supplement recommendations curated by Lune from 7 world-leading health experts. Personalized stacks for sleep, longevity, performance, and foundation health.',
+  description: 'Evidence-based supplement recommendations curated by Lune from 7 world-leading health experts. Stacks built around sleep, longevity, performance, and foundation health.',
 }
 
 interface SupplementCard {
@@ -179,14 +179,14 @@ const sections = [
   {
     id: 'performance',
     title: 'Performance & Hormones',
-    subtitle: 'Optimize natural hormone production, focus, and physical output.',
+    subtitle: 'Support natural hormone production, focus, and physical output.',
     tier: 'TIER 2 — GOAL-BASED',
     cards: [
       {
         name: 'Tongkat Ali (Eurycoma longifolia)',
         dose: '200–400mg standardized extract',
         timing: 'Morning or post-workout',
-        benefit: 'Optimize free testosterone naturally by reducing SHBG binding. Supports energy, libido, and work capacity.',
+        benefit: 'Supports free testosterone naturally by reducing SHBG binding. Lifts energy, libido, and work capacity.',
         experts: ['Huberman', 'Brecka'],
         tier: 'performance' as const,
         brand: 'Solaray',
@@ -477,7 +477,7 @@ export default function Supplements() {
           <h1 className="serif">The Biolune Protocol Stack</h1>
           <p className="subtitle">
             14 evidence-based supplements from 7 world-leading health experts.
-            Not random pills — a structured protocol, personalized by Lune.
+            Not random pills. A structured protocol, built by Lune around your biology.
           </p>
 
           {/* Section navigation pills */}
@@ -506,13 +506,13 @@ export default function Supplements() {
             </div>
             <div className="supp-how-step">
               <div className="supp-how-num">02</div>
-              <h3 className="serif">Lune Analyzes</h3>
-              <p>Our AI cross-references your profile against protocols from Huberman, Attia, Patrick, Walker, Sinclair, Brecka, and Johnson.</p>
+              <h3 className="serif">Lune Analyses</h3>
+              <p>Lune reads your profile against protocols from Huberman, Attia, Patrick, Walker, Sinclair, Brecka, and Johnson. Then flags what matches your goals, your biology, and your budget.</p>
             </div>
             <div className="supp-how-step">
               <div className="supp-how-num">03</div>
               <h3 className="serif">Get Your Stack</h3>
-              <p>Receive a personalized morning and evening supplement protocol — with what to take, what to skip, and why.</p>
+              <p>A morning and evening stack built around your data. What to take, what to skip, and why. Every supplement tells you why it's in your stack.</p>
             </div>
           </div>
         </div>

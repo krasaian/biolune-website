@@ -41,7 +41,7 @@ export default function Footer() {
           <BioluneLogo />
           <div style={{ marginTop: 24 }}>
             <h3 className="serif">The protocol. In your inbox. Weekly.</h3>
-            <p style={{ marginTop: 8 }}>Join 1,200+ high-performers getting weekly insights on HRV, longevity, and precision recovery. No noise — only signal.</p>
+            <p style={{ marginTop: 8 }}>Join 1,200+ high performers getting weekly notes on HRV, longevity, and precision recovery. No noise. Just signal.</p>
           </div>
           <NewsletterSignup variant="footer" />
         </div>

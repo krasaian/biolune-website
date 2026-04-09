@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Faq from '@/components/Faq'
 import AppShowcase from '@/components/AppShowcase'
+import ProtocolContrast from '@/components/ProtocolContrast'
 import { fetchPricing, tierById } from '@/lib/pricing'
 
 // Revalidate every 5 minutes so pricing changes propagate without a manual
@@ -10,18 +11,18 @@ export const revalidate = 300
 
 export const metadata: Metadata = {
   title: 'Biolune — Precision Longevity Protocol',
-  description: 'Biolune builds a precision longevity protocol from your HRV, hormones, and biomarkers — adapted weekly by AI. Designed for high-performers who want measurable results.',
+  description: 'A precision longevity protocol built from your HRV, hormones, and biomarkers. Updated weekly based on how your body actually responds. Built by a pilot-athlete-traveler-father who needed it himself.',
 }
 
 const faqs = [
-  { q: 'What exactly is a "precision longevity protocol"?', a: "It's a personalised health system built from your biological data — HRV, hormones, sleep patterns, and lifestyle. Unlike generic advice, it's specific to you and adapts weekly based on how your body responds." },
-  { q: 'How is Biolune different from a regular health coach?', a: "A coach gives you advice. Biolune gives you a living protocol built on your actual biomarkers — and updates it every week using AI-driven adaptation. There are no generic templates and no guesswork." },
-  { q: 'Is this medical advice?', a: "No. Biolune is a performance optimisation protocol, not medical treatment. We work alongside your existing healthcare team, not in place of it. Always consult your physician for medical decisions." },
-  { q: 'What results can I expect in the first 30 days?', a: "Most members report noticeable improvements in sleep quality and morning energy within the first two weeks. HRV trends typically stabilise by week three, and cognitive clarity tends to follow shortly after. Measurable biomarker changes appear at 60–90 days." },
-  { q: 'Do I need a wearable device to use Biolune?', a: "Not required. You can log data manually each morning in under 60 seconds. That said, a wearable like Oura or Whoop gives the AI more to work with — and produces more precise weekly adaptations." },
-  { q: 'How much time does this require each week?', a: "About 5–10 minutes per week. A daily morning log (60 seconds), a weekly check-in (5 minutes), and reading your updated protocol. The protocol fits around your schedule — not the other way around." },
-  { q: 'Can I cancel or pause my subscription?', a: "Yes. Cancel or pause anytime from your dashboard with no penalties. We don't lock you in because we don't need to — most members stay because the protocol works." },
-  { q: 'Is my health data private and secure?', a: "Your data is encrypted, never sold, and only accessible by you. We follow GDPR-compliant data handling. Your biological data is yours — we use it only to improve your protocol." },
+  { q: 'What exactly is a "precision longevity protocol"?', a: "A health system built from your own data. HRV, hormones, sleep, training, lifestyle. Unlike generic advice, it's specific to you and updates every week based on how your body actually responds." },
+  { q: 'How is Biolune different from a regular health coach?', a: "A coach gives you advice. Biolune gives you a living protocol built from your real biomarkers and updates it every week based on how you're responding. No generic templates, no guesswork." },
+  { q: 'Is this medical advice?', a: "No. Biolune is a performance protocol, not medical treatment. It works alongside your healthcare team, not in place of it. Always consult your physician for medical decisions." },
+  { q: 'What results can I expect in the first 30 days?', a: "Most people notice better sleep and sharper mornings in the first two weeks. HRV trends usually stabilise by week three and cognitive clarity follows shortly after. Measurable biomarker changes show up at 60 to 90 days." },
+  { q: 'Do I need a wearable device to use Biolune?', a: "Not required. You can log data manually each morning in under 60 seconds. That said, an Oura or Whoop gives Lune more to work with and sharpens the weekly adjustments." },
+  { q: 'How much time does this require each week?', a: "About 5 to 10 minutes. A daily morning log (60 seconds), a weekly check-in (5 minutes), and reading your updated protocol. The protocol fits around your schedule, not the other way around." },
+  { q: 'Can I cancel or pause my subscription?', a: "Yes. Cancel or pause anytime from your dashboard, no penalties. We don't lock you in because we don't need to. Most people stay because the protocol works." },
+  { q: 'Is my health data private and secure?', a: "Your data is encrypted, never sold, and only accessible by you. GDPR-compliant handling. Your biological data is yours. We use it only to improve your protocol." },
 ]
 
 // W7: testimonials are now an empty array. The previous 6 hardcoded
@@ -36,15 +37,15 @@ const testimonials: Testimonial[] = []
 
 const steps = [
   { n: '01', title: 'Apply & get assessed', body: "Fill in your intake form. We assess your health goals, lifestyle, travel schedule, and stress profile to build your starting baseline." },
-  { n: '02', title: 'Receive your protocol', body: "Built from your HRV baseline, hormonal data, and biomarkers. Your personalised sleep, nutrition, training, and recovery protocol is ready within 48 hours." },
-  { n: '03', title: 'Weekly AI adaptation', body: "The protocol evolves as your body does. Better data in, better protocol out — every single week. No generic plans that go stale after month one." },
+  { n: '02', title: 'Receive your protocol', body: "Built from your HRV baseline, hormonal data, and biomarkers. Sleep, nutrition, training, recovery. Ready within 48 hours." },
+  { n: '03', title: 'Weekly adjustment', body: "The protocol evolves as your body does. Better data in, better protocol out, every single week. No generic plans that go stale after month one." },
   { n: '04', title: 'Track measurable results', body: "HRV trends, biological age shift, energy levels, sleep quality. All tracked, compared week-on-week, and reflected in your next protocol update." },
 ]
 
 const whyItems = [
-  { title: 'Built on your biomarkers', body: 'Not generic advice from an app. A protocol engineered from your HRV, cortisol, and sleep data — specific to you, updated weekly.' },
-  { title: 'Proactive, not reactive', body: 'Most people see a doctor when something breaks. Biolune catches the signal before it becomes a symptom — and adjusts your protocol accordingly.' },
-  { title: 'One integrated system', body: 'Sleep tracker, meal plan, gym program — all disconnected. Biolune integrates HRV, hormones, nutrition, and recovery into a single protocol that talks to itself.' },
+  { title: 'Built on your biomarkers', body: 'Not generic advice from an app. A protocol built from your HRV, cortisol, and sleep data. Specific to you, updated weekly.' },
+  { title: 'Proactive, not reactive', body: 'Most people see a doctor when something breaks. Biolune catches the signal before it becomes a symptom and adjusts your protocol accordingly.' },
+  { title: 'One integrated system', body: 'Sleep tracker, meal plan, gym program, all disconnected. Biolune integrates HRV, hormones, nutrition, and recovery into a single protocol that talks to itself.' },
 ]
 
 export default async function Home() {
@@ -64,23 +65,12 @@ export default async function Home() {
           display: flex;
           align-items: center;
           overflow: hidden;
-          /* W9: even if the hero video fails to load (Framer CDN outage,
-             corp firewall, slow mobile connection), the hero falls back
-             to a deep luxe gradient instead of a flat empty rectangle.
-             The video sits on top with opacity 0.18, so the gradient
-             still shows through during normal playback too. */
+          /* WOW Wave 1: hero video killed. The radial gradient carries the
+             atmosphere on its own and LCP is noticeably faster. */
           background:
             radial-gradient(120% 80% at 20% 10%, rgba(168, 152, 121, 0.10), transparent 60%),
             radial-gradient(80% 60% at 80% 90%, rgba(168, 152, 121, 0.06), transparent 60%),
             var(--bg);
-        }
-        .hero-video {
-          position: absolute;
-          inset: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          opacity: 0.18;
         }
         .hero-content {
           position: relative;
@@ -113,6 +103,146 @@ export default async function Home() {
           transition: color 0.2s;
         }
         .hero-text-link:hover { color: var(--gold); }
+        .hero-scarcity {
+          font-family: 'Cormorant Garamond', Georgia, serif;
+          font-size: 16px;
+          font-style: italic;
+          color: var(--text-muted);
+          margin-top: 28px;
+          padding-top: 20px;
+          border-top: 1px solid var(--border);
+          max-width: 420px;
+          line-height: 1.5;
+        }
+
+        /* Founder block */
+        .founder-block {
+          border-top: 1px solid var(--border);
+          border-bottom: 1px solid var(--border);
+        }
+        .founder-grid {
+          display: grid;
+          grid-template-columns: 1.4fr 1fr;
+          gap: 72px;
+          align-items: center;
+        }
+        .founder-copy h2 {
+          font-size: clamp(28px, 3.8vw, 42px);
+          line-height: 1.15;
+          margin-top: 12px;
+          margin-bottom: 24px;
+        }
+        .founder-body {
+          font-size: 16px;
+          line-height: 1.75;
+          color: var(--text-muted);
+          margin-bottom: 24px;
+        }
+        .founder-link {
+          font-family: 'Jost', sans-serif;
+          font-size: 12px;
+          letter-spacing: 2px;
+          text-transform: uppercase;
+          color: var(--gold);
+          text-decoration: none;
+          border-bottom: 1px solid var(--gold);
+          padding-bottom: 3px;
+          transition: opacity 0.2s;
+        }
+        .founder-link:hover { opacity: 0.75; }
+        .founder-card {
+          background: var(--bg-alt);
+          border: 1px solid var(--border);
+          border-radius: var(--radius);
+          padding: 40px 36px;
+          position: relative;
+        }
+        .founder-tag {
+          font-family: 'Jost', sans-serif;
+          font-size: 11px;
+          letter-spacing: 3px;
+          color: var(--gold);
+          margin-bottom: 12px;
+        }
+        .founder-role {
+          font-family: 'Cormorant Garamond', Georgia, serif;
+          font-size: 22px;
+          color: var(--text);
+          line-height: 1.3;
+          margin-bottom: 28px;
+          padding-bottom: 24px;
+          border-bottom: 1px solid var(--border);
+        }
+        .founder-quote {
+          font-family: 'Cormorant Garamond', Georgia, serif;
+          font-size: 19px;
+          font-style: italic;
+          line-height: 1.5;
+          color: var(--text-muted);
+        }
+
+        /* Loss frame */
+        .loss-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 24px;
+          max-width: 1100px;
+          margin: 0 auto;
+        }
+        .loss-card {
+          background: var(--bg);
+          border: 1px solid var(--border);
+          border-radius: var(--radius);
+          padding: 36px 32px;
+          position: relative;
+          transition: border-color 0.2s, transform 0.2s;
+        }
+        .loss-card:hover {
+          border-color: rgba(168, 152, 121, 0.35);
+          transform: translateY(-2px);
+        }
+        .loss-metric {
+          font-size: 42px;
+          font-weight: 600;
+          color: var(--gold);
+          line-height: 1;
+          margin-bottom: 20px;
+        }
+        .loss-metric sub {
+          font-size: 0.58em;
+          font-weight: 500;
+          vertical-align: baseline;
+        }
+        .loss-headline {
+          font-family: 'Cormorant Garamond', Georgia, serif;
+          font-size: 20px;
+          line-height: 1.35;
+          color: var(--text);
+          margin-bottom: 16px;
+          padding-bottom: 16px;
+          border-bottom: 1px solid var(--border);
+        }
+        .loss-body {
+          font-size: 14px;
+          line-height: 1.7;
+          color: var(--text-muted);
+        }
+        .loss-footer {
+          text-align: center;
+          margin-top: 56px;
+          font-family: 'Cormorant Garamond', Georgia, serif;
+          font-size: 20px;
+          font-style: italic;
+          color: var(--text-muted);
+          max-width: 640px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        @media (max-width: 900px) {
+          .founder-grid { grid-template-columns: 1fr; gap: 40px; }
+          .loss-grid { grid-template-columns: 1fr; }
+        }
         .hero-stats {
           display: flex;
           gap: 40px;
@@ -274,49 +404,132 @@ export default async function Home() {
         }
       `}</style>
 
-      {/* ── HERO ── */}
+      {/* ── HERO ──
+          v2 (WOW Wave 1): hero video removed per WOW_STRATEGY.md rule
+          "no hero video on high-consideration landing pages." The radial
+          gradient on .hero already gives the atmosphere — the video was
+          hurting LCP and mobile perf for no conversion benefit. A single
+          sentence, one concrete protocol sub-line, and a single CTA. The
+          scarcity line under the CTA is real operational reality, not a
+          fake urgency timer. */}
       <section className="hero">
-        <video
-          className="hero-video"
-          autoPlay
-          loop
-          muted
-          playsInline
-          src="https://framerusercontent.com/assets/videos/hero-bg.mp4"
-        />
         <div className="container">
           <div className="hero-content">
             <p className="label" style={{ marginBottom: 20 }}>Precision Longevity</p>
             <h1 className="serif">
-              The protocol I built because the one I needed didn&rsquo;t exist.
+              A precision longevity protocol for people who take their body as seriously as their work.
             </h1>
             <p>
-              I&rsquo;m Korosh, founder of Biolune. One daily routine shaped by your HRV,
-              hormones, and biomarkers &mdash; adapted weekly as your biology changes. Built
-              for the people generic health plans were never written for.
+              Built from your HRV, bloodwork, and raw DNA. Creatine 10g split
+              morning and lunch. Magnesium L-Threonate 2g at 21:30. Updated every
+              Sunday from how your body actually responded this week.
             </p>
             <div className="hero-ctas">
-              <Link href="/apply" className="btn btn-gold">Start your protocol →</Link>
-              <Link href="/about" className="hero-text-link">Read my story</Link>
+              <Link href="/apply" className="btn btn-gold">Apply for the protocol →</Link>
+              <Link href="/about" className="hero-text-link">Why I built this</Link>
             </div>
-            {/*
-              Hero stats (+31% HRV / -12yr biological age / 94% retention)
-              removed pending verifiable source data per
-              BIOLUNE_KOROSH_BLOCKERS.md Block 4. The founder-first hero
-              archetype carries credibility through the founder voice; we
-              re-add real cohort numbers once the first 5 testers complete
-              their first cycle and we have actual delta data to cite.
-            */}
+            <p className="hero-scarcity">
+              I read every application myself. 4 protocol consultations a week.
+            </p>
           </div>
         </div>
       </section>
+
+      {/* ── WHY I BUILT THIS (founder trust block) ──
+          The single highest-ROI trust signal on a high-ticket longevity
+          purchase is "who built this and why." Three sentences, personal,
+          specific. Links to /about for the full story. Placed immediately
+          under the hero so the visitor who doesn't scroll still gets the
+          founder frame before any feature talk. */}
+      <section className="section founder-block">
+        <div className="container">
+          <div className="founder-grid">
+            <div className="founder-copy">
+              <p className="label" style={{ marginBottom: 16 }}>WHY I BUILT THIS</p>
+              <h2 className="serif">
+                I couldn&rsquo;t find a system that actually used my data. So I built one.
+              </h2>
+              <p className="founder-body">
+                I&rsquo;m a pilot. I&rsquo;m an athlete. I&rsquo;m a father of two.
+                Three years ago my HRV sat at 34 and every longevity brand on the
+                internet wanted to sell me a generic stack or a $10,000 consult that
+                never looked at my numbers twice. Biolune is what I built because I
+                needed it myself.
+              </p>
+              <Link href="/about" className="founder-link">Read the full story →</Link>
+            </div>
+            <div className="founder-card">
+              <p className="founder-tag">KOROSH</p>
+              <p className="founder-role">Pilot. Athlete. Traveler. Father of two.</p>
+              <p className="founder-quote">
+                &ldquo;If it isn&rsquo;t grounded in your data, it&rsquo;s just marketing.&rdquo;
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── LOSS FRAME ──
+          Loss aversion outperforms gain promise by ~2x (Kahneman/Tversky).
+          Three specific numbers the visitor almost certainly doesn't have,
+          each with the cost of not knowing stated plainly. This is the
+          section that shifts a cold visitor from "interesting" to
+          "I need to fix this." */}
+      <section className="section loss-frame" style={{ background: 'var(--bg-alt)' }}>
+        <div className="container">
+          <div className="section-header" style={{ maxWidth: 720, margin: '0 auto 56px', textAlign: 'center' }}>
+            <p className="label">THE THREE NUMBERS YOU DON&rsquo;T KNOW</p>
+            <h2 className="serif" style={{ marginTop: 12 }}>What you lose every week you don&rsquo;t measure.</h2>
+          </div>
+          <div className="loss-grid">
+            <div className="loss-card">
+              <p className="loss-metric serif">ApoB</p>
+              <p className="loss-headline">The cardiovascular number your annual bloodwork doesn&rsquo;t print.</p>
+              <p className="loss-body">
+                Peter Attia: &ldquo;I don&rsquo;t see a reason to have ApoB north of 60.&rdquo;
+                Most labs report LDL-C instead, which underestimates cardiovascular
+                risk by 30% or more. You&rsquo;ve probably never seen your ApoB.
+              </p>
+            </div>
+            <div className="loss-card">
+              <p className="loss-metric serif">VO<sub>2</sub>max</p>
+              <p className="loss-headline">The single strongest predictor of when you die.</p>
+              <p className="loss-body">
+                Rhonda Patrick&rsquo;s data: every 1-unit increase in VO<sub>2</sub>max
+                buys you roughly 45 days of life expectancy. Most people have
+                never measured theirs. If you train without tracking it, you&rsquo;re
+                flying blind on the most important number in longevity.
+              </p>
+            </div>
+            <div className="loss-card">
+              <p className="loss-metric serif">HRV trend</p>
+              <p className="loss-headline">The earliest warning system your body has.</p>
+              <p className="loss-body">
+                HRV drops 3 to 5 days before you feel sick, burned out, or
+                overtrained. Without a 7-day trend line, you only find out
+                after the fact. With one, you adjust before the damage lands.
+              </p>
+            </div>
+          </div>
+          <p className="loss-footer">
+            Biolune reads all three. Lune builds the protocol. Korosh reviews the call.
+          </p>
+        </div>
+      </section>
+
+      {/* ── PROTOCOL CONTRAST (peak moment) ──
+          The component that makes people screenshot the site. Two columns:
+          same user, red HRV day vs green HRV day, two completely different
+          protocols. This is the clearest possible proof that the protocol
+          is actually adaptive and not a static PDF. */}
+      <ProtocolContrast />
 
       {/* ── HOW IT WORKS ── */}
       <section className="section" style={{ background: 'var(--bg-alt)' }}>
         <div className="container">
           <div className="section-header">
             <p className="label">HOW IT WORKS</p>
-            <h2 className="serif">From intake to optimised in 48 hours.</h2>
+            <h2 className="serif">From intake to your first protocol in 48 hours.</h2>
           </div>
           <div className="steps-grid">
             {steps.map(s => (
@@ -340,9 +553,9 @@ export default async function Home() {
             <div>
               <p className="label">Why us?</p>
               <h2 className="serif" style={{ marginTop: 12, fontSize: 'clamp(28px, 4vw, 44px)' }}>Not another health app. A system built on your biology.</h2>
-              <p style={{ marginTop: 20, color: 'var(--text-muted)', lineHeight: 1.7 }}>Most people follow generic advice and wonder why they're still exhausted. Biolune builds a living protocol from your actual biomarkers — and updates it every week as your body changes.</p>
+              <p style={{ marginTop: 20, color: 'var(--text-muted)', lineHeight: 1.7 }}>Most people follow generic advice and wonder why they're still tired. Biolune builds a living protocol from your actual biomarkers. Then it updates every week as your body changes.</p>
               <div className="divider" style={{ marginTop: 28 }} />
-              <p style={{ fontSize: 14, color: 'var(--text-muted)', fontStyle: 'italic' }}>Our mission: while others react to symptoms, Biolune optimises proactively.</p>
+              <p style={{ fontSize: 14, color: 'var(--text-muted)', fontStyle: 'italic' }}>Most programs react to symptoms. This one moves before them.</p>
             </div>
             <div className="why-items">
               {whyItems.map(w => (
@@ -392,9 +605,9 @@ export default async function Home() {
               <div className="price-amount">€{tProtocol.priceEUR}</div>
               <div className="price-period price-muted">/{pricing.interval}</div>
               <ul className="price-features">
-                <li>Complete AI protocol (90 days)</li>
-                <li>Lune AI coach (25 msgs/day)</li>
-                <li>Raw DNA upload + genetic personalization</li>
+                <li>Full protocol (90 days)</li>
+                <li>Lune (25 messages/day)</li>
+                <li>Raw DNA upload + genetic layer</li>
                 <li>Morning + Evening + Sleep stacks</li>
                 <li>IF protocol + Apple Health sync</li>
               </ul>
@@ -437,7 +650,7 @@ export default async function Home() {
             </div>
           </div>
           <p style={{ textAlign: 'center', marginTop: 32, fontSize: 14, color: 'var(--text-muted)' }}>
-            Biolune is a precision longevity protocol for high performers. Science-backed. AI-personalised. Built to last decades.
+            A precision longevity protocol for people who take their body as seriously as their work. Built on data. Updated weekly. For the long game.
           </p>
         </div>
       </section>

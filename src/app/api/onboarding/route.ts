@@ -36,7 +36,7 @@ function onboardingHtml(firstName: string, appUrl: string) {
       <div style="background: #f4eee0; border-radius: 8px; padding: 24px; margin-bottom: 24px;">
         <p style="color: #A89879; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; font-weight: 600; margin: 0 0 12px 0;">Step 2 &mdash; Log in with your beta code</p>
         <p style="color: #3a3935; font-size: 14px; line-height: 1.8; margin: 0;">
-          Open the app and log in with the email you used to apply. You will receive a beta access code separately &mdash; enter it when prompted. This unlocks your personalised dashboard, Lune (your coach), and the intake form.
+          Open the app and log in with the email you used to apply. You will receive a beta access code separately. Enter it when prompted. That opens your dashboard, Lune, and the intake form.
         </p>
       </div>
 

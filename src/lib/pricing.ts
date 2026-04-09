@@ -47,7 +47,7 @@ export const PRICING_FALLBACK: PricingResponse = {
       priceEUR: 149,
       amountCents: 14900,
       tagline:
-        'Your personalised longevity protocol with DNA personalization — adapted weekly by AI.',
+        'Your longevity protocol built from your data and DNA. Updated every week.',
       gated: false,
       ctaPath: '/apply?tier=protocol',
     },
@@ -57,7 +57,7 @@ export const PRICING_FALLBACK: PricingResponse = {
       priceEUR: 299,
       amountCents: 29900,
       tagline:
-        'Autonomous AI that adapts your protocol to your biology — in real time.',
+        'A living protocol that adapts to your biology in real time. Unlimited Lune.',
       gated: false,
       ctaPath: '/apply?tier=precision',
     },
@@ -67,7 +67,7 @@ export const PRICING_FALLBACK: PricingResponse = {
       priceEUR: 549,
       amountCents: 54900,
       tagline:
-        'Precision medicine meets personal coaching. Blood work, biomarkers, and direct collaboration with Korosh.',
+        'Precision medicine plus personal coaching. Blood work, biomarkers, and direct work with Korosh.',
       gated: true,
       ctaPath: '/apply?tier=elite',
     },

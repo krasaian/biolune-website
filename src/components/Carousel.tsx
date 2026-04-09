@@ -11,27 +11,27 @@ const items: CarouselItem[] = [
   {
     label: 'Biological Data',
     title: 'Biological Data',
-    description: 'We analyze your unique biomarkers to understand exactly what your body needs. HRV, hormones, sleep patterns — translated into a protocol built for you.',
+    description: 'Lune reads your HRV, hormones, and sleep patterns and turns them into a protocol built for your actual biology. Not a generic template with your name on it.',
   },
   {
     label: 'Smart Longevity',
     title: 'Smart Longevity',
-    description: 'Custom frameworks designed to help you live better and stay active longer. Not reactive medicine — proactive precision that keeps you ahead of decline.',
+    description: 'A system built to help you live better and stay active longer. Not reactive medicine. Precision that keeps you ahead of decline.',
   },
   {
     label: 'Real-Time Tracking',
     title: 'Real-Time Tracking',
-    description: 'We remove the guesswork by monitoring your health metrics around the clock. Every data point feeds the system — better data in, better protocol out.',
+    description: 'We remove the guesswork by tracking your metrics around the clock. Every data point feeds the system. Better data in, better protocol out.',
   },
   {
     label: 'Evidence-Based Care',
     title: 'Evidence-Based Care',
-    description: 'Every recommendation is backed by science and personalized for your biology. No wellness trends. No guesswork. Only what the data supports.',
+    description: 'Every recommendation is backed by science and built from your biology. No wellness trends. No guesswork. Only what the data supports.',
   },
   {
     label: 'Sustainable Growth',
     title: 'Sustainable Growth',
-    description: 'We focus on long-term wellness rather than quick fixes or temporary trends. A protocol that compounds over years — not a sprint, a system.',
+    description: 'Long game over quick fixes. A protocol that compounds over years. Not a sprint, a system.',
   },
 ]
 

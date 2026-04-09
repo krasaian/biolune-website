@@ -169,7 +169,7 @@ export default function Protocol() {
       <section className="section">
         <div className="container">
           <div className="protocol-intro">
-            <p>Biolune is not a course, a challenge, or a wellness programme. It is a precision protocol — built from your biology and adapted as your biology changes.</p>
+            <p>Biolune is not a course, a challenge, or a wellness programme. It is a precision protocol built from your biology. It adapts as your biology changes.</p>
             <p>The first 30 days are the most important. This is when we establish your baseline, build your protocol from scratch, and begin the feedback loop that makes everything work.</p>
             <p>Here is exactly what happens.</p>
           </div>
@@ -208,7 +208,7 @@ export default function Protocol() {
               <div className="timeline-content">
                 <div className="timeline-detail">Day 5 — Protocol delivery</div>
                 <h3 className="serif">Your protocol is built. From scratch.</h3>
-                <p>No templates. No one-size-fits-all. Your protocol covers nutrition timing, supplementation, sleep architecture, training integration, and recovery — all calibrated to your data.</p>
+                <p>No templates. No one-size-fits-all. Your protocol covers nutrition timing, supplementation, sleep architecture, training integration, and recovery. All of it calibrated to your data.</p>
               </div>
             </div>
 
@@ -226,7 +226,7 @@ export default function Protocol() {
               <div className="timeline-content">
                 <div className="timeline-detail">Week 3 — Deep review</div>
                 <h3 className="serif">We sit down with your data.</h3>
-                <p>A structured review of your first two weeks — what is moving, what is not, and what needs to change. Precision and Elite members have a direct strategy call. Protocol members receive a written analysis.</p>
+                <p>A structured review of your first two weeks. What is moving, what is not, what needs to change. Precision and Elite members get a direct strategy call. Protocol members get a written analysis.</p>
               </div>
             </div>
 
@@ -253,18 +253,18 @@ export default function Protocol() {
           <div className="protocol-pillars">
             <div className="pillar-card">
               <div className="pillar-number">Pillar 01</div>
-              <h3 className="serif">Hormonal Optimisation</h3>
-              <p>Your hormones dictate energy, recovery, mood, and longevity. We track key markers — cortisol rhythm, testosterone, thyroid, insulin sensitivity — and build interventions that address root causes, not symptoms.</p>
+              <h3 className="serif">Hormonal Balance</h3>
+              <p>Your hormones dictate energy, recovery, mood, and longevity. We track the key markers: cortisol rhythm, testosterone, thyroid, insulin sensitivity. Then we build interventions that address root causes, not symptoms.</p>
             </div>
             <div className="pillar-card">
               <div className="pillar-number">Pillar 02</div>
               <h3 className="serif">Adaptive Nutrition</h3>
-              <p>No fixed meal plans. Your nutrition framework adapts to your training load, travel schedule, sleep quality, and hormonal state — recalibrated weekly based on real data.</p>
+              <p>No fixed meal plans. Your nutrition framework adapts to your training load, travel schedule, sleep quality, and hormonal state. Recalibrated every week from real data.</p>
             </div>
             <div className="pillar-card">
               <div className="pillar-number">Pillar 03</div>
               <h3 className="serif">Recovery Architecture</h3>
-              <p>Sleep is not rest — it is biological repair. We optimise sleep architecture, HRV recovery windows, and nervous system regulation to ensure your body rebuilds faster than it breaks down.</p>
+              <p>Sleep is not rest. It is biological repair. We shape sleep architecture, HRV recovery windows, and nervous system regulation so your body rebuilds faster than it breaks down.</p>
             </div>
           </div>
         </div>
