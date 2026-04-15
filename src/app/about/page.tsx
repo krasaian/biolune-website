@@ -11,10 +11,10 @@ export const metadata: Metadata = {
 const faqs = [
   { q: 'How do I prepare for my initial biomarker test?', a: 'Fast for 8–12 hours before your blood draw. Stay well-hydrated with water, avoid intense exercise the day before, and get your normal amount of sleep. Your intake form will give you specific guidance.' },
   { q: 'Is my personal health data kept private and secure?', a: 'Yes. All data is encrypted in transit and at rest, stored under GDPR-compliant protocols, and never sold or shared with third parties. Your biological data is yours — we only use it to improve your protocol.' },
-  { q: 'How long does it take to receive my health results?', a: 'Your initial protocol is ready within 48 hours of completing your intake. Biomarker results from lab partners typically arrive within 5–7 business days.' },
+  { q: 'How long until I get my first protocol?', a: 'Your initial protocol is ready within 48 hours of completing your intake. Biomarker results from lab partners typically arrive within 5–7 business days.' },
   { q: 'Can I share my reports with my primary care physician?', a: 'Yes. All reports are exportable as PDFs. We encourage sharing with your physician — Biolune is designed to complement, not replace, your existing healthcare team.' },
   { q: 'Do I need a wearable device to use the platform?', a: 'Not required. Manual daily logging takes under 60 seconds. A wearable like Oura or Whoop gives the AI richer data and produces more precise weekly adaptations, but many members start without one.' },
-  { q: 'How often should I re-test my biological markers?', a: 'We recommend a full panel every 90 days for the first year, then bi-annually once your protocol stabilises. Your protocol will flag when a re-test is beneficial.' },
+  { q: 'How often should I re-test my biological markers?', a: 'Most members do a full panel every 90 days for the first year, then bi-annually once their protocol stabilises. Your dashboard will flag when a re-test could be useful.' },
 ]
 
 export default function About() {
@@ -141,12 +141,12 @@ export default function About() {
                 <p>Every recommendation starts from a number in your data. No assumptions. No guesswork. Only what your biology supports.</p>
               </div>
               <div className="integrity-item">
-                <h3 className="serif">Systemic Growth</h3>
-                <p>A protocol that evolves with your biology. Compounds over years, not months. Designed to outlast the hype cycle.</p>
+                <h3 className="serif">Compounding returns</h3>
+                <p>A protocol that evolves with your biology. Gets sharper over years, not months. Built for the long game, not the hype cycle.</p>
               </div>
               <div className="integrity-item">
-                <h3 className="serif">Integrated Delivery</h3>
-                <p>Your protocol fits your life, not the other way around. Morning stack in 90 seconds. Weekly check-in in five minutes. That's the deal.</p>
+                <h3 className="serif">Fits your life</h3>
+                <p>Your protocol fits your schedule, not the other way around. Morning stack in 90 seconds. Weekly check-in in five minutes. That's the deal.</p>
               </div>
             </div>
           </div>
@@ -158,7 +158,7 @@ export default function About() {
         <div className="container">
           <div className="section-header">
             <p className="label">Our team</p>
-            <h2 className="serif" style={{ marginTop: 12, fontSize: 'clamp(24px, 3.5vw, 36px)' }}>The Mind Behind the Mission</h2>
+            <h2 className="serif" style={{ marginTop: 12, fontSize: 'clamp(24px, 3.5vw, 36px)' }}>Who built this</h2>
             <p style={{ marginTop: 8, color: 'var(--text-muted)' }}>One system. Built from experience, not theory.</p>
           </div>
           <div className="team-card">

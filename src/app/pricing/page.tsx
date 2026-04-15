@@ -45,10 +45,10 @@ const FEATURES: Record<TierId, string[]> = {
 const faqs = [
   { q: 'How do I prepare for my initial biomarker test?', a: 'Fast for 8–12 hours before your blood draw. Stay well-hydrated with water, avoid intense exercise the day before, and get your normal amount of sleep.' },
   { q: 'Is my personal health data kept private and secure?', a: 'Yes. All data is encrypted in transit and at rest, stored under GDPR-compliant protocols, and never sold or shared with third parties.' },
-  { q: 'How long does it take to receive my health results?', a: 'Your initial protocol is ready within 48 hours of completing your intake. Biomarker results from lab partners typically arrive within 5–7 business days.' },
+  { q: 'How long until I get my first protocol?', a: 'Your initial protocol is ready within 48 hours of completing your intake. Biomarker results from lab partners typically arrive within 5–7 business days.' },
   { q: 'Can I share my reports with my primary care physician?', a: 'Yes. All reports export to PDF. Share them with your doctor. Biolune is built to sit next to your healthcare team, not replace it.' },
   { q: 'Do I need a wearable device to use the platform?', a: 'Not required. Daily logging takes under 60 seconds by hand. A wearable gives Lune richer data, but plenty of members start without one.' },
-  { q: 'How often should I re-test my biological markers?', a: 'We recommend a full panel every 90 days for the first year, then bi-annually once your protocol stabilises.' },
+  { q: 'How often should I re-test my biological markers?', a: 'Most members do a full panel every 90 days for the first year, then bi-annually once their protocol stabilises.' },
 ]
 
 export default async function Pricing() {
