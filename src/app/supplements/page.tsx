@@ -52,7 +52,7 @@ const sections = [
         name: 'Vitamin D3 + K2',
         dose: '4,000–5,000 IU D3 + 90 mcg K2',
         timing: 'Morning with breakfast',
-        benefit: 'Regulate calcium metabolism, support bone health and immune function. K2 ensures calcium goes to bones, not arteries.',
+        benefit: 'Most people are deficient and don\'t know it. D3 covers the gap. K2 makes sure the calcium goes to your bones, not your arteries.',
         experts: ['Huberman', 'Patrick', 'Brecka'],
         tier: 'foundation' as const,
         brand: 'Thorne — Vitamin D + K2 Liquid',
@@ -62,7 +62,7 @@ const sections = [
         name: 'Omega-3 (EPA+DHA)',
         dose: '2–3g combined EPA+DHA',
         timing: 'With meals (morning or evening)',
-        benefit: 'Support brain health, reduce systemic inflammation, improve cardiovascular markers and cell membrane integrity.',
+        benefit: 'The single most agreed-upon supplement in longevity research. Covers inflammation, brain function, and cardiovascular markers in one dose.',
         experts: ['Patrick', 'Attia', 'Huberman'],
         tier: 'foundation' as const,
         brand: 'Nordic Naturals — Ultimate Omega 180ct',
@@ -72,7 +72,7 @@ const sections = [
         name: 'Magnesium (Threonate or Glycinate)',
         dose: '300–400mg elemental Mg',
         timing: 'Evening, 2 hours before bed',
-        benefit: 'Improve sleep quality, reduce muscle tension, support 300+ enzymatic processes and cognitive function.',
+        benefit: 'Most adults are low in magnesium. It\'s involved in over 300 processes, but you\'ll feel the difference in sleep and recovery first.',
         experts: ['Huberman', 'Walker', 'Attia'],
         tier: 'foundation' as const,
         brand: 'Thorne — Magnesium Bisglycinate',
@@ -82,7 +82,7 @@ const sections = [
         name: 'Creatine Monohydrate',
         dose: '5g daily (no loading phase)',
         timing: 'Any time, consistent daily',
-        benefit: 'Boost ATP production, enhance muscular strength, cognitive resilience, and cellular energy reserves.',
+        benefit: 'The most studied sports supplement in history. Cheap, effective, well-tolerated. Builds strength and increasingly linked to cognitive performance.',
         experts: ['Huberman', 'Attia', 'Patrick'],
         tier: 'foundation' as const,
         brand: 'Nutricost — Creapure® Creatine',
@@ -100,7 +100,7 @@ const sections = [
         name: 'Magnesium L-Threonate',
         dose: '2,000mg (~144mg elemental Mg)',
         timing: '30–60 min before bed',
-        benefit: 'The only form that efficiently crosses the blood-brain barrier — enhances sleep quality and cognitive recovery.',
+        benefit: 'The only form that crosses the blood-brain barrier efficiently. If you\'re taking magnesium for sleep, this is the one that actually reaches your brain.',
         experts: ['Huberman', 'Walker'],
         tier: 'sleep' as const,
         brand: 'Life Extension — Neuro-Mag',
@@ -110,7 +110,7 @@ const sections = [
         name: 'L-Theanine',
         dose: '100–200mg',
         timing: 'Evening with magnesium',
-        benefit: 'Promote relaxation and sleep onset via alpha brain wave stimulation, without sedation or morning grogginess.',
+        benefit: 'Takes the edge off without making you groggy. Quiets the mind before bed. No sedation, no morning hangover.',
         experts: ['Huberman', 'Walker'],
         tier: 'sleep' as const,
         brand: 'Thorne — L-Theanine',
@@ -120,7 +120,7 @@ const sections = [
         name: 'Apigenin',
         dose: '50–100mg',
         timing: '30–60 min before bed',
-        benefit: 'A natural flavonoid that lengthens sleep duration and deepens REM/NREM cycles. Found in chamomile.',
+        benefit: 'A flavonoid from chamomile that Huberman credits with deeper, longer sleep. Low dose, no dependency, no tolerance buildup.',
         experts: ['Huberman', 'Walker'],
         tier: 'sleep' as const,
         brand: 'Havasu Nutrition — Apigenin',
@@ -138,7 +138,7 @@ const sections = [
         name: 'NMN (Nicotinamide Mononucleotide)',
         dose: '500–1,000mg',
         timing: 'Morning, fasted or light meal',
-        benefit: 'Boost NAD+ levels to support mitochondrial function, DNA repair, and cellular energy production.',
+        benefit: 'Your NAD+ levels drop as you age. NMN tops them back up. Sinclair\'s flagship molecule for mitochondrial function and DNA repair.',
         experts: ['Sinclair', 'Attia'],
         tier: 'longevity' as const,
         brand: 'ProHealth Longevity — NMN Pro 1000',
@@ -148,7 +148,7 @@ const sections = [
         name: 'Sulforaphane',
         dose: '10–20mg (broccoli sprout extract)',
         timing: 'Morning with breakfast',
-        benefit: 'Activate the Nrf2 pathway to upregulate your body\'s own antioxidant defenses and detoxification enzymes.',
+        benefit: 'Flips on your body\'s own antioxidant system (the Nrf2 pathway). Broccoli sprout extract is the easiest delivery method.',
         experts: ['Sinclair', 'Patrick'],
         tier: 'longevity' as const,
         brand: 'Jarrow Formulas — BroccoMax',
@@ -158,7 +158,7 @@ const sections = [
         name: 'Fisetin',
         dose: '100–150mg',
         timing: 'Morning with fat-containing meal',
-        benefit: 'Senolytic action: helps clear senescent "zombie" cells that accumulate with age and drive inflammation.',
+        benefit: 'Targets the "zombie cells" that pile up with age and drive chronic inflammation. One of the few compounds with real senolytic data behind it.',
         experts: ['Sinclair', 'Attia'],
         tier: 'longevity' as const,
         brand: 'Life Extension — Bio-Fisetin',
@@ -168,7 +168,7 @@ const sections = [
         name: 'Resveratrol',
         dose: '250–500mg',
         timing: 'Morning with fat source',
-        benefit: 'Activate sirtuins to enhance autophagy, mitochondrial efficiency, and longevity-related gene expression.',
+        benefit: 'Sinclair\'s go-to for sirtuin activation. Pairs well with NMN. Take it with a fat source or it won\'t absorb.',
         experts: ['Sinclair'],
         tier: 'longevity' as const,
         brand: 'Source Naturals',
@@ -186,7 +186,7 @@ const sections = [
         name: 'Tongkat Ali (Eurycoma longifolia)',
         dose: '200–400mg standardized extract',
         timing: 'Morning or post-workout',
-        benefit: 'Supports free testosterone naturally by reducing SHBG binding. Lifts energy, libido, and work capacity.',
+        benefit: 'The natural testosterone support that actually has research behind it. Lowers SHBG, which frees up what your body already produces.',
         experts: ['Huberman', 'Brecka'],
         tier: 'performance' as const,
         brand: 'Solaray',
@@ -196,7 +196,7 @@ const sections = [
         name: 'Alpha-GPC',
         dose: '300–600mg',
         timing: 'Morning or 30 min pre-workout',
-        benefit: 'Enhance choline availability for acetylcholine production — sharpens focus, reaction time, and mind-muscle connection.',
+        benefit: 'Pre-workout focus in a capsule. Feeds the neurotransmitter responsible for attention and mind-muscle connection.',
         experts: ['Huberman', 'Johnson'],
         tier: 'performance' as const,
         brand: 'Jarrow Formulas — Alpha GPC',
@@ -206,7 +206,7 @@ const sections = [
         name: 'Ashwagandha (KSM-66)',
         dose: '300–600mg',
         timing: 'Morning or evening',
-        benefit: 'Modulate cortisol and HPA axis, improve stress resilience, recovery, and hormonal balance.',
+        benefit: 'The adaptogen with the most clinical backing. Lowers cortisol when stress is high. KSM-66 is the extract with the best data.',
         experts: ['Huberman', 'Attia'],
         tier: 'performance' as const,
         brand: 'Jarrow Formulas — KSM-66 Ashwagandha',
@@ -559,22 +559,22 @@ export default function Supplements() {
         <div className="container">
           <div className="supp-safety-inner">
             <div>
-              <p className="label" style={{ marginBottom: '12px' }}>SAFETY FIRST</p>
-              <h3 className="serif">Lune Checks for You</h3>
+              <p className="label" style={{ marginBottom: '12px' }}>BUILT-IN AWARENESS</p>
+              <h3 className="serif">Lune Flags What Matters</h3>
               <p>
                 Supplements can interact with medications and conditions.
-                Lune automatically flags contraindications based on your health profile —
-                something a generic supplement store never does.
+                Lune flags potential conflicts based on what you tell us in your intake —
+                then suggests you confirm with your doctor before starting. Not a replacement for medical advice. A starting point for a smarter conversation.
               </p>
             </div>
             <div>
               <div className="supp-safety-list">
-                Blood thinners → adjusts Omega-3 and Vitamin K2 dosage<br/>
-                Thyroid medication → flags timing conflicts with supplements<br/>
-                Pregnancy / nursing → removes unsafe compounds entirely<br/>
-                Autoimmune conditions → adapts immune-stimulating protocols<br/>
-                MTHFR mutation → switches folate forms automatically<br/>
-                Statins → monitors CoQ10 and liver-impact supplements
+                Blood thinners → flags Omega-3 and Vitamin K2 for review<br/>
+                Thyroid medication → notes timing conflicts to discuss with your doctor<br/>
+                Pregnancy / nursing → excludes compounds not considered safe<br/>
+                Autoimmune conditions → highlights immune-stimulating ingredients<br/>
+                MTHFR variant → suggests alternative folate forms<br/>
+                Statins → notes potential CoQ10 interaction for your physician
               </div>
             </div>
           </div>
@@ -604,7 +604,7 @@ export default function Supplements() {
 
             <div className="supp-disclaimer">
               <strong>Not a Substitute for Medical Care</strong>
-              Lune is an AI health coach, not a medical professional. If you experience adverse reactions to any supplement, stop use immediately and contact your healthcare provider. In case of emergency, call 112 (EU) or your local emergency number.
+              Lune is a protocol assistant, not a medical professional. It does not diagnose, treat, or prescribe. If you experience adverse reactions to any supplement, stop use immediately and contact your healthcare provider. In case of emergency, call 112 (EU) or your local emergency number.
             </div>
           </div>
         </div>

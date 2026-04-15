@@ -24,9 +24,9 @@ const items: CarouselItem[] = [
     description: 'We remove the guesswork by tracking your metrics around the clock. Every data point feeds the system. Better data in, better protocol out.',
   },
   {
-    label: 'Evidence-Based Care',
-    title: 'Evidence-Based Care',
-    description: 'Every recommendation is backed by science and built from your biology. No wellness trends. No guesswork. Only what the data supports.',
+    label: 'Evidence First',
+    title: 'Evidence First',
+    description: 'Every recommendation traces back to published research and your own numbers. No wellness trends. No guesswork. Only what the data supports.',
   },
   {
     label: 'Sustainable Growth',
