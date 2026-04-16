@@ -36,7 +36,7 @@ const SupplementCard = ({ card }: { card: SupplementCard }) => (
     </div>
     <div className="supp-brand">{card.brand}</div>
     <a href={card.shopUrl} target="_blank" rel="noopener noreferrer" className="btn btn-gold supp-shop-btn">
-      Shop on iHerb →
+      View Product →
     </a>
   </div>
 )
@@ -221,6 +221,7 @@ const sectionNav = [
   { id: 'sleep', label: 'Sleep' },
   { id: 'longevity', label: 'Longevity' },
   { id: 'performance', label: 'Performance' },
+  { id: 'testing', label: 'Testing' },
 ]
 
 export default function Supplements() {
@@ -453,6 +454,29 @@ export default function Supplements() {
           letter-spacing: 0.5px;
         }
 
+        /* Partner links */
+        .partner-link {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 14px 16px;
+          border: 1px solid var(--border);
+          border-radius: 10px;
+          text-decoration: none;
+          color: var(--text);
+          font-size: 13px;
+          line-height: 1.4;
+          transition: border-color 0.2s, background 0.2s;
+        }
+        .partner-link:hover {
+          border-color: var(--gold);
+          background: rgba(168,152,121,0.04);
+        }
+        .partner-link strong {
+          color: var(--text);
+          font-weight: 500;
+        }
+
         @media (max-width: 768px) {
           .supp-hero { padding: 64px 0 48px; }
           .supp-nav { gap: 6px; }
@@ -467,6 +491,7 @@ export default function Supplements() {
           .supp-safety-inner { grid-template-columns: 1fr; gap: 24px; padding: 28px 24px; }
           .supp-sources { padding: 28px 20px; }
           .supp-disclaimer { padding: 24px 20px; }
+          .partner-link { flex-direction: column; align-items: flex-start; gap: 4px; }
         }
       `}</style>
 
@@ -578,6 +603,83 @@ export default function Supplements() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Bloodwork & DNA Testing Partners */}
+      <section className="supp-section" id="testing">
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '56px' }}>
+            <p className="label" style={{ marginBottom: '12px' }}>COMPLETE THE PICTURE</p>
+            <h2 className="serif" style={{ fontSize: 'clamp(28px, 4vw, 48px)', marginBottom: '16px' }}>Test. Upload. Optimise.</h2>
+            <p style={{ fontSize: '16px', color: 'var(--text-muted)', maxWidth: '560px', margin: '0 auto', lineHeight: 1.6 }}>
+              Your protocol gets sharper with real data. Order a blood panel or DNA kit, upload your results, and Lune adapts your stack to your biology.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px', marginBottom: '48px' }}>
+            {/* Bloodwork */}
+            <div style={{ background: 'var(--bg-alt)', border: '1px solid var(--border)', borderRadius: '16px', padding: '32px' }}>
+              <p className="label" style={{ color: 'var(--gold)', marginBottom: '12px' }}>BLOODWORK</p>
+              <h3 className="serif" style={{ fontSize: '24px', marginBottom: '12px' }}>Know your numbers</h3>
+              <p style={{ fontSize: '14px', color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '24px' }}>
+                A full longevity panel covers ApoB, HbA1c, hsCRP, Vitamin D, hormones, and more. Biolune reads 15+ biomarkers and adjusts your protocol accordingly.
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                <a href="https://www.bloedwaardentest.nl" target="_blank" rel="noopener noreferrer" className="partner-link">
+                  <span><strong>Bloedwaardentest.nl</strong> — Comprehensive panels in NL</span>
+                  <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>€89–€199</span>
+                </a>
+                <a href="https://www.bloodvalues.nl" target="_blank" rel="noopener noreferrer" className="partner-link">
+                  <span><strong>Blood Values</strong> — At-home kits in NL</span>
+                  <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>€49–€149</span>
+                </a>
+                <a href="https://www.letsgetchecked.com" target="_blank" rel="noopener noreferrer" className="partner-link">
+                  <span><strong>LetsGetChecked</strong> — At-home testing, worldwide</span>
+                  <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>€69–€199</span>
+                </a>
+                <a href="https://www.insidetracker.com" target="_blank" rel="noopener noreferrer" className="partner-link">
+                  <span><strong>InsideTracker</strong> — AI-powered biomarker analysis</span>
+                  <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>$189–$589</span>
+                </a>
+                <a href="https://www.marekhealth.com" target="_blank" rel="noopener noreferrer" className="partner-link">
+                  <span><strong>Marek Health</strong> — Male health & longevity panels</span>
+                  <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>$199–$499</span>
+                </a>
+              </div>
+            </div>
+
+            {/* DNA */}
+            <div style={{ background: 'var(--bg-alt)', border: '1px solid var(--border)', borderRadius: '16px', padding: '32px' }}>
+              <p className="label" style={{ color: 'var(--gold)', marginBottom: '12px' }}>RAW DNA</p>
+              <h3 className="serif" style={{ fontSize: '24px', marginBottom: '12px' }}>Read your genetic code</h3>
+              <p style={{ fontSize: '14px', color: 'var(--text-muted)', lineHeight: 1.6, marginBottom: '24px' }}>
+                Upload your raw DNA file and Lune analyses genetic variants that affect methylation, detox pathways, nutrient metabolism, and more.
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                <a href="https://www.ancestry.com/dna" target="_blank" rel="noopener noreferrer" className="partner-link">
+                  <span><strong>AncestryDNA</strong> — Saliva kit, raw data download</span>
+                  <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>€99</span>
+                </a>
+                <a href="https://www.23andme.com" target="_blank" rel="noopener noreferrer" className="partner-link">
+                  <span><strong>23andMe</strong> — Health + ancestry, raw data compatible</span>
+                  <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>€119–€229</span>
+                </a>
+                <a href="https://nebula.org" target="_blank" rel="noopener noreferrer" className="partner-link">
+                  <span><strong>Nebula Genomics</strong> — Whole genome sequencing</span>
+                  <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>€249–€499</span>
+                </a>
+                <a href="https://www.myheritage.com/dna" target="_blank" rel="noopener noreferrer" className="partner-link">
+                  <span><strong>MyHeritage DNA</strong> — Affordable kit across Europe</span>
+                  <span style={{ fontSize: '12px', color: 'var(--text-muted)' }}>€49–€79</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <p style={{ textAlign: 'center', fontSize: '13px', color: 'var(--text-muted)', maxWidth: '480px', margin: '0 auto', lineHeight: 1.6 }}>
+            Once you have your results, upload them in the Biolune app. Lune reads the data and adjusts your protocol within 48 hours.
+          </p>
         </div>
       </section>
 

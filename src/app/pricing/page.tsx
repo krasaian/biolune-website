@@ -34,8 +34,10 @@ const FEATURES: Record<TierId, string[]> = {
   ],
   elite: [
     'Everything in Precision',
+    'Quarterly doctor consult (video call)',
     'Full bloodwork read, interpreted in plain language',
-    'Long-term biomarker tracking (ApoB, HbA1c, and more)',
+    'Long-term biomarker tracking (ApoB, HbA1c, 15+ markers)',
+    'DNA analysis with actionable genetic insights',
     'Two private calls a month with Korosh',
     'Priority WhatsApp line straight to me',
     'PDF reports and protocol adjustments on demand',

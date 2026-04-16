@@ -138,4 +138,4 @@ Let me know if you want me to build this — it's a 30-minute addition.
 - **Hosting:** Vercel
 - **Fonts:** Cormorant Garamond (serif display), Jost (labels/UI), Inter (body)
 - **CSS:** Plain CSS with CSS variables — no Tailwind, no UI libraries
-- **Images:** Hosted on framerusercontent.com (can be migrated to `/public` folder)
+- **Images:** Legacy images still served from framerusercontent.com CDN (migrating to `/public` folder)
