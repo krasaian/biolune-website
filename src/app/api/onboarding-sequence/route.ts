@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server'
 
 export const dynamic = 'force-dynamic'
 
-const appUrl = process.env.BIOLUNE_APP_URL || 'https://biolune-app.vercel.app'
+const appUrl = process.env.BIOLUNE_APP_URL || 'https://app.biolune.eu'
 
 function day1Html(firstName: string) {
   return `

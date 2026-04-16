@@ -10,7 +10,7 @@ export const dynamic = 'force-dynamic'
 // Required env vars on biolune-websitev2 (Vercel):
 //   - APPLY_PROXY_SECRET: shared secret matching biolune-app
 //   - APPLY_ENDPOINT_URL: (optional) override of the upstream URL
-const DEFAULT_UPSTREAM = 'https://biolune-app.vercel.app/api/public/apply'
+const DEFAULT_UPSTREAM = 'https://app.biolune.eu/api/public/apply'
 
 // W48: per-process in-memory rate limiter. Each Vercel lambda gets its own
 // Map, so this is not a hard cluster-wide cap — but it stops the dumb case of

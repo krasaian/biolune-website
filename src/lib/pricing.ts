@@ -31,7 +31,7 @@ export interface PricingResponse {
 
 const PRICING_API = process.env.NEXT_PUBLIC_BIOLUNE_APP_URL
   ? `${process.env.NEXT_PUBLIC_BIOLUNE_APP_URL}/api/public/pricing`
-  : 'https://biolune-app.vercel.app/api/public/pricing'
+  : 'https://app.biolune.eu/api/public/pricing'
 
 // Hardcoded fallback. Mirrors biolune-app/src/lib/pricing.ts as of 2026-04-08.
 // Keep in sync if pricing copy changes — the API is still the source of truth

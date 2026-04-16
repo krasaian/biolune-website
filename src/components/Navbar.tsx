@@ -186,7 +186,7 @@ export default function Navbar() {
           </ul>
           <div className="nav-actions">
             <a
-              href="https://biolune-app.vercel.app"
+              href="https://app.biolune.eu"
               className="nav-login"
               target="_blank"
               rel="noopener noreferrer"
@@ -217,7 +217,7 @@ export default function Navbar() {
         <Link href="/success-stories">Success Stories</Link>
         <Link href="/blog">Blog</Link>
         <a
-          href="https://biolune-app.vercel.app"
+          href="https://app.biolune.eu"
           className="mob-login"
           target="_blank"
           rel="noopener noreferrer"

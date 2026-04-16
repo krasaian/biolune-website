@@ -82,7 +82,7 @@ function weeklyReportHtml(
   protocolDay: number,
   stats: BiometricStats
 ): string {
-  const appUrl = process.env.BIOLUNE_APP_URL || 'https://biolune-app.vercel.app'
+  const appUrl = process.env.BIOLUNE_APP_URL || 'https://app.biolune.eu'
   const nextWeekFocus = generateNextWeekFocus(stats)
   const decisionEngineColor = getDecisionEngineColor(stats.decisionEngineMode)
   const firstName = name.split(' ')[0]

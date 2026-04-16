@@ -182,7 +182,7 @@ export async function POST(req: Request) {
     // Beta approval email with code
     if (day === 'approve' || day === 5) {
       const betaCode = body.betaCode || 'BIOLUNE-BETA-XXXXXX'
-      const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://biolune-app.vercel.app'
+      const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://app.biolune.eu'
       const { data, error } = await resend.emails.send({
         from: 'Korosh, Founder <hello@biolune.eu>',
         to: email,
