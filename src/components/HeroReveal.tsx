@@ -38,7 +38,7 @@ export default function HeroReveal({ text, className = '' }: HeroRevealProps) {
         .hero-reveal-h1 {
           display: flex;
           flex-wrap: wrap;
-          gap: 0 0.28em;
+          gap: 0 0.35em;
         }
         .hero-word-wrap {
           overflow: hidden;
@@ -52,7 +52,7 @@ export default function HeroReveal({ text, className = '' }: HeroRevealProps) {
                       opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1);
         }
       `}</style>
-      <h1 ref={containerRef} className={`serif ${className}`}>
+      <h1 ref={containerRef} className={`serif hero-reveal-h1 ${className}`}>
         {words.map((word, i) => (
           <span key={i} className="hero-word-wrap">
             <span className="hero-word-inner">{word}</span>

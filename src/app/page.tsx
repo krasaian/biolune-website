@@ -99,14 +99,15 @@ export default async function Home() {
       tier: tElite.name,
       price: String(tElite.priceEUR),
       interval: pricing.interval,
-      headline: 'Personal coaching. Bloodwork reviewed by Korosh.',
-      body: 'The full system with a human layer.',
+      headline: 'Quarterly doctor consult. Bloodwork reviewed by a real physician.',
+      body: 'The full system with a human layer. Coaching, clinical oversight, and direct access.',
       features: [
         'Everything in Precision',
+        'Quarterly doctor consult (video call)',
         'Blood work analysis + biomarker tracking',
+        'DNA analysis with genetic insights',
         'Personal coaching with Korosh (2\u00d7/mo)',
         'Priority WhatsApp + PDF reports',
-        'Custom protocol adjustments',
       ],
       href: '/apply?tier=elite',
     },
@@ -411,9 +412,9 @@ export default async function Home() {
             />
             <HeroFadeUp delay={900}>
               <p>
-                Built from your HRV, bloodwork, and raw DNA. Creatine 10g split
-                morning and lunch. Magnesium L-Threonate 2g at 21:30. Updated every
-                Sunday from how your body actually responded this week.
+                Built from your HRV, bloodwork, and raw DNA. Every supplement, every
+                timing window, every adjustment is specific to you. Updated every
+                Sunday based on how your body actually responded this week.
               </p>
             </HeroFadeUp>
             <HeroFadeUp delay={1100}>
@@ -424,7 +425,7 @@ export default async function Home() {
             </HeroFadeUp>
             <HeroFadeUp delay={1300}>
               <p className="hero-scarcity">
-                I read every application myself. 4 protocol consultations a week.
+                I review every application personally. Limited to 50 founding members.
               </p>
             </HeroFadeUp>
           </div>
