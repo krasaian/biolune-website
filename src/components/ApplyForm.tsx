@@ -159,50 +159,57 @@ export default function ApplyForm() {
     return (
       <div className="apply-ritual-success">
         <style>{`
-          .apply-ritual-success { padding: 24px 0 8px; }
-          .ars-tag { display: block; font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
-          .ars-headline { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(26px, 3.4vw, 34px); line-height: 1.15; margin-bottom: 16px; }
-          .ars-body { font-size: 15px; line-height: 1.75; color: var(--text-muted); margin-bottom: 14px; }
-          .ars-body strong { color: var(--text); font-weight: 500; }
-          .ars-signature { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 17px; margin: 24px 0 4px; color: var(--text); }
-          .ars-signature-role { font-family: 'Jost', sans-serif; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); }
-          .ars-reading { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--border); }
-          .ars-reading-label { font-family: 'Jost', sans-serif; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
-          .ars-reading-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px; }
-          .ars-reading-item { font-size: 14px; color: var(--text); font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; }
-          .ars-reading-item span { font-family: 'Jost', sans-serif; font-style: normal; font-size: 12px; color: var(--text-muted); display: block; margin-top: 2px; }
+          .apply-ritual-success {
+            padding: 48px 0 24px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
+          .ars-check {
+            width: 48px; height: 48px; border-radius: 50%;
+            border: 1.5px solid var(--gold);
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 28px;
+            color: var(--gold); font-size: 20px;
+          }
+          .ars-tag {
+            display: block; font-family: 'Jost', sans-serif;
+            font-size: 10px; letter-spacing: 2.5px; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 20px;
+          }
+          .ars-headline {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: clamp(28px, 3.6vw, 38px); line-height: 1.15;
+            margin-bottom: 20px; max-width: 400px;
+          }
+          .ars-body {
+            font-size: 14px; line-height: 1.8; color: var(--text-muted);
+            max-width: 360px; margin-bottom: 32px;
+          }
+          .ars-divider {
+            width: 40px; height: 1px; background: var(--border); margin-bottom: 24px;
+          }
+          .ars-signature {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-style: italic; font-size: 17px; color: var(--text);
+            margin-bottom: 2px;
+          }
+          .ars-signature-role {
+            font-family: 'Jost', sans-serif; font-size: 10px;
+            letter-spacing: 1.5px; text-transform: uppercase;
+            color: var(--text-muted);
+          }
         `}</style>
+        <div className="ars-check">✓</div>
         <span className="ars-tag">Application received</span>
-        <h3 className="ars-headline">I'll read this tonight. You'll hear from me by tomorrow evening.</h3>
+        <h3 className="ars-headline">You&apos;ll hear from me within 48 hours.</h3>
         <p className="ars-body">
-          Not an auto-reply. A real reply, from me, with a yes or a no and the
-          reason either way.
+          I read every application personally. Expect a real reply — not an auto-response.
         </p>
-        <p className="ars-body">
-          I cap this at <strong>four new protocol consultations a week</strong> so I can
-          actually read every word you wrote. If we're full this week I'll tell
-          you and I'll hold your spot for the next one.
-        </p>
+        <div className="ars-divider" />
         <p className="ars-signature">— Korosh</p>
         <p className="ars-signature-role">Founder, Biolune</p>
-
-        <div className="ars-reading">
-          <p className="ars-reading-label">What I'm reading when I review your answers</p>
-          <ul className="ars-reading-list">
-            <li className="ars-reading-item">
-              Peter Attia — Outlive
-              <span>ApoB, VO₂max, and the four horsemen framework</span>
-            </li>
-            <li className="ars-reading-item">
-              Andrew Huberman — Protocols
-              <span>Sleep architecture, light exposure, and recovery</span>
-            </li>
-            <li className="ars-reading-item">
-              Matthew Walker — Why We Sleep
-              <span>Why sleep debt is the quietest thing killing you</span>
-            </li>
-          </ul>
-        </div>
       </div>
     )
   }
