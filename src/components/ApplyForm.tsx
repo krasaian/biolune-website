@@ -203,9 +203,9 @@ export default function ApplyForm() {
         `}</style>
         <div className="ars-check">✓</div>
         <span className="ars-tag">Application received</span>
-        <h3 className="ars-headline">You&apos;ll hear from me within 48 hours.</h3>
+        <h3 className="ars-headline">Your application is in.</h3>
         <p className="ars-body">
-          I read every application personally. Expect a real reply — not an auto-response.
+          We&apos;ll review your application and get back to you within 48 hours with next steps.
         </p>
         <div className="ars-divider" />
         <p className="ars-signature">— Korosh</p>
