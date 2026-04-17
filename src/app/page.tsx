@@ -19,13 +19,13 @@ export const metadata: Metadata = {
 
 const faqs = [
   { q: 'What exactly is a "precision longevity protocol"?', a: "A health system built from your own data. HRV, hormones, sleep, training, lifestyle. Unlike generic advice, it's specific to you and updates every week based on how your body actually responds." },
-  { q: 'How is Biolune different from a regular health coach?', a: "A coach gives you advice. Biolune gives you a living protocol built from your real biomarkers and updates it every week based on how you're responding. No generic templates, no guesswork." },
-  { q: 'Is this medical advice?', a: "No. Biolune is a performance protocol, not medical treatment. It works alongside your healthcare team, not in place of it. Always consult your physician for medical decisions." },
+  { q: 'How is Biolune different from a regular health coach?', a: "A coach gives you advice. Biolune gives you referenced science matched to your real biomarkers — updated every week as your data changes. The interpretation is yours. The sources are always visible." },
+  { q: 'Is this medical advice?', a: "No. Biolune is an evidence aggregation platform. We surface peer-reviewed research and recognised expert statements that are relevant to your biomarker profile. We do not diagnose, treat, or generate original medical recommendations. Every insight is sourced and referenced. Always consult your physician before making changes to your health routine." },
   { q: 'What results can I expect in the first 30 days?', a: "Most people notice better sleep and sharper mornings in the first two weeks. HRV trends usually stabilise by week three and cognitive clarity follows shortly after. Measurable biomarker changes show up at 60 to 90 days." },
   { q: 'Do I need a wearable device to use Biolune?', a: "Not required. You can log data manually each morning in under 60 seconds. That said, an Oura or Whoop gives Lune more to work with and sharpens the weekly adjustments." },
   { q: 'How much time does this require each week?', a: "About 5 to 10 minutes. A daily morning log (60 seconds), a weekly check-in (5 minutes), and reading your updated protocol. The protocol fits around your schedule, not the other way around." },
   { q: 'Can I cancel or pause my subscription?', a: "Yes. Cancel or pause anytime from your dashboard, no penalties. We don't lock you in because we don't need to. Most people stay because the protocol works." },
-  { q: 'Is my health data private and secure?', a: "Your data is encrypted, never sold, and only accessible by you. GDPR-compliant handling. Your biological data is yours. We use it only to improve your protocol." },
+  { q: 'Is my health data private and secure?', a: "Your data is encrypted at rest (AES-256) and in transit (TLS 1.3). We process health and biometric data exclusively as special category data under GDPR Article 9, with your explicit consent. We operate under a full GDPR compliance framework including a Data Protection Impact Assessment and Record of Processing Activities. Your data is never sold. You can export, correct, or delete your data at any time." },
 ]
 
 // W7: testimonials are now an empty array. The previous 6 hardcoded
@@ -40,15 +40,15 @@ const testimonials: Testimonial[] = []
 
 const steps = [
   { n: '01', title: 'Apply & get assessed', body: "Fill in your intake form. We assess your health goals, lifestyle, travel schedule, and stress profile to build your starting baseline." },
-  { n: '02', title: 'Receive your protocol', body: "Built from your HRV baseline, hormonal data, and biomarkers. Sleep, nutrition, training, recovery. Ready within 48 hours." },
+  { n: '02', title: 'Receive your protocol', body: "Matched to your HRV baseline, hormonal data, and biomarkers. Lune surfaces what peer-reviewed research says about people with your profile — across sleep, nutrition, training, and recovery." },
   { n: '03', title: 'Weekly adjustment', body: "The protocol evolves as your body does. Better data in, better protocol out, every single week. No generic plans that go stale after month one." },
-  { n: '04', title: 'Track measurable results', body: "HRV trends, biological age shift, energy levels, sleep quality. All tracked, compared week-on-week, and reflected in your next protocol update." },
+  { n: '04', title: 'Track measurable results', body: "HRV trends, energy levels, sleep quality. All tracked week-on-week so you can see how your data evolves — and which peer-reviewed research becomes relevant as it does." },
 ]
 
 const whyItems = [
-  { title: 'Built on your biomarkers', body: 'Not generic advice from an app. A protocol built from your HRV, cortisol, and sleep data. Specific to you, updated weekly.' },
-  { title: 'Proactive, not reactive', body: 'Most people see a doctor when something breaks. Biolune catches the signal before it becomes a symptom and adjusts your protocol accordingly.' },
-  { title: 'One integrated system', body: 'Sleep tracker, meal plan, gym program, all disconnected. Biolune integrates HRV, hormones, nutrition, and recovery into a single protocol that talks to itself.' },
+  { title: 'Built on your biomarkers', body: 'Not generic content. Peer-reviewed science matched to your actual biomarkers. Every insight shows the source — so you can verify it yourself.' },
+  { title: 'Proactive, not reactive', body: 'Most people see a doctor when something breaks. Biolune shows you what the research says about early signals in your data — so you can have an informed conversation with your physician before something breaks.' },
+  { title: 'One integrated system', body: 'Sleep data, hormones, nutrition, recovery — connected in one place. Biolune surfaces the science that\u2019s relevant across all of them. One system. Every insight referenced.' },
 ]
 
 export default async function Home() {
@@ -99,12 +99,12 @@ export default async function Home() {
       tier: tElite.name,
       price: String(tElite.priceEUR),
       interval: pricing.interval,
-      headline: 'Quarterly doctor consult. Bloodwork reviewed by a real physician.',
-      body: 'The full system with a human layer. Coaching, clinical oversight, and direct access.',
+      headline: 'Quarterly performance review with Korosh. Your data, discussed in context.',
+      body: 'The full system with a human layer. Applied coaching, peer-reviewed context, and direct access.',
       features: [
         'Everything in Precision',
-        'Quarterly doctor consult (video call)',
-        'Blood work analysis + biomarker tracking',
+        'Quarterly performance review call with Korosh — certified in hormonal profiling and training methodology',
+        'Bloodwork and biomarker review in context of hormonal balance, training load, and recovery',
         'DNA analysis with genetic insights',
         'Personal coaching with Korosh (2\u00d7/mo)',
         'Priority WhatsApp + PDF reports',
@@ -412,9 +412,10 @@ export default async function Home() {
             />
             <HeroFadeUp delay={900}>
               <p>
-                Built from your HRV, bloodwork, and raw DNA. Every supplement, every
-                timing window, every adjustment is specific to you. Updated every
-                Sunday based on how your body actually responded this week.
+                Built from your HRV, bloodwork, and raw DNA. Every insight is matched
+                to your biomarker profile using peer-reviewed research and recognised
+                expert sources. You see the science behind every recommendation. You
+                make the call.
               </p>
             </HeroFadeUp>
             <HeroFadeUp delay={1100}>

@@ -34,8 +34,8 @@ const FEATURES: Record<TierId, string[]> = {
   ],
   elite: [
     'Everything in Precision',
-    'Quarterly doctor consult (video call)',
-    'Full bloodwork read, interpreted in plain language',
+    'Quarterly performance review call with Korosh — certified in hormonal profiling and advanced training methodology (Overload Worldwide)',
+    'Bloodwork and biomarker review discussed in context of hormonal balance, training load, and recovery — based on peer-reviewed literature and applied certification training',
     'Long-term biomarker tracking (ApoB, HbA1c, 15+ markers)',
     'DNA analysis with actionable genetic insights',
     'Two private calls a month with Korosh',
@@ -211,8 +211,8 @@ export default async function Pricing() {
             </div>
           </div>
 
-          <p style={{ textAlign: 'center', marginTop: 40, fontSize: 13, color: 'var(--text-muted)' }}>
-            Biolune is a precision longevity protocol, not medical treatment. Always consult your physician.
+          <p style={{ textAlign: 'center', marginTop: 40, fontSize: 13, color: 'var(--text-muted)', maxWidth: 640, margin: '40px auto 0' }}>
+            Biolune is an evidence aggregation platform, not a medical service. Review calls with Korosh are performance and lifestyle coaching sessions based on your biomarker data and peer-reviewed research. They are not medical consultations. Korosh is not a physician. For clinical interpretation of bloodwork or medical concerns, always consult your own doctor.
           </p>
         </div>
       </section>

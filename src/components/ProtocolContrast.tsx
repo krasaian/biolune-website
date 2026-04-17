@@ -45,7 +45,7 @@ const redDay: Day = {
     { time: '20:00', action: 'Last meal. No alcohol. No screens after 21:30.' },
     { time: '21:30', action: 'Sleep stack: Mg L-Threonate 2g, Glycine 3g, L-Theanine 200mg, Apigenin 50mg.' },
   ],
-  footer: 'Protocol today: protect sleep, let HRV recover, zero training debt added.',
+  footer: 'Research insight: studies suggest people with this HRV and sleep profile respond well to recovery-focused movement. See referenced sources.',
 }
 
 const greenDay: Day = {
@@ -63,7 +63,7 @@ const greenDay: Day = {
     { time: '17:00', action: 'Strength session, 45 min. Compound lifts, 4–8 rep range.' },
     { time: '21:30', action: 'Standard sleep stack. No Tongkat Ali today (cycle week 9, on pause).' },
   ],
-  footer: 'Protocol today: extract the green day. Training adaptation, not just maintenance.',
+  footer: 'Research insight: studies suggest people with this HRV and sleep profile are primed for training adaptation. See referenced sources.',
 }
 
 function Column({ day }: { day: Day }) {

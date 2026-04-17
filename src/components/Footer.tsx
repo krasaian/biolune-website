@@ -41,7 +41,7 @@ export default function Footer() {
           <BioluneLogo />
           <div style={{ marginTop: 24 }}>
             <h3 className="serif">The protocol. In your inbox. Weekly.</h3>
-            <p style={{ marginTop: 8 }}>Join 1,200+ high performers getting weekly notes on HRV, longevity, and precision recovery. No noise. Just signal.</p>
+            <p style={{ marginTop: 8 }}>Join high performers getting weekly insights on HRV, longevity, and precision recovery — all sourced from peer-reviewed research.</p>
           </div>
           <NewsletterSignup variant="footer" />
         </div>
@@ -112,7 +112,7 @@ export default function Footer() {
           <div style={{ borderTop: '1px solid var(--border)', paddingTop: 24, display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'space-between', alignItems: 'center' }}>
             <p style={{ fontSize: 13, color: 'var(--text-muted)' }}>© 2026 Biolune. All rights reserved.</p>
             <p style={{ fontSize: 12, color: 'var(--text-muted)', fontStyle: 'italic' }}>
-              Biolune is a precision longevity protocol, not medical treatment. Always consult your physician.
+              Biolune is an evidence aggregation platform, not a medical service. Always consult your physician.
             </p>
           </div>
         </div>

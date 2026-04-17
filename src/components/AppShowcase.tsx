@@ -8,7 +8,7 @@ const features = [
     id: 'briefing',
     label: 'MORNING BRIEFING',
     title: 'Lune greets you with a fresh daily protocol.',
-    description: 'Every morning, Lune reads your overnight HRV, sleep score, and resting heart rate — then flags what your body looks ready for today. Training intensity, supplement timing, and recovery priorities all shift based on what your data says right now.',
+    description: 'Every morning, Lune reads your overnight HRV, sleep score, and resting heart rate — then surfaces what peer-reviewed research says about people with your numbers today. You see the science. You make the call.',
     card: {
       type: 'briefing' as const,
       greeting: 'Good morning, Korosh.',

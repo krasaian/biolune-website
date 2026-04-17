@@ -101,7 +101,7 @@ export default function Blog() {
         <div className="container">
           <p className="label" style={{ marginBottom: 16 }}>Get it weekly</p>
           <h2 className="serif" style={{ fontSize: 'clamp(24px, 3.5vw, 40px)', marginBottom: 8 }}>The protocol. In your inbox.</h2>
-          <p style={{ color: 'var(--text-muted)', marginBottom: 24 }}>Join 1,200+ high performers. No noise. Just signal.</p>
+          <p style={{ color: 'var(--text-muted)', marginBottom: 24 }}>Weekly insights on HRV, longevity, and precision recovery — sourced from peer-reviewed research.</p>
           <NewsletterSignup />
         </div>
       </section>

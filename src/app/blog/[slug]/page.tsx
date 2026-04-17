@@ -427,7 +427,7 @@ export default function BlogArticle({ params }: PageProps) {
         <div className="container">
           <p className="label" style={{ marginBottom: 16 }}>Get it weekly</p>
           <h2 className="serif">The protocol. In your inbox.</h2>
-          <p>Join 1,200+ high performers. No noise. Just signal.</p>
+          <p>Weekly insights on HRV, longevity, and precision recovery — sourced from peer-reviewed research.</p>
           <NewsletterSignup />
         </div>
       </section>

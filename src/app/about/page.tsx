@@ -102,14 +102,14 @@ export default function About() {
       <section className="section">
         <div className="container">
           <div className="founder-story">
-            <p>I didn't build Biolune in a lab. I built it because I had no other choice.</p>
-            <p>Flying across time zones, coming home to two kids, training Brazilian Jiu-Jitsu, and trying to stay sharp enough to perform at the highest level. I kept hitting the same wall. Not burnout exactly. More like friction. My body and my life were constantly working against each other.</p>
-            <p>Every system I tried was built for someone with perfect conditions. Fixed sleep schedule. Same timezone every week. Time to meal prep. That person is not me. And I suspect that person is not you either.</p>
-            <p>So I stopped following systems and started building one.</p>
-            <p>I spent years combining what I was learning about HRV, hormonal health, intermittent fasting, sleep science, and longevity research. Not as separate experiments, but as one connected approach. The filter was always the same: does this actually work when life is demanding? When you're running on six hours of sleep after a transatlantic flight? When your schedule changes every week?</p>
-            <p>If the answer was no, it didn't make the cut.</p>
-            <p>What came out of that process is Biolune. Not a collection of biohacking tricks. Not another wellness program. A precision protocol that adapts to your biology, because your biology doesn't care about your calendar.</p>
-            <p>I built this for people who carry real responsibility. Who travel, who lead, who train, who build things. People who refuse to choose between performing today and being healthy in twenty years.</p>
+            <p>Korosh is a commercial airline pilot, athlete, and the founder of Biolune. He built this platform because he needed it himself — and couldn't find anything on the market that actually used his data.</p>
+            <p>Flying across time zones, coming home to two kids, training Brazilian Jiu-Jitsu, and trying to stay sharp enough to perform at the highest level. He kept hitting the same wall. Not burnout exactly. More like friction. Body and life constantly working against each other.</p>
+            <p>Every system he tried was built for someone with perfect conditions. Fixed sleep schedule. Same timezone every week. Time to meal prep. That person is not him. And he suspects that person is not you either.</p>
+            <p>So he stopped following systems and started building one.</p>
+            <p>His background in performance and hormonal optimisation is hands-on and applied. He completed the full Overload Worldwide certification track — TOP A, TOP B, Mylogenics (Activation, Release, Rehab), and Personal Hormonal Profiling (PHP) — a practitioner programme used by coaches and trainers across the Netherlands focused on hormonal balance, training load management, and body composition through natural optimisation.</p>
+            <p>Beyond formal training, Korosh has spent years studying the primary literature: Attia, Walker, Huberman, Patrick, and the underlying research they reference. He has tracked his own HRV, sleep, bloodwork, and hormonal markers for over three years — the same data Biolune now helps others understand.</p>
+            <p>What came out of that process is Biolune. Not a collection of biohacking tricks. Not another wellness program. An evidence aggregation platform that adapts to your biology, because your biology doesn't care about your calendar.</p>
+            <p>He built this for people who carry real responsibility. Who travel, who lead, who train, who build things. People who refuse to choose between performing today and being healthy in twenty years.</p>
             <p>That choice shouldn't exist.</p>
           </div>
         </div>
@@ -165,7 +165,7 @@ export default function About() {
             <div className="team-photo">Photo<br/>coming soon</div>
             <h3 className="serif team-name">Korosh</h3>
             <div className="team-title">Founder of Biolune</div>
-            <p className="team-bio">Built this between cockpits, time zones, and training mats. Pilot. Athlete. Traveler. Father of two. Obsessed with what the human body is capable of.</p>
+            <p className="team-bio">Commercial airline pilot, athlete, father of two. Certified in hormonal profiling and advanced training methodology (Overload Worldwide: TOP A, TOP B, Mylogenics, PHP). Built Biolune between cockpits, time zones, and training mats — because he needed it himself.</p>
           </div>
         </div>
       </section>
