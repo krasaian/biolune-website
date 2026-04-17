@@ -695,6 +695,8 @@ export default async function Home() {
       {/* ── PRICING — HORIZONTAL CAROUSEL (Artbase-style) ── */}
       <TierCarousel slides={tierSlides} />
 
+      {/* ── TESTIMONIALS — waiting for real beta tester quotes (Day 14+) ── */}
+
       {/* ── FAQ ── */}
       <SectionFade className="section" as="section" style={{ background: 'var(--bg-alt)' }}>
         <div className="container" id="faq">
