@@ -3,17 +3,22 @@
 import { useEffect, useRef, type ReactNode, type CSSProperties } from 'react'
 
 type Direction = 'up' | 'down' | 'left' | 'right' | 'none'
+type AnimationType = 'fade' | 'slide' | 'scale' | 'fade-slide'
 
 interface ScrollRevealProps {
   children: ReactNode
   /** Direction the element slides in from. Default: 'up' */
   direction?: Direction
+  /** Animation type. Default: 'fade-slide' (the original behavior) */
+  animation?: AnimationType
   /** Delay in ms before the animation starts. Default: 0 */
   delay?: number
   /** Duration in ms. Default: 800 */
   duration?: number
   /** Distance in px the element travels. Default: 40 */
   distance?: number
+  /** Scale start for 'scale' animation. Default: 0.92 */
+  scaleFrom?: number
   /** IntersectionObserver threshold. Default: 0.15 */
   threshold?: number
   /** Extra className */
@@ -32,12 +37,42 @@ const translate: Record<Direction, (d: number) => string> = {
   none:  () => 'none',
 }
 
+function getInitialTransform(
+  animation: AnimationType,
+  direction: Direction,
+  distance: number,
+  scaleFrom: number,
+): string {
+  switch (animation) {
+    case 'fade':
+      return 'none'
+    case 'slide':
+      return translate[direction](distance)
+    case 'scale':
+      return `scale(${scaleFrom})`
+    case 'fade-slide':
+    default:
+      return translate[direction](distance)
+  }
+}
+
+function getFinalTransform(animation: AnimationType): string {
+  switch (animation) {
+    case 'scale':
+      return 'scale(1)'
+    default:
+      return 'translate(0, 0)'
+  }
+}
+
 export default function ScrollReveal({
   children,
   direction = 'up',
+  animation = 'fade-slide',
   delay = 0,
   duration = 800,
   distance = 40,
+  scaleFrom = 0.92,
   threshold = 0.15,
   className = '',
   as: Tag = 'div',
@@ -53,7 +88,7 @@ export default function ScrollReveal({
       ([entry]) => {
         if (entry.isIntersecting) {
           el.style.opacity = '1'
-          el.style.transform = 'translate(0, 0)'
+          el.style.transform = getFinalTransform(animation)
           observer.unobserve(el)
         }
       },
@@ -62,9 +97,10 @@ export default function ScrollReveal({
 
     observer.observe(el)
     return () => observer.disconnect()
-  }, [threshold])
+  }, [threshold, animation])
 
   const Component = Tag as any
+  const initialTransform = getInitialTransform(animation, direction, distance, scaleFrom)
 
   return (
     <Component
@@ -72,7 +108,7 @@ export default function ScrollReveal({
       className={className}
       style={{
         opacity: 0,
-        transform: translate[direction](distance),
+        transform: initialTransform,
         transition: `opacity ${duration}ms cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay}ms, transform ${duration}ms cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay}ms`,
         willChange: 'opacity, transform',
         ...style,
@@ -87,18 +123,22 @@ export default function ScrollReveal({
 export function StaggerReveal({
   children,
   direction = 'up',
+  animation = 'fade-slide',
   stagger = 120,
   duration = 800,
   distance = 40,
+  scaleFrom = 0.92,
   threshold = 0.12,
   className = '',
   style,
 }: {
   children: ReactNode[]
   direction?: Direction
+  animation?: AnimationType
   stagger?: number
   duration?: number
   distance?: number
+  scaleFrom?: number
   threshold?: number
   className?: string
   style?: CSSProperties
@@ -109,9 +149,11 @@ export function StaggerReveal({
         <ScrollReveal
           key={i}
           direction={direction}
+          animation={animation}
           delay={i * stagger}
           duration={duration}
           distance={distance}
+          scaleFrom={scaleFrom}
           threshold={threshold}
         >
           {child}

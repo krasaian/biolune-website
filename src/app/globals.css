@@ -87,10 +87,26 @@ h1, h2, h3, h4 {
 .btn-dark {
   background: var(--text);
   color: var(--bg);
+  position: relative;
+  overflow: hidden;
 }
+.btn-dark::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(168,152,121,0.2) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.btn-dark:hover::before { opacity: 1; }
 .btn-dark:hover {
   background: #2e2c27;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(26, 25, 22, 0.25);
+}
+.btn-dark:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(26, 25, 22, 0.15);
 }
 
 .btn-outline {
@@ -101,16 +117,36 @@ h1, h2, h3, h4 {
 .btn-outline:hover {
   border-color: var(--gold);
   color: var(--gold);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(168, 152, 121, 0.12);
+}
+.btn-outline:active {
+  transform: translateY(0);
 }
 
 .btn-gold {
   background: var(--gold);
   color: var(--bg);
+  position: relative;
+  overflow: hidden;
 }
+.btn-gold::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.btn-gold:hover::before { opacity: 1; }
 .btn-gold:hover {
   background: var(--gold-dark);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(168, 152, 121, 0.35);
+}
+.btn-gold:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(168, 152, 121, 0.2);
 }
 
 /* ── Divider ── */
@@ -222,6 +258,54 @@ h1, h2, h3, h4 {
 }
 .newsletter-form input:focus { border-color: var(--gold); }
 .newsletter-form input::placeholder { color: var(--text-muted); }
+
+/* ── Section transitions ── */
+.section, .section-sm {
+  position: relative;
+}
+
+/* Smooth section fade-in via IntersectionObserver class toggle */
+.section-fade {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.section-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Enhanced card hover ── */
+.card-hover {
+  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              border-color 0.3s ease,
+              box-shadow 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.card-hover:hover {
+  transform: translateY(-5px);
+  border-color: var(--border-gold);
+  box-shadow: 0 12px 40px rgba(168, 152, 121, 0.10);
+}
+
+/* Gold underline grow effect for links */
+.link-grow {
+  position: relative;
+  display: inline-block;
+}
+.link-grow::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.link-grow:hover::after {
+  width: 100%;
+}
 
 /* ── Responsive ── */
 @media (max-width: 768px) {

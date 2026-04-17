@@ -144,10 +144,23 @@ export default function TierCarousel({ slides }: TierCarouselProps) {
           justify-content: flex-end;
           padding: 40px 36px;
           cursor: grab;
-          transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                      box-shadow 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
+        .tier-slide::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.08) 0%, transparent 60%);
+          opacity: 0;
+          transition: opacity 0.5s ease;
+          pointer-events: none;
+          z-index: 1;
+        }
+        .tier-slide:hover::before { opacity: 1; }
         .tier-slide:hover {
-          transform: translateY(-4px);
+          transform: translateY(-6px) scale(1.01);
+          box-shadow: 0 20px 60px rgba(26, 25, 22, 0.25);
         }
         .tier-slide:active { cursor: grabbing; }
 
@@ -239,11 +252,15 @@ export default function TierCarousel({ slides }: TierCarouselProps) {
           color: inherit;
           padding-bottom: 3px;
           border-bottom: 1px solid rgba(255,255,255,0.4);
-          transition: border-color 0.3s;
+          transition: border-color 0.3s, gap 0.3s, padding-bottom 0.3s;
           width: fit-content;
+          position: relative;
+          z-index: 2;
         }
         .tier-slide__cta:hover {
           border-color: rgba(255,255,255,0.8);
+          gap: 10px;
+          padding-bottom: 5px;
         }
 
         /* Indicators */

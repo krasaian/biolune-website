@@ -6,6 +6,9 @@ import ProtocolContrast from '@/components/ProtocolContrast'
 import ScrollReveal from '@/components/ScrollReveal'
 import HeroReveal, { HeroFadeUp } from '@/components/HeroReveal'
 import TierCarousel from '@/components/TierCarousel'
+import AnimatedStats from '@/components/AnimatedStats'
+import BiomarkerPreview from '@/components/BiomarkerPreview'
+import SectionFade from '@/components/SectionFade'
 import { fetchPricing, tierById } from '@/lib/pricing'
 
 // Revalidate every 5 minutes so pricing changes propagate without a manual
@@ -49,6 +52,12 @@ const whyItems = [
   { title: 'Built on your biomarkers', body: 'Not generic content. Peer-reviewed science matched to your actual biomarkers. Every insight shows the source — so you can verify it yourself.' },
   { title: 'Proactive, not reactive', body: 'Most people see a doctor when something breaks. Biolune shows you what the research says about early signals in your data — so you can have an informed conversation with your physician before something breaks.' },
   { title: 'One integrated system', body: 'Sleep data, hormones, nutrition, recovery — connected in one place. Biolune surfaces the science that\u2019s relevant across all of them. One system. Every insight referenced.' },
+]
+
+const heroStats = [
+  { value: 13, suffix: '+', label: 'Expert sources' },
+  { value: 95, label: 'Research entries' },
+  { value: 6, label: 'Adaptive modes' },
 ]
 
 export default async function Home() {
@@ -155,11 +164,28 @@ export default async function Home() {
           letter-spacing: 2.5px;
           text-transform: uppercase;
           color: var(--text);
-          text-decoration: underline;
-          text-underline-offset: 4px;
-          transition: color 0.2s;
+          text-decoration: none;
+          position: relative;
+          transition: color 0.25s;
+        }
+        .hero-text-link::after {
+          content: '';
+          position: absolute;
+          bottom: -3px;
+          left: 0;
+          width: 100%;
+          height: 1px;
+          background: var(--text);
+          transform: scaleX(1);
+          transform-origin: left;
+          transition: background 0.25s, transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
         .hero-text-link:hover { color: var(--gold); }
+        .hero-text-link:hover::after {
+          background: var(--gold);
+          transform: scaleX(1);
+          transform-origin: right;
+        }
         .hero-scarcity {
           font-family: 'Cormorant Garamond', Georgia, serif;
           font-size: 16px;
@@ -204,15 +230,23 @@ export default async function Home() {
           text-decoration: none;
           border-bottom: 1px solid var(--gold);
           padding-bottom: 3px;
-          transition: opacity 0.2s;
+          transition: opacity 0.2s, padding-bottom 0.25s;
         }
-        .founder-link:hover { opacity: 0.75; }
+        .founder-link:hover { opacity: 0.75; padding-bottom: 6px; }
         .founder-card {
           background: var(--bg-alt);
           border: 1px solid var(--border);
           border-radius: var(--radius);
           padding: 40px 36px;
           position: relative;
+          transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                      border-color 0.3s ease,
+                      box-shadow 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .founder-card:hover {
+          transform: translateY(-4px);
+          border-color: var(--border-gold);
+          box-shadow: 0 12px 40px rgba(168, 152, 121, 0.10);
         }
         .founder-tag {
           font-family: 'Jost', sans-serif;
@@ -252,11 +286,12 @@ export default async function Home() {
           border-radius: var(--radius);
           padding: 36px 32px;
           position: relative;
-          transition: border-color 0.3s, transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+          transition: border-color 0.3s, transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease;
         }
         .loss-card:hover {
           border-color: rgba(168, 152, 121, 0.35);
-          transform: translateY(-4px);
+          transform: translateY(-5px);
+          box-shadow: 0 16px 48px rgba(168, 152, 121, 0.10);
         }
         .loss-metric {
           font-size: 42px;
@@ -300,26 +335,6 @@ export default async function Home() {
           .founder-grid { grid-template-columns: 1fr; gap: 40px; }
           .loss-grid { grid-template-columns: 1fr; }
         }
-        .hero-stats {
-          display: flex;
-          gap: 40px;
-          margin-top: 64px;
-          flex-wrap: wrap;
-        }
-        .stat-item {}
-        .stat-num {
-          font-family: 'Cormorant Garamond', Georgia, serif;
-          font-size: 36px;
-          font-weight: 600;
-          color: var(--gold);
-          line-height: 1;
-        }
-        .stat-label {
-          font-family: 'Jost', sans-serif;
-          font-size: 13px;
-          color: var(--text-muted);
-          margin-top: 4px;
-        }
 
         /* Steps grid */
         .steps-grid {
@@ -332,11 +347,12 @@ export default async function Home() {
           border: 1px solid var(--border);
           border-radius: var(--radius);
           padding: 32px 28px;
-          transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.3s;
+          transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.3s, box-shadow 0.4s ease;
         }
         .step-card:hover {
-          transform: translateY(-3px);
+          transform: translateY(-4px);
           border-color: rgba(168, 152, 121, 0.3);
+          box-shadow: 0 12px 36px rgba(168, 152, 121, 0.08);
         }
         .step-num {
           font-family: 'Jost', sans-serif;
@@ -356,6 +372,15 @@ export default async function Home() {
           align-items: start;
         }
         .why-items { display: flex; flex-direction: column; gap: 32px; }
+        .why-item {
+          padding: 24px;
+          border-radius: var(--radius);
+          transition: background 0.35s ease, transform 0.35s ease;
+        }
+        .why-item:hover {
+          background: var(--bg-alt);
+          transform: translateX(4px);
+        }
         .why-item h3 { font-size: 20px; margin-bottom: 8px; }
         .why-item p { font-size: 15px; color: var(--text-muted); line-height: 1.65; }
 
@@ -393,9 +418,41 @@ export default async function Home() {
           border-radius: 100px;
         }
 
+        /* Biomarker section */
+        .biomarker-section {
+          border-top: 1px solid var(--border);
+          border-bottom: 1px solid var(--border);
+        }
+        .biomarker-grid {
+          display: grid;
+          grid-template-columns: 1fr 1.2fr;
+          gap: 64px;
+          align-items: center;
+        }
+        .biomarker-copy h2 {
+          font-size: clamp(28px, 3.8vw, 42px);
+          line-height: 1.15;
+          margin-top: 12px;
+          margin-bottom: 24px;
+        }
+        .biomarker-body {
+          font-size: 16px;
+          line-height: 1.75;
+          color: var(--text-muted);
+          margin-bottom: 24px;
+        }
+        .biomarker-note {
+          font-size: 13px;
+          color: var(--text-muted);
+          font-style: italic;
+          line-height: 1.6;
+          padding-top: 16px;
+          border-top: 1px solid var(--border);
+        }
+
         @media (max-width: 768px) {
           .why-grid { grid-template-columns: 1fr; }
-          .hero-stats { gap: 24px; }
+          .biomarker-grid { grid-template-columns: 1fr; gap: 40px; }
         }
       `}</style>
 
@@ -419,7 +476,7 @@ export default async function Home() {
             </HeroFadeUp>
             <HeroFadeUp delay={1100}>
               <div className="hero-ctas">
-                <Link href="/apply" className="btn btn-gold">Apply for the protocol →</Link>
+                <Link href="/apply" className="btn btn-gold">Apply for the protocol &rarr;</Link>
                 <Link href="/about" className="hero-text-link">Why I built this</Link>
               </div>
             </HeroFadeUp>
@@ -428,15 +485,18 @@ export default async function Home() {
                 I review every application personally. Limited to 50 founding members.
               </p>
             </HeroFadeUp>
+            <HeroFadeUp delay={1500}>
+              <AnimatedStats stats={heroStats} duration={2200} />
+            </HeroFadeUp>
           </div>
         </div>
       </section>
 
       {/* ── WHY I BUILT THIS (founder trust block) ── */}
-      <section className="section founder-block">
+      <SectionFade className="section founder-block">
         <div className="container">
           <div className="founder-grid">
-            <ScrollReveal direction="up" duration={900}>
+            <ScrollReveal direction="left" animation="fade-slide" duration={900}>
               <div className="founder-copy">
                 <p className="label" style={{ marginBottom: 16 }}>WHY I BUILT THIS</p>
                 <h2 className="serif">
@@ -449,10 +509,10 @@ export default async function Home() {
                   never looked at my numbers twice. Biolune is what I built because I
                   needed it myself.
                 </p>
-                <Link href="/about" className="founder-link">Read the full story →</Link>
+                <Link href="/about" className="founder-link">Read the full story &rarr;</Link>
               </div>
             </ScrollReveal>
-            <ScrollReveal direction="up" delay={200} duration={900}>
+            <ScrollReveal animation="scale" delay={200} duration={900}>
               <div className="founder-card">
                 <p className="founder-tag">KOROSH</p>
                 <p className="founder-role">Pilot. Athlete. Traveler. Father of two.</p>
@@ -463,19 +523,19 @@ export default async function Home() {
             </ScrollReveal>
           </div>
         </div>
-      </section>
+      </SectionFade>
 
       {/* ── LOSS FRAME ── */}
-      <section className="section loss-frame" style={{ background: 'var(--bg-alt)' }}>
+      <SectionFade className="section loss-frame" style={{ background: 'var(--bg-alt)' }}>
         <div className="container">
-          <ScrollReveal direction="up" duration={900}>
+          <ScrollReveal animation="fade" duration={900}>
             <div className="section-header" style={{ maxWidth: 720, margin: '0 auto 56px', textAlign: 'center' }}>
               <p className="label">THE THREE NUMBERS YOU DON&rsquo;T KNOW</p>
               <h2 className="serif" style={{ marginTop: 12 }}>What you lose every week you don&rsquo;t measure.</h2>
             </div>
           </ScrollReveal>
           <div className="loss-grid">
-            <ScrollReveal direction="up" delay={0} duration={800}>
+            <ScrollReveal direction="left" animation="fade-slide" delay={0} duration={800}>
               <div className="loss-card">
                 <p className="loss-metric serif">ApoB</p>
                 <p className="loss-headline">The cardiovascular number your annual bloodwork doesn&rsquo;t print.</p>
@@ -486,7 +546,7 @@ export default async function Home() {
                 </p>
               </div>
             </ScrollReveal>
-            <ScrollReveal direction="up" delay={150} duration={800}>
+            <ScrollReveal direction="up" animation="fade-slide" delay={150} duration={800}>
               <div className="loss-card">
                 <p className="loss-metric serif">VO<sub>2</sub>max</p>
                 <p className="loss-headline">The single strongest predictor of when you die.</p>
@@ -498,7 +558,7 @@ export default async function Home() {
                 </p>
               </div>
             </ScrollReveal>
-            <ScrollReveal direction="up" delay={300} duration={800}>
+            <ScrollReveal direction="right" animation="fade-slide" delay={300} duration={800}>
               <div className="loss-card">
                 <p className="loss-metric serif">HRV trend</p>
                 <p className="loss-headline">The earliest warning system your body has.</p>
@@ -510,23 +570,51 @@ export default async function Home() {
               </div>
             </ScrollReveal>
           </div>
-          <ScrollReveal direction="none" delay={500} duration={1000}>
+          <ScrollReveal animation="fade" delay={500} duration={1000}>
             <p className="loss-footer">
               Biolune reads all three. Lune builds the protocol. Korosh reviews the call.
             </p>
           </ScrollReveal>
         </div>
-      </section>
+      </SectionFade>
+
+      {/* ── BIOMARKER VISUALIZATION ── */}
+      <SectionFade className="section biomarker-section">
+        <div className="container">
+          <div className="biomarker-grid">
+            <ScrollReveal direction="left" animation="fade-slide" duration={900}>
+              <div className="biomarker-copy">
+                <p className="label" style={{ marginBottom: 16 }}>YOUR DATA, VISUALIZED</p>
+                <h2 className="serif">
+                  Watch your biomarkers move in the right direction.
+                </h2>
+                <p className="biomarker-body">
+                  Most longevity platforms give you a dashboard. Biolune gives you
+                  a trend line. HRV climbing, ApoB falling, week over week. The
+                  protocol adapts. The numbers follow.
+                </p>
+                <p className="biomarker-note">
+                  Example visualization based on typical protocol outcomes. Individual
+                  results vary based on baseline, adherence, and genetics.
+                </p>
+              </div>
+            </ScrollReveal>
+            <ScrollReveal animation="scale" delay={200} duration={1000} scaleFrom={0.9}>
+              <BiomarkerPreview />
+            </ScrollReveal>
+          </div>
+        </div>
+      </SectionFade>
 
       {/* ── PROTOCOL CONTRAST (peak moment) ── */}
-      <ScrollReveal direction="up" distance={60} duration={1000}>
+      <ScrollReveal animation="scale" distance={60} duration={1000} scaleFrom={0.96}>
         <ProtocolContrast />
       </ScrollReveal>
 
       {/* ── HOW IT WORKS ── */}
-      <section className="section" style={{ background: 'var(--bg-alt)' }}>
+      <SectionFade className="section" style={{ background: 'var(--bg-alt)' }}>
         <div className="container">
-          <ScrollReveal direction="up" duration={900}>
+          <ScrollReveal animation="fade" duration={900}>
             <div className="section-header">
               <p className="label">HOW IT WORKS</p>
               <h2 className="serif">From intake to your first protocol in 48 hours.</h2>
@@ -534,7 +622,7 @@ export default async function Home() {
           </ScrollReveal>
           <div className="steps-grid">
             {steps.map((s, i) => (
-              <ScrollReveal key={s.n} direction="up" delay={i * 120} duration={800}>
+              <ScrollReveal key={s.n} direction="up" animation="fade-slide" delay={i * 120} duration={800}>
                 <div className="step-card">
                   <div className="step-num">{s.n}</div>
                   <h3 className="serif">{s.title}</h3>
@@ -544,18 +632,18 @@ export default async function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </SectionFade>
 
       {/* ── APP SHOWCASE ── */}
-      <ScrollReveal direction="up" distance={50} duration={1000}>
+      <ScrollReveal animation="fade" distance={50} duration={1000}>
         <AppShowcase />
       </ScrollReveal>
 
       {/* ── WHY US ── */}
-      <section className="section">
+      <SectionFade className="section">
         <div className="container">
           <div className="why-grid">
-            <ScrollReveal direction="left" duration={900}>
+            <ScrollReveal direction="left" animation="fade-slide" duration={900}>
               <div>
                 <p className="label">Why us?</p>
                 <h2 className="serif" style={{ marginTop: 12, fontSize: 'clamp(28px, 4vw, 44px)' }}>Not another health app. A system built on your biology.</h2>
@@ -566,7 +654,7 @@ export default async function Home() {
             </ScrollReveal>
             <div className="why-items">
               {whyItems.map((w, i) => (
-                <ScrollReveal key={w.title} direction="up" delay={i * 150} duration={800}>
+                <ScrollReveal key={w.title} direction="right" animation="fade-slide" delay={i * 150} duration={800}>
                   <div className="why-item">
                     <h3 className="serif">{w.title}</h3>
                     <p>{w.body}</p>
@@ -576,13 +664,13 @@ export default async function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </SectionFade>
 
       {/* ── TESTIMONIALS ── */}
       {testimonials.length > 0 && (
-        <section className="section" style={{ background: 'var(--bg-alt)' }}>
+        <SectionFade className="section" style={{ background: 'var(--bg-alt)' }}>
           <div className="container">
-            <ScrollReveal direction="up">
+            <ScrollReveal animation="fade">
               <div className="section-header">
                 <p className="label">CLIENT RESULTS</p>
                 <h2 className="serif">Real people. Measurable results.</h2>
@@ -590,7 +678,7 @@ export default async function Home() {
             </ScrollReveal>
             <div className="testimonials-grid">
               {testimonials.map((t, i) => (
-                <ScrollReveal key={t.name} direction="up" delay={i * 120}>
+                <ScrollReveal key={t.name} direction="up" animation="fade-slide" delay={i * 120}>
                   <div className="testimonial-card">
                     <blockquote>&ldquo;{t.quote}&rdquo;</blockquote>
                     <div className="testimonial-name">{t.name}</div>
@@ -601,39 +689,39 @@ export default async function Home() {
               ))}
             </div>
           </div>
-        </section>
+        </SectionFade>
       )}
 
       {/* ── PRICING — HORIZONTAL CAROUSEL (Artbase-style) ── */}
       <TierCarousel slides={tierSlides} />
 
       {/* ── FAQ ── */}
-      <section className="section" id="faq" style={{ background: 'var(--bg-alt)' }}>
-        <div className="container">
+      <SectionFade className="section" as="section" style={{ background: 'var(--bg-alt)' }}>
+        <div className="container" id="faq">
           <div style={{ maxWidth: 720, margin: '0 auto' }}>
-            <ScrollReveal direction="up" duration={900}>
+            <ScrollReveal animation="fade" duration={900}>
               <div className="section-header" style={{ textAlign: 'center' }}>
                 <p className="label">COMMON QUESTIONS</p>
                 <h2 className="serif" style={{ marginTop: 12 }}>Everything you need to know before applying.</h2>
               </div>
             </ScrollReveal>
-            <ScrollReveal direction="up" delay={200} duration={800}>
+            <ScrollReveal direction="up" animation="fade-slide" delay={200} duration={800}>
               <Faq items={faqs} />
             </ScrollReveal>
           </div>
         </div>
-      </section>
+      </SectionFade>
 
       {/* ── CTA ── */}
-      <section className="section-sm" style={{ textAlign: 'center', borderTop: '1px solid var(--border)' }}>
+      <SectionFade className="section-sm" style={{ textAlign: 'center', borderTop: '1px solid var(--border)' }}>
         <div className="container">
-          <ScrollReveal direction="up" duration={900}>
+          <ScrollReveal animation="scale" duration={900} scaleFrom={0.95}>
             <p className="label" style={{ marginBottom: 16 }}>Ready to begin?</p>
             <h2 className="serif" style={{ fontSize: 'clamp(28px, 4vw, 48px)', marginBottom: 24 }}>Your biology is unique.<br/>Your protocol should be too.</h2>
             <Link href="/apply" className="btn btn-dark">Start your protocol</Link>
           </ScrollReveal>
         </div>
-      </section>
+      </SectionFade>
     </>
   )
 }
