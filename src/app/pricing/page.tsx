@@ -38,8 +38,7 @@ const FEATURES: Record<TierId, string[]> = {
     'Bloodwork and biomarker review discussed in context of hormonal balance, training load, and recovery — based on peer-reviewed literature and applied certification training',
     'Long-term biomarker tracking (ApoB, HbA1c, 15+ markers)',
     'DNA analysis with actionable genetic insights',
-    'Two private calls a month with Korosh',
-    'Priority WhatsApp line straight to me',
+    'One private coaching call a month with Korosh',
     'PDF reports and protocol adjustments on demand',
   ],
 }

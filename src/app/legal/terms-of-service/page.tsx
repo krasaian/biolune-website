@@ -53,7 +53,7 @@ export default function TermsOfService() {
         <ul>
           <li><strong>Protocol &mdash; &euro;149/month:</strong> Personalised biomarker-matched research, lifestyle insights, Lune AI (25 messages/day), DNA upload, Apple Health sync</li>
           <li><strong>Precision &mdash; &euro;299/month:</strong> Everything in Protocol plus unlimited Lune with autonomous actions, decision engine, pattern intelligence, travel mode</li>
-          <li><strong>Elite &mdash; &euro;549/month:</strong> Everything in Precision plus quarterly performance review call with Korosh &mdash; certified in hormonal profiling and advanced training methodology (Overload Worldwide: TOP A, TOP B, Mylogenics, PHP) &mdash; bloodwork and biomarker review discussed in context of hormonal balance, training load, and recovery, DNA analysis with genetic insights, personal coaching with Korosh (2&times;/month), priority support. Review calls are performance and lifestyle coaching sessions, not medical consultations.</li>
+          <li><strong>Elite &mdash; &euro;549/month:</strong> Everything in Precision plus quarterly performance review call with Korosh &mdash; certified in hormonal profiling and advanced training methodology (Overload Worldwide: TOP A, TOP B, Mylogenics, PHP) &mdash; bloodwork and biomarker review discussed in context of hormonal balance, training load, and recovery, DNA analysis with genetic insights, one private coaching call a month with Korosh, priority support. Review calls are performance and lifestyle coaching sessions, not medical consultations.</li>
         </ul>
 
         <h2 className="serif">5. Subscription, Billing &amp; Cancellation</h2>

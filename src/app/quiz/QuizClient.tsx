@@ -163,7 +163,7 @@ const TIER_META: Record<Tier, TierMeta> = {
     price: '€549/month',
     headline: 'Elite is where you belong.',
     body: 'You want the deepest layer of the system. Advanced biomarker tracking, quarterly performance reviews with Korosh, and a human in the loop. Elite is invite-only. It pairs the adaptive protocol with applied coaching, peer-reviewed context, and DNA analysis.',
-    detail: 'Everything in Precision, plus quarterly performance review call with Korosh — certified in hormonal profiling and training methodology (Overload Worldwide) — bloodwork and biomarker review in context of hormonal balance, training load, and recovery, long-term biomarker tracking (ApoB, HbA1c, 15+ markers), DNA analysis with genetic insights, two private calls a month with Korosh, priority WhatsApp, and PDF reports on demand.',
+    detail: 'Everything in Precision, plus quarterly performance review call with Korosh — certified in hormonal profiling and training methodology (Overload Worldwide) — bloodwork and biomarker review in context of hormonal balance, training load, and recovery, long-term biomarker tracking (ApoB, HbA1c, 15+ markers), DNA analysis with genetic insights, one private coaching call a month with Korosh, and PDF reports on demand.',
     cta: 'Request Elite access',
     href: '/apply?tier=elite',
   },
